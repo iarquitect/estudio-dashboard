@@ -1,0 +1,423 @@
+#!/usr/bin/env python3
+"""
+ETL + ML pipeline — Dashboard Estudio Mario Isgró
+SSOT: Google Sheets ID 1gqb65zbZzcZCTiua5AlXFzANr8jXpNtTLWKYqFUDoeo
+Output: public/dashboard_data.json
+"""
+
+import json
+import os
+import sys
+from datetime import datetime, timezone
+
+import gspread
+import numpy as np
+import pandas as pd
+from google.oauth2.service_account import Credentials
+from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import KFold, cross_val_score
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
+
+# ── Config ────────────────────────────────────────────────────────────────────
+
+SHEET_ID    = "1gqb65zbZzcZCTiua5AlXFzANr8jXpNtTLWKYqFUDoeo"
+OUTPUT_PATH = "public/dashboard_data.json"
+SCOPES      = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/drive",
+]
+
+# Sheet names (exact, UTF-8)
+SH_RAW    = "Sprint Estudio Mario Isgró"
+SH_LOG    = "Log_Registros"
+SH_PER    = "Ref_Personas"
+SH_PROY   = "Ref_Proyectos"
+SH_TPROY  = "Ref_Tipo_Proyectos"
+SH_CAT    = "Ref_Categoría"
+SH_HERR   = "Ref_Herramientas"
+SH_INCER  = "Ref_Incertidumbre"
+SH_COMP   = "Ref_Complejidad"
+
+# ── Auth ──────────────────────────────────────────────────────────────────────
+
+def auth_sheets() -> gspread.Client:
+    raw = os.environ.get("GOOGLE_CREDENTIALS_JSON")
+    if not raw:
+        raise EnvironmentError("GOOGLE_CREDENTIALS_JSON not set")
+    creds = Credentials.from_service_account_info(json.loads(raw), scopes=SCOPES)
+    return gspread.authorize(creds)
+
+
+# ── I/O ───────────────────────────────────────────────────────────────────────
+
+def ws_to_df(sh: gspread.Spreadsheet, name: str) -> pd.DataFrame:
+    rows = sh.worksheet(name).get_all_values()
+    if len(rows) < 2:
+        return pd.DataFrame()
+    headers, data = rows[0], rows[1:]
+    df = pd.DataFrame(data, columns=headers)
+    df.replace("", np.nan, inplace=True)
+    return df
+
+
+def load_sheets(sh):
+    return {
+        "raw":   ws_to_df(sh, SH_RAW),
+        "log":   ws_to_df(sh, SH_LOG),
+        "per":   ws_to_df(sh, SH_PER),
+        "proy":  ws_to_df(sh, SH_PROY),
+        "tproy": ws_to_df(sh, SH_TPROY),
+        "cat":   ws_to_df(sh, SH_CAT),
+        "herr":  ws_to_df(sh, SH_HERR),
+        "incer": ws_to_df(sh, SH_INCER),
+        "comp":  ws_to_df(sh, SH_COMP),
+    }
+
+
+# ── ETL helpers ───────────────────────────────────────────────────────────────
+
+def build_lookup(df: pd.DataFrame, pk_col: str, label_col: str, zero="No aplica") -> dict:
+    lk = {0: zero}
+    for _, row in df.iterrows():
+        try:
+            lk[int(float(row[pk_col]))] = str(row[label_col]).strip()
+        except (ValueError, TypeError):
+            pass
+    return lk
+
+
+def safe_int(v, default=0) -> int:
+    try:
+        return int(float(v))
+    except (ValueError, TypeError):
+        return default
+
+
+def extract_sprint_metadata(raw: pd.DataFrame) -> pd.DataFrame:
+    """
+    Forward-fill sprint label (col 0) and extract fecha/día/tarea/comentarios
+    keyed by REGISTRO (= ID_Registro).
+    """
+    df = raw.copy()
+    sprint_col = df.columns[0]   # might be "1", empty, or "Sprint"
+    df["_sprint"] = df[sprint_col].replace(np.nan, None).ffill()
+
+    # Normalize casing: "SPRINT 2" → "Sprint 2"
+    df["_sprint"] = df["_sprint"].apply(
+        lambda x: " ".join(w.capitalize() for w in str(x).split()) if pd.notna(x) else x
+    )
+
+    # Find REGISTRO column
+    reg_col = next((c for c in df.columns if "REGISTRO" in str(c).upper()), None)
+    if reg_col is None:
+        return pd.DataFrame(columns=["id_registro", "sprint"])
+
+    df = df.dropna(subset=[reg_col])
+    df["id_registro"] = pd.to_numeric(df[reg_col], errors="coerce")
+    df = df.dropna(subset=["id_registro"])
+    df["id_registro"] = df["id_registro"].astype(int)
+
+    rename = {"_sprint": "sprint"}
+
+    fecha_col = next((c for c in df.columns if "FECHA" in str(c).upper()), None)
+    if fecha_col:
+        df[fecha_col] = pd.to_datetime(df[fecha_col], errors="coerce")
+        rename[fecha_col] = "fecha"
+
+    dia_col = next((c for c in df.columns if str(c).upper() in ("DÍA", "DIA", "DÍA")), None)
+    if dia_col:
+        rename[dia_col] = "dia"
+
+    tarea_col = next((c for c in df.columns if "TAREA" in str(c).upper()), None)
+    if tarea_col:
+        rename[tarea_col] = "tarea"
+
+    com_col = next((c for c in df.columns if "COMENTARIO" in str(c).upper()), None)
+    if com_col:
+        rename[com_col] = "comentarios"
+
+    cols = ["id_registro"] + [c for c in rename if c != "_sprint" and c in df.columns] + ["_sprint"]
+    out = df[[c for c in cols if c in df.columns]].rename(columns=rename)
+    return out.drop_duplicates(subset=["id_registro"])
+
+
+# ── Core ETL ──────────────────────────────────────────────────────────────────
+
+def run_etl(sheets: dict) -> pd.DataFrame:
+    lk_proy  = build_lookup(sheets["proy"],  "ID_Proyecto (PK)",  "Nombre_Proyecto")
+    lk_per   = build_lookup(sheets["per"],   "ID_Persona (PK)",   "Nombre",  "Sin asignar")
+    lk_tproy = build_lookup(sheets["tproy"], "ID_Tipo_Proy (PK)", "Tipo_Proyecto")
+    lk_cat   = build_lookup(sheets["cat"],   "ID_Tipo_Cat",       "Tipo_Categoría")
+    lk_herr  = build_lookup(sheets["herr"],  "ID_Tipo_Herr",      "Tipo_Herramientas")
+    lk_incer = build_lookup(sheets["incer"], "ID_Tipo_Incer",     "Tipo_Incertidumbre")
+    lk_comp  = build_lookup(sheets["comp"],  "ID_Tipo_Comp",      "Tipo_Complejidad")
+
+    sprint_meta = extract_sprint_metadata(sheets["raw"])
+
+    df = sheets["log"].copy()
+
+    # Coerce all numeric columns
+    int_fk = ["ID_Proy (PK)", "ID_Tipo_Proy (PK)", "ID_Tipo_Cat", "ID_Tipo_Herr"]
+    flt_fk = ["ID_Registro (PK)", "ID_Persona (PK)", "ID_Tipo_Incer",
+               "ID_Tipo_Comp", "Puntos (Est)", "Horas (Real) [Y]"]
+
+    for c in int_fk:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors="coerce").fillna(0).astype(int)
+    for c in flt_fk:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
+
+    # Drop rows without both target and feature
+    df = df.dropna(subset=["Puntos (Est)", "Horas (Real) [Y]"])
+    df["ID_Registro (PK)"] = df["ID_Registro (PK)"].fillna(-1).astype(int)
+    df["ID_Persona (PK)"]  = df["ID_Persona (PK)"].fillna(0).astype(int)
+    df["ID_Tipo_Incer"]    = df["ID_Tipo_Incer"].fillna(0).astype(int) if "ID_Tipo_Incer" in df.columns else 0
+    df["ID_Tipo_Comp"]     = df["ID_Tipo_Comp"].fillna(0).astype(int)  if "ID_Tipo_Comp"  in df.columns else 0
+
+    # Apply lookups
+    df["proyecto"]          = df["ID_Proy (PK)"].map(lk_proy).fillna("Desconocido")
+    df["responsable"]       = df["ID_Persona (PK)"].map(lk_per).fillna("Sin asignar")
+    df["tipo_proyecto"]     = df["ID_Tipo_Proy (PK)"].map(lk_tproy).fillna("Desconocido")
+    df["categoria"]         = df["ID_Tipo_Cat"].map(lk_cat).fillna("Desconocido")
+    df["herramienta"]       = df["ID_Tipo_Herr"].map(lk_herr).fillna("No aplica")
+    df["nivel_incer"]       = df["ID_Tipo_Incer"]
+    df["nivel_incer_label"] = df["ID_Tipo_Incer"].map(lk_incer)
+    df["nivel_comp"]        = df["ID_Tipo_Comp"]
+    df["nivel_comp_label"]  = df["ID_Tipo_Comp"].map(lk_comp)
+    df["diferencia"]        = (df["Horas (Real) [Y]"] - df["Puntos (Est)"]).round(4)
+
+    # Join sprint metadata
+    df = df.merge(sprint_meta, left_on="ID_Registro (PK)", right_on="id_registro", how="left")
+
+    return df
+
+
+# ── ML ────────────────────────────────────────────────────────────────────────
+
+CAT_FEATURES = ["categoria", "herramienta", "tipo_proyecto", "responsable"]
+NUM_FEATURES  = ["Puntos (Est)", "nivel_incer", "nivel_comp"]
+
+
+def build_model() -> Pipeline:
+    prep = ColumnTransformer([
+        ("ohe", OneHotEncoder(handle_unknown="ignore", sparse_output=False), CAT_FEATURES),
+        ("num", "passthrough", NUM_FEATURES),
+    ])
+    return Pipeline([
+        ("prep", prep),
+        ("rf", RandomForestRegressor(n_estimators=300, max_features="sqrt",
+                                      random_state=42, n_jobs=-1)),
+    ])
+
+
+def train_and_predict(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
+    all_feats = CAT_FEATURES + NUM_FEATURES
+    valid = df.dropna(subset=all_feats + ["Horas (Real) [Y]"])
+
+    X = valid[all_feats]
+    y = valid["Horas (Real) [Y]"]
+
+    model = build_model()
+    kf    = KFold(n_splits=5, shuffle=True, random_state=42)
+
+    cv_r2   = cross_val_score(model, X, y, cv=kf, scoring="r2")
+    cv_mae  = -cross_val_score(model, X, y, cv=kf, scoring="neg_mean_absolute_error")
+    cv_rmse = np.sqrt(-cross_val_score(model, X, y, cv=kf, scoring="neg_mean_squared_error"))
+
+    metrics = {
+        "r2_cv_mean":   round(float(cv_r2.mean()), 4),
+        "r2_cv_std":    round(float(cv_r2.std()), 4),
+        "mae_cv_mean":  round(float(cv_mae.mean()), 4),
+        "rmse_cv_mean": round(float(cv_rmse.mean()), 4),
+        "n_train":      int(len(valid)),
+    }
+
+    print(f"  CV R²:   {metrics['r2_cv_mean']:.3f} ± {metrics['r2_cv_std']:.3f}")
+    print(f"  CV MAE:  {metrics['mae_cv_mean']:.3f} h")
+    print(f"  CV RMSE: {metrics['rmse_cv_mean']:.3f} h")
+
+    # Train on full dataset
+    model.fit(X, y)
+
+    # Predict for every row that has complete features
+    mask = df[all_feats].notna().all(axis=1)
+    raw_preds = model.predict(df.loc[mask, all_feats])
+    df.loc[mask, "horas_pred"] = np.clip(raw_preds, 0, None).round(2)
+
+    return df, metrics
+
+
+# ── Aggregations ──────────────────────────────────────────────────────────────
+
+def _round_records(df: pd.DataFrame) -> list[dict]:
+    return [
+        {k: (round(v, 2) if isinstance(v, float) else v)
+         for k, v in row.items()}
+        for row in df.to_dict(orient="records")
+    ]
+
+
+def agg_sprints(df: pd.DataFrame) -> list[dict]:
+    # Preserve sprint order from data
+    order = {s: i for i, s in enumerate(df["sprint"].dropna().unique())}
+
+    g = (
+        df.groupby("sprint", dropna=True)
+        .agg(
+            puntos_est=("Puntos (Est)",      "sum"),
+            horas_real=("Horas (Real) [Y]",  "sum"),
+            horas_pred=("horas_pred",         "sum"),
+            n_tareas  =("ID_Registro (PK)",  "count"),
+        )
+        .reset_index()
+    )
+    g["diferencia"]       = (g["horas_real"] - g["puntos_est"]).round(2)
+    g["tasa_calibracion"] = ((g["horas_real"] - g["puntos_est"]) / g["puntos_est"].replace(0, np.nan)).round(4)
+    g["_ord"] = g["sprint"].map(order)
+    g = g.sort_values("_ord").drop(columns=["_ord"])
+    return _round_records(g)
+
+
+def agg_personas(df: pd.DataFrame) -> list[dict]:
+    g = (
+        df.groupby("responsable", dropna=True)
+        .agg(
+            horas_real=("Horas (Real) [Y]", "sum"),
+            puntos_est=("Puntos (Est)",      "sum"),
+            n_tareas  =("ID_Registro (PK)", "count"),
+        )
+        .reset_index()
+    )
+    g["eficiencia"] = (g["puntos_est"] / g["horas_real"].replace(0, np.nan)).round(4)
+    return _round_records(g.sort_values("horas_real", ascending=False))
+
+
+def agg_proyectos(df: pd.DataFrame) -> list[dict]:
+    g = (
+        df.groupby(["proyecto", "tipo_proyecto"], dropna=True)
+        .agg(
+            horas_real=("Horas (Real) [Y]", "sum"),
+            puntos_est=("Puntos (Est)",      "sum"),
+            n_tareas  =("ID_Registro (PK)", "count"),
+        )
+        .reset_index()
+    )
+    return _round_records(g.sort_values("horas_real", ascending=False))
+
+
+def agg_categorias(df: pd.DataFrame) -> list[dict]:
+    g = (
+        df.groupby("categoria", dropna=True)
+        .agg(
+            horas_real=("Horas (Real) [Y]", "sum"),
+            puntos_est=("Puntos (Est)",      "sum"),
+            n_tareas  =("ID_Registro (PK)", "count"),
+        )
+        .reset_index()
+    )
+    return _round_records(g.sort_values("horas_real", ascending=False))
+
+
+def agg_herramientas(df: pd.DataFrame) -> list[dict]:
+    g = (
+        df[df["herramienta"] != "No aplica"]
+        .groupby("herramienta", dropna=True)
+        .agg(
+            horas_real=("Horas (Real) [Y]", "sum"),
+            n_tareas  =("ID_Registro (PK)", "count"),
+        )
+        .reset_index()
+    )
+    return _round_records(g.sort_values("horas_real", ascending=False))
+
+
+# ── Serialise registros ───────────────────────────────────────────────────────
+
+RECORD_COLS = [
+    "ID_Registro (PK)", "sprint", "fecha", "dia", "proyecto", "tipo_proyecto",
+    "responsable", "categoria", "herramienta",
+    "nivel_incer", "nivel_incer_label", "nivel_comp", "nivel_comp_label",
+    "Puntos (Est)", "Horas (Real) [Y]", "diferencia", "horas_pred",
+    "tarea", "comentarios",
+]
+
+FIELD_RENAME = {
+    "ID_Registro (PK)": "id_registro",
+    "Puntos (Est)":     "puntos_est",
+    "Horas (Real) [Y]": "horas_real",
+}
+
+
+def serialise_registros(df: pd.DataFrame) -> list[dict]:
+    out = []
+    cols = [c for c in RECORD_COLS if c in df.columns]
+    for _, row in df[cols].iterrows():
+        rec = {}
+        for col in cols:
+            key = FIELD_RENAME.get(col, col)
+            val = row[col]
+            if pd.isna(val):
+                rec[key] = None
+            elif isinstance(val, (np.integer,)):
+                rec[key] = int(val)
+            elif isinstance(val, (np.floating,)):
+                rec[key] = round(float(val), 4)
+            elif hasattr(val, "isoformat"):
+                rec[key] = val.isoformat()[:10]
+            else:
+                rec[key] = str(val)
+        out.append(rec)
+    return out
+
+
+# ── Main ──────────────────────────────────────────────────────────────────────
+
+def main():
+    print("→ Auth Google Sheets...")
+    gc = auth_sheets()
+    sh = gc.open_by_key(SHEET_ID)
+
+    print("→ Reading sheets...")
+    sheets = load_sheets(sh)
+    print(f"  Log_Registros: {len(sheets['log'])} rows")
+
+    print("→ ETL...")
+    df = run_etl(sheets)
+    print(f"  Clean registros: {len(df)}")
+
+    print("→ ML (Random Forest, 5-fold CV)...")
+    df, model_metrics = train_and_predict(df)
+
+    print("→ Building aggregations...")
+    payload = {
+        "meta": {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "n_registros":  int(len(df)),
+            "n_sprints":    int(df["sprint"].nunique()),
+            "model": {
+                "type":        "RandomForestRegressor",
+                "n_estimators": 300,
+                **model_metrics,
+            },
+        },
+        "registros":    serialise_registros(df),
+        "sprints":      agg_sprints(df),
+        "personas":     agg_personas(df),
+        "proyectos":    agg_proyectos(df),
+        "categorias":   agg_categorias(df),
+        "herramientas": agg_herramientas(df),
+    }
+
+    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+
+    print(f"✓ Saved → {OUTPUT_PATH}  ({os.path.getsize(OUTPUT_PATH) // 1024} KB)")
+
+
+if __name__ == "__main__":
+    main()
