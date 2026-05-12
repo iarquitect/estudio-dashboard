@@ -363,6 +363,13 @@ FIELD_RENAME = {
 }
 
 
+# Columnas que SIEMPRE deben quedar como número en el JSON
+NUMERIC_KEYS = {
+    "id_registro", "nivel_incer", "nivel_comp",
+    "puntos_est", "horas_real", "diferencia", "horas_pred",
+}
+
+
 def serialise_registros(df: pd.DataFrame) -> list[dict]:
     out = []
     cols = [c for c in RECORD_COLS if c in df.columns]
@@ -373,12 +380,22 @@ def serialise_registros(df: pd.DataFrame) -> list[dict]:
             val = row[col]
             if pd.isna(val):
                 rec[key] = None
-            elif isinstance(val, (np.integer,)):
+            elif isinstance(val, (bool, np.bool_)):
+                rec[key] = bool(val)
+            elif isinstance(val, (int, np.integer)):
                 rec[key] = int(val)
-            elif isinstance(val, (np.floating,)):
-                rec[key] = round(float(val), 4)
+            elif isinstance(val, (float, np.floating)):
+                f = float(val)
+                rec[key] = None if (np.isnan(f) or np.isinf(f)) else round(f, 4)
             elif hasattr(val, "isoformat"):
                 rec[key] = val.isoformat()[:10]
+            elif key in NUMERIC_KEYS:
+                # Forzar a número si la columna es numérica por contrato
+                try:
+                    f = float(val)
+                    rec[key] = None if (np.isnan(f) or np.isinf(f)) else round(f, 4)
+                except (ValueError, TypeError):
+                    rec[key] = None
             else:
                 rec[key] = str(val)
         out.append(rec)
@@ -424,15 +441,39 @@ def main():
     }
 
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    def _to_native(o):
+        """Recursivamente convierte cualquier tipo numpy/pandas a tipo Python nativo."""
+        if isinstance(o, dict):
+            return {k: _to_native(v) for k, v in o.items()}
+        if isinstance(o, (list, tuple)):
+            return [_to_native(v) for v in o]
+        if isinstance(o, (bool, np.bool_)):
+            return bool(o)
+        if isinstance(o, (int, np.integer)):
+            return int(o)
+        if isinstance(o, (float, np.floating)):
+            f = float(o)
+            return None if (np.isnan(f) or np.isinf(f)) else f
+        if isinstance(o, np.ndarray):
+            return _to_native(o.tolist())
+        if hasattr(o, "isoformat"):
+            return o.isoformat()
+        return o
+
+    payload = _to_native(payload)
+
     class _SafeEncoder(json.JSONEncoder):
-        """Convierte float NaN/Inf → null para que el JSON sea siempre válido."""
+        """Red de seguridad final — no debería disparar nunca tras _to_native."""
         def default(self, obj):
             if isinstance(obj, float) and (np.isnan(obj) or np.isinf(obj)):
                 return None
-            return super().default(obj)
+            try:
+                return str(obj)
+            except Exception:
+                return None
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2, cls=_SafeEncoder)
+        json.dump(payload, f, ensure_ascii=False, indent=2, allow_nan=False, cls=_SafeEncoder)
 
     print(f"✓ Saved → {OUTPUT_PATH}  ({os.path.getsize(OUTPUT_PATH) // 1024} KB)")
 

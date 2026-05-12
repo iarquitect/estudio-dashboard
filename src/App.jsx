@@ -1,5 +1,5 @@
 import {
-  Activity, Clock, Target, TrendingUp, Layers, Users,
+  Activity, Clock, Target, TrendingUp,
 } from "lucide-react";
 import { useDashboardData }   from "./hooks/useDashboardData";
 import { KPICard }            from "./components/KPICard";
@@ -10,35 +10,48 @@ import { PersonaChart }       from "./components/PersonaChart";
 import { MLPanel }            from "./components/MLPanel";
 import { RetrainButton }      from "./components/RetrainButton";
 
-function computeKPIs(data) {
-  const { registros, sprints, meta } = data;
+// Coerción numérica defensiva — convierte string/null/undefined → number
+const num = (v) => {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : 0;
+};
 
-  const totalHoras = registros.reduce((s, r) => s + (r.horas_real ?? 0), 0);
-  const totalEst   = registros.reduce((s, r) => s + (r.puntos_est ?? 0), 0);
+function computeKPIs(data) {
+  const registros = data.registros ?? [];
+  const sprints   = data.sprints   ?? [];
+  const meta      = data.meta      ?? {};
+
+  const totalHoras = registros.reduce((s, r) => s + num(r.horas_real), 0);
+  const totalEst   = registros.reduce((s, r) => s + num(r.puntos_est), 0);
   const bufferH    = registros
     .filter((r) => r.categoria === "Buffer de Interrupción")
-    .reduce((s, r) => s + (r.horas_real ?? 0), 0);
+    .reduce((s, r) => s + num(r.horas_real), 0);
 
   const calibracion = totalEst > 0 ? ((totalHoras - totalEst) / totalEst) * 100 : 0;
   const bufferPct   = totalHoras > 0 ? (bufferH / totalHoras) * 100 : 0;
 
-  const lastSprint  = sprints.at(-1);
-  const velocity    = lastSprint?.horas_real ?? 0;
+  const lastSprint = sprints.at(-1);
+  const velocity   = num(lastSprint?.horas_real);
 
-  return { totalHoras, calibracion, bufferPct, velocity, nSprints: meta.n_sprints };
+  return {
+    totalHoras, calibracion, bufferPct, velocity,
+    nSprints: meta.n_sprints ?? 0,
+    lastSprintName: lastSprint?.sprint ?? "—",
+  };
 }
 
 function Spinner() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex flex-col items-center justify-center gap-3">
       <div className="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin" />
+      <p className="text-xs text-gray-500">Cargando datos...</p>
     </div>
   );
 }
 
 function ErrorState({ message }) {
   return (
-    <div className="min-h-screen flex items-center justify-center text-rose-400">
+    <div className="min-h-screen flex items-center justify-center text-rose-400 px-6">
       <p>Error al cargar datos: {message}</p>
     </div>
   );
@@ -49,19 +62,27 @@ export default function App() {
 
   if (loading) return <Spinner />;
   if (error)   return <ErrorState message={error} />;
+  if (!data)   return <ErrorState message="Sin datos" />;
 
   const kpi = computeKPIs(data);
-  const { registros, sprints, personas, proyectos, categorias, herramientas, meta } = data;
+  const {
+    registros    = [],
+    sprints      = [],
+    personas     = [],
+    proyectos    = [],
+    categorias   = [],
+    meta         = {},
+  } = data;
 
   return (
     <div className="min-h-screen bg-gray-950 font-sans">
       {/* Header */}
       <header className="border-b border-gray-800 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div>
             <h1 className="text-lg font-bold text-white">Estudio Mario Isgró</h1>
             <p className="text-xs text-gray-500">
-              Sprint Dashboard · {meta.n_sprints} sprints · {meta.n_registros} registros
+              Sprint Dashboard · {meta.n_sprints ?? 0} sprints · {meta.n_registros ?? 0} registros
             </p>
           </div>
           <RetrainButton generatedAt={meta.generated_at} />
@@ -75,14 +96,14 @@ export default function App() {
             icon={Clock}
             title="Horas Totales"
             value={`${kpi.totalHoras.toFixed(0)} h`}
-            sub={`${meta.n_registros} tareas registradas`}
+            sub={`${meta.n_registros ?? 0} tareas registradas`}
             color="sky"
           />
           <KPICard
             icon={TrendingUp}
             title="Velocity Último Sprint"
             value={`${kpi.velocity.toFixed(1)} h`}
-            sub={sprints.at(-1)?.sprint}
+            sub={kpi.lastSprintName}
             color="green"
           />
           <KPICard
@@ -135,9 +156,9 @@ export default function App() {
                   <tr key={i} className="border-b border-gray-800/50 hover:bg-gray-800/30 transition-colors">
                     <td className="py-2 pr-4 font-medium text-white">{p.proyecto}</td>
                     <td className="py-2 pr-4 text-gray-400">{p.tipo_proyecto}</td>
-                    <td className="py-2 pr-4 text-right text-gray-300">{p.n_tareas}</td>
-                    <td className="py-2 pr-4 text-right text-sky-400">{p.puntos_est.toFixed(1)}</td>
-                    <td className="py-2 text-right text-orange-400 font-medium">{p.horas_real.toFixed(1)}</td>
+                    <td className="py-2 pr-4 text-right text-gray-300">{num(p.n_tareas)}</td>
+                    <td className="py-2 pr-4 text-right text-sky-400">{num(p.puntos_est).toFixed(1)}</td>
+                    <td className="py-2 text-right text-orange-400 font-medium">{num(p.horas_real).toFixed(1)}</td>
                   </tr>
                 ))}
               </tbody>
