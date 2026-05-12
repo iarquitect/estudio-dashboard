@@ -14,6 +14,9 @@ import gspread
 import numpy as np
 import pandas as pd
 from google.oauth2.service_account import Credentials
+
+# Silenciar el FutureWarning de downcasting en pandas ≥ 2.1
+pd.set_option("future.no_silent_downcasting", True)
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
@@ -59,7 +62,7 @@ def ws_to_df(sh: gspread.Spreadsheet, name: str) -> pd.DataFrame:
         return pd.DataFrame()
     headers, data = rows[0], rows[1:]
     df = pd.DataFrame(data, columns=headers)
-    df.replace("", np.nan, inplace=True)
+    df = df.replace("", np.nan)
     return df
 
 
@@ -124,7 +127,7 @@ def extract_sprint_metadata(raw: pd.DataFrame) -> pd.DataFrame:
 
     fecha_col = next((c for c in df.columns if "FECHA" in str(c).upper()), None)
     if fecha_col:
-        df[fecha_col] = pd.to_datetime(df[fecha_col], errors="coerce")
+        df[fecha_col] = pd.to_datetime(df[fecha_col], errors="coerce", dayfirst=True)
         rename[fecha_col] = "fecha"
 
     dia_col = next((c for c in df.columns if str(c).upper() in ("DÍA", "DIA", "DÍA")), None)
@@ -253,10 +256,18 @@ def train_and_predict(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
 
 # ── Aggregations ──────────────────────────────────────────────────────────────
 
+def _clean_val(v):
+    """Convierte NaN/Inf → None y redondea floats. JSON no acepta NaN."""
+    if isinstance(v, float):
+        if np.isnan(v) or np.isinf(v):
+            return None
+        return round(v, 2)
+    return v
+
+
 def _round_records(df: pd.DataFrame) -> list[dict]:
     return [
-        {k: (round(v, 2) if isinstance(v, float) else v)
-         for k, v in row.items()}
+        {k: _clean_val(v) for k, v in row.items()}
         for row in df.to_dict(orient="records")
     ]
 
@@ -413,8 +424,15 @@ def main():
     }
 
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    class _SafeEncoder(json.JSONEncoder):
+        """Convierte float NaN/Inf → null para que el JSON sea siempre válido."""
+        def default(self, obj):
+            if isinstance(obj, float) and (np.isnan(obj) or np.isinf(obj)):
+                return None
+            return super().default(obj)
+
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2)
+        json.dump(payload, f, ensure_ascii=False, indent=2, cls=_SafeEncoder)
 
     print(f"✓ Saved → {OUTPUT_PATH}  ({os.path.getsize(OUTPUT_PATH) // 1024} KB)")
 
