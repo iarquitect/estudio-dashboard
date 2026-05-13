@@ -58,7 +58,7 @@ function ErrorState({ message }) {
 }
 
 export default function App() {
-  const { data, loading, error } = useDashboardData();
+  const { data, loading, error, refetch } = useDashboardData();
 
   if (loading) return <Spinner />;
   if (error)   return <ErrorState message={error} />;
@@ -85,7 +85,7 @@ export default function App() {
               Sprint Dashboard · {meta.n_sprints ?? 0} sprints · {meta.n_registros ?? 0} registros
             </p>
           </div>
-          <RetrainButton generatedAt={meta.generated_at} />
+          <RetrainButton generatedAt={meta.generated_at} onRefresh={refetch} />
         </div>
       </header>
 
