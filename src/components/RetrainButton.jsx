@@ -16,13 +16,13 @@ const ghHeaders = {
 
 // Estados:  idle → dispatching → queued → running → deploying → done | error
 const STATES = {
-  idle:        { label: "Retrain ahora",        Icon: RefreshCw,  cls: "bg-sky-600 hover:bg-sky-500",     spin: false },
-  dispatching: { label: "Iniciando job...",     Icon: Loader2,    cls: "bg-sky-800",                       spin: true  },
-  queued:      { label: "En cola en GitHub...", Icon: Clock,      cls: "bg-amber-700",                     spin: false },
-  running:     { label: "Entrenando modelo...", Icon: Loader2,    cls: "bg-amber-600",                     spin: true  },
-  deploying:   { label: "Desplegando datos...", Icon: Loader2,    cls: "bg-violet-700",                    spin: true  },
-  done:        { label: "Datos actualizados",   Icon: CheckCircle,cls: "bg-green-700 hover:bg-green-600",  spin: false },
-  error:       { label: "Error",                Icon: AlertCircle,cls: "bg-rose-700 hover:bg-rose-600",    spin: false },
+  idle:        { label: "Actualizar Conocimiento", Icon: RefreshCw,  cls: "bg-white text-bloom-ink border border-bloom-line hover:border-bloom-bluedk hover:text-bloom-bluedk", spin: false },
+  dispatching: { label: "Iniciando aprendizaje…",  Icon: Loader2,    cls: "bg-bloom-blue/20 text-bloom-bluedk border border-bloom-blue/40", spin: true  },
+  queued:      { label: "En cola…",                Icon: Clock,      cls: "bg-bloom-amber/20 text-bloom-amberdk border border-bloom-amber/40", spin: false },
+  running:     { label: "Entrenando modelo…",      Icon: Loader2,    cls: "bg-bloom-amber/25 text-bloom-amberdk border border-bloom-amber/50", spin: true  },
+  deploying:   { label: "Desplegando datos…",      Icon: Loader2,    cls: "bg-bloom-violet/20 text-bloom-violetdk border border-bloom-violet/40", spin: true  },
+  done:        { label: "Conocimiento actualizado",Icon: CheckCircle,cls: "bg-bloom-green/20 text-bloom-greendk border border-bloom-green/40", spin: false },
+  error:       { label: "Error",                   Icon: AlertCircle,cls: "bg-bloom-rose/20 text-bloom-rosedk border border-bloom-rose/40", spin: false },
 };
 
 export function RetrainButton({ generatedAt, onRefresh }) {
@@ -145,21 +145,21 @@ export function RetrainButton({ generatedAt, onRefresh }) {
   const isBusy = ["dispatching", "queued", "running", "deploying"].includes(status);
 
   return (
-    <div className="flex flex-col items-end gap-1">
+    <div className="flex flex-col items-end gap-1.5">
       <button
         onClick={trigger}
         disabled={isBusy}
         title={tooltip ?? undefined}
-        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-white transition-colors ${s.cls} ${isBusy ? "cursor-wait" : "cursor-pointer"} disabled:opacity-90`}
+        className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${s.cls} ${isBusy ? "cursor-wait" : "cursor-pointer"} disabled:opacity-90`}
       >
         <s.Icon size={14} className={s.spin ? "animate-spin" : ""} />
         {s.label}
       </button>
       {tooltip && status !== "idle" && status !== "done" && (
-        <p className="text-[10px] text-gray-500 max-w-[280px] truncate">{tooltip}</p>
+        <p className="text-[10px] text-bloom-mute max-w-[280px] truncate">{tooltip}</p>
       )}
       {generatedAt && (
-        <p className="text-xs text-gray-600">
+        <p className="text-xs text-bloom-mute">
           Última actualización:{" "}
           {new Date(generatedAt).toLocaleString("es-AR", {
             day: "2-digit", month: "2-digit", year: "numeric",

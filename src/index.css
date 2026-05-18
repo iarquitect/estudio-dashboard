@@ -3,25 +3,44 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    background-color: #fafaf7;
+  }
   body {
     @apply antialiased;
+    font-feature-settings: "ss01", "ss02", "cv11";
+  }
+  h1, h2, h3 {
+    @apply font-serif;
+    letter-spacing: -0.01em;
   }
   ::-webkit-scrollbar {
-    @apply w-1.5;
+    @apply w-1.5 h-1.5;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-gray-900;
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-gray-700 rounded-full;
+    @apply bg-bloom-line rounded-full;
   }
 }
 
 @layer components {
   .card {
-    @apply bg-gray-900 border border-gray-800 rounded-xl p-5;
+    @apply bg-white border border-bloom-line rounded-2xl p-6;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+  }
+  .card-eyebrow {
+    @apply text-[10px] font-medium uppercase tracking-[0.18em] text-bloom-mute;
   }
   .card-title {
-    @apply text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1;
+    @apply text-lg font-serif font-medium text-bloom-ink;
+  }
+  .card-sub {
+    @apply text-sm text-bloom-mute font-sans leading-relaxed;
+  }
+  .stat-num {
+    @apply font-serif text-4xl font-medium text-bloom-ink leading-none;
+    font-variant-numeric: lining-nums tabular-nums;
   }
 }

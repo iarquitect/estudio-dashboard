@@ -1,5 +1,6 @@
 import {
-  Activity, Clock, Target, TrendingUp,
+  Clock, Gauge, Crosshair, AlertTriangle,
+  Home, Building2, Trophy, Briefcase, Hotel, Trees, Hammer, Layers,
 } from "lucide-react";
 import { useDashboardData }   from "./hooks/useDashboardData";
 import { KPICard }            from "./components/KPICard";
@@ -10,7 +11,6 @@ import { PersonaChart }       from "./components/PersonaChart";
 import { MLPanel }            from "./components/MLPanel";
 import { RetrainButton }      from "./components/RetrainButton";
 
-// Coerción numérica defensiva — convierte string/null/undefined → number
 const num = (v) => {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
@@ -40,19 +40,36 @@ function computeKPIs(data) {
   };
 }
 
+// Mapping de tipo de proyecto → ícono
+const TIPO_ICON = {
+  "Residencial":     Home,
+  "Industrial":      Hammer,
+  "Industria":       Hammer,
+  "Comercial":       Briefcase,
+  "Espacio Público": Trees,
+  "Hoteleria":       Hotel,
+  "Hotelería":       Hotel,
+  "Educacional":     Building2,
+  "Salud":           Building2,
+  "Cultural":        Trophy,
+  "Deportivo":       Trophy,
+  "Logística":       Briefcase,
+  "Logística":  Briefcase,
+};
+
 function Spinner() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-3">
-      <div className="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin" />
-      <p className="text-xs text-gray-500">Cargando datos...</p>
+    <div className="min-h-screen flex flex-col items-center justify-center gap-3 bg-bloom-paper">
+      <div className="w-8 h-8 border-2 border-bloom-bluedk border-t-transparent rounded-full animate-spin" />
+      <p className="text-xs text-bloom-mute font-sans">Cargando datos…</p>
     </div>
   );
 }
 
 function ErrorState({ message }) {
   return (
-    <div className="min-h-screen flex items-center justify-center text-rose-400 px-6">
-      <p>Error al cargar datos: {message}</p>
+    <div className="min-h-screen flex items-center justify-center text-bloom-rosedk px-6 bg-bloom-paper">
+      <p className="font-sans">Error al cargar datos: {message}</p>
     </div>
   );
 }
@@ -66,106 +83,147 @@ export default function App() {
 
   const kpi = computeKPIs(data);
   const {
-    registros    = [],
-    sprints      = [],
-    personas     = [],
-    proyectos    = [],
-    categorias   = [],
-    meta         = {},
+    registros  = [],
+    sprints    = [],
+    personas   = [],
+    proyectos  = [],
+    categorias = [],
+    meta       = {},
   } = data;
 
   return (
-    <div className="min-h-screen bg-gray-950 font-sans">
+    <div className="min-h-screen bg-bloom-paper font-sans text-bloom-ink">
       {/* Header */}
-      <header className="border-b border-gray-800 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div>
-            <h1 className="text-lg font-bold text-white">Estudio Mario Isgró</h1>
-            <p className="text-xs text-gray-500">
-              Sprint Dashboard · {meta.n_sprints ?? 0} sprints · {meta.n_registros ?? 0} registros
-            </p>
+      <header className="border-b border-bloom-line bg-bloom-paper">
+        <div className="max-w-7xl mx-auto px-6 py-7 flex items-start justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-full bg-white border border-bloom-line flex items-center justify-center shrink-0 mt-0.5">
+              <Layers size={20} strokeWidth={1.4} className="text-bloom-ink" />
+            </div>
+            <div>
+              <h1 className="font-serif text-3xl font-medium text-bloom-ink leading-tight">Estudio Mario Isgró</h1>
+              <p className="text-sm text-bloom-mute mt-1">
+                Dashboard del estudio · {meta.n_sprints ?? 0} sprints · {meta.n_registros ?? 0} registros
+              </p>
+            </div>
           </div>
           <RetrainButton generatedAt={meta.generated_at} onRefresh={refetch} />
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-6 space-y-6">
+      <main className="max-w-7xl mx-auto px-6 py-8 space-y-6">
         {/* KPI row */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <KPICard
             icon={Clock}
-            title="Horas Totales"
+            title="Experiencia Acumulada"
             value={`${kpi.totalHoras.toFixed(0)} h`}
             sub={`${meta.n_registros ?? 0} tareas registradas`}
-            color="sky"
+            accent="blue"
           />
           <KPICard
-            icon={TrendingUp}
-            title="Velocity Último Sprint"
+            icon={Gauge}
+            title="Ritmo de Trabajo"
             value={`${kpi.velocity.toFixed(1)} h`}
             sub={kpi.lastSprintName}
-            color="green"
+            accent="green"
           />
           <KPICard
-            icon={Target}
-            title="Desviación Global"
+            icon={Crosshair}
+            title="Precisión de Planificación"
             value={`${kpi.calibracion >= 0 ? "+" : ""}${kpi.calibracion.toFixed(1)}%`}
             sub="(Real − Est) / Est · negativo = más rápido"
-            color={kpi.calibracion > 10 ? "rose" : kpi.calibracion < -5 ? "green" : "amber"}
+            accent={kpi.calibracion > 10 ? "rose" : kpi.calibracion < -5 ? "green" : "amber"}
           />
           <KPICard
-            icon={Activity}
-            title="Buffer de Interrupción"
+            icon={AlertTriangle}
+            title="Fuga por Imprevistos"
             value={`${kpi.bufferPct.toFixed(1)}%`}
-            sub="% horas reales en interrupciones"
-            color={kpi.bufferPct > 30 ? "rose" : "violet"}
+            sub="% de horas reales consumidas por interrupciones"
+            accent={kpi.bufferPct > 30 ? "rose" : "violet"}
           />
         </div>
 
         {/* Sprint chart — full width */}
         <SprintBarChart sprints={sprints} />
 
-        {/* Calibración + Categoría */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <CalibrationScatter registros={registros} />
-          <CategoriaChart     categorias={categorias} />
+        {/* Auditoría + Burbujas */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <AuditoriaProyectos proyectos={proyectos} />
+          <CategoriaChart categorias={categorias} />
         </div>
 
-        {/* Persona chart */}
-        <PersonaChart personas={personas} />
+        {/* Carga del equipo + Mapa de imprevistos */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <PersonaChart personas={personas} />
+          <CalibrationScatter registros={registros} />
+        </div>
 
-        {/* ML Panel — full width */}
+        {/* Motor predictivo — full width */}
         <MLPanel registros={registros} model={meta.model} />
 
-        {/* Proyectos table */}
-        <div className="card">
-          <p className="card-title mb-3">Proyectos</p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="text-left text-xs text-gray-500 border-b border-gray-800">
-                  <th className="pb-2 pr-4">Proyecto</th>
-                  <th className="pb-2 pr-4">Tipo</th>
-                  <th className="pb-2 pr-4 text-right">Tareas</th>
-                  <th className="pb-2 pr-4 text-right">Est. (pts)</th>
-                  <th className="pb-2 text-right">Real (h)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {proyectos.map((p, i) => (
-                  <tr key={i} className="border-b border-gray-800/50 hover:bg-gray-800/30 transition-colors">
-                    <td className="py-2 pr-4 font-medium text-white">{p.proyecto}</td>
-                    <td className="py-2 pr-4 text-gray-400">{p.tipo_proyecto}</td>
-                    <td className="py-2 pr-4 text-right text-gray-300">{num(p.n_tareas)}</td>
-                    <td className="py-2 pr-4 text-right text-sky-400">{num(p.puntos_est).toFixed(1)}</td>
-                    <td className="py-2 text-right text-orange-400 font-medium">{num(p.horas_real).toFixed(1)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        {/* Footer */}
+        <p className="text-center text-xs text-bloom-mute py-4">
+          Modelo de predicción re-entrenado semanalmente sobre los registros de Google Sheets.
+        </p>
       </main>
+    </div>
+  );
+}
+
+// ── Auditoría de Proyectos ─────────────────────────────────────────────────────
+function AuditoriaProyectos({ proyectos }) {
+  const rows = (proyectos ?? []).slice(0, 8);
+
+  return (
+    <div className="card">
+      <div className="mb-5">
+        <p className="card-eyebrow">Cartera del estudio</p>
+        <h3 className="card-title mt-1">Auditoría de proyectos</h3>
+        <p className="card-sub mt-1">Cuánto presupuestamos para cada proyecto y cuánto realmente nos llevó completarlo.</p>
+      </div>
+
+      <div className="space-y-2">
+        {/* Header */}
+        <div className="grid grid-cols-[minmax(0,1fr)_auto_auto_auto] gap-4 items-center text-[10px] font-medium uppercase tracking-[0.18em] text-bloom-mute pb-2 border-b border-bloom-line">
+          <span>Proyecto</span>
+          <span className="text-right w-16">Tareas</span>
+          <span className="text-right w-20">Presupuesto</span>
+          <span className="text-right w-24">Invertidas</span>
+        </div>
+
+        {rows.map((p, i) => {
+          const Icon = TIPO_ICON[p.tipo_proyecto] ?? Briefcase;
+          const est = num(p.puntos_est);
+          const real = num(p.horas_real);
+          const pct = est > 0 ? Math.round((real / est) * 100) : 0;
+          const onTrack = pct <= 100;
+          return (
+            <div
+              key={i}
+              className="grid grid-cols-[minmax(0,1fr)_auto_auto_auto] gap-4 items-center py-3 border-b border-bloom-line/60 last:border-0"
+            >
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-9 h-9 rounded-lg bg-bloom-line/40 flex items-center justify-center shrink-0">
+                  <Icon size={16} strokeWidth={1.4} className="text-bloom-mute" />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-medium text-sm text-bloom-ink truncate">{p.proyecto}</p>
+                  <p className="text-xs text-bloom-mute">{p.tipo_proyecto}</p>
+                </div>
+              </div>
+              <span className="text-sm text-bloom-mute text-right w-16 tabular-nums">{num(p.n_tareas)}</span>
+              <span className="text-sm text-bloom-ink text-right w-20 tabular-nums">{est.toFixed(0)} h</span>
+              <div className="text-right w-24">
+                <p className="text-sm text-bloom-ink font-medium tabular-nums">{real.toFixed(0)} h</p>
+                <p className={`text-xs tabular-nums ${onTrack ? "text-bloom-greendk" : "text-bloom-orangedk"}`}>
+                  ● {pct}%
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

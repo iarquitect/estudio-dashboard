@@ -1,26 +1,24 @@
-export function KPICard({ icon: Icon, title, value, sub, trend, color = "sky" }) {
-  const colors = {
-    sky:    "text-sky-400 bg-sky-400/10",
-    green:  "text-green-400 bg-green-400/10",
-    amber:  "text-amber-400 bg-amber-400/10",
-    rose:   "text-rose-400 bg-rose-400/10",
-    violet: "text-violet-400 bg-violet-400/10",
+export function KPICard({ icon: Icon, title, value, sub, accent = "blue" }) {
+  // Cada KPI usa un acento sutil distinto
+  const accents = {
+    blue:   { ring: "border-bloom-blue/40",   icon: "text-bloom-bluedk",   bg: "bg-bloom-blue/15"   },
+    green:  { ring: "border-bloom-green/40",  icon: "text-bloom-greendk",  bg: "bg-bloom-green/15"  },
+    amber:  { ring: "border-bloom-amber/40",  icon: "text-bloom-amberdk",  bg: "bg-bloom-amber/15"  },
+    rose:   { ring: "border-bloom-rose/40",   icon: "text-bloom-rosedk",   bg: "bg-bloom-rose/20"   },
+    violet: { ring: "border-bloom-violet/40", icon: "text-bloom-violetdk", bg: "bg-bloom-violet/15" },
+    sage:   { ring: "border-bloom-sage/40",   icon: "text-bloom-sage",     bg: "bg-bloom-sage/15"   },
   };
+  const a = accents[accent] ?? accents.blue;
 
   return (
-    <div className="card flex gap-4 items-start">
-      <div className={`p-2.5 rounded-lg shrink-0 ${colors[color]}`}>
-        <Icon size={20} />
+    <div className={`card flex items-start gap-4 ${a.ring}`}>
+      <div className={`w-11 h-11 rounded-full flex items-center justify-center shrink-0 ${a.bg}`}>
+        <Icon size={20} strokeWidth={1.5} className={a.icon} />
       </div>
       <div className="min-w-0">
-        <p className="card-title">{title}</p>
-        <p className="text-2xl font-bold leading-tight">{value}</p>
-        {sub && <p className="text-xs text-gray-500 mt-0.5">{sub}</p>}
-        {trend !== undefined && (
-          <p className={`text-xs mt-1 font-medium ${trend >= 0 ? "text-rose-400" : "text-green-400"}`}>
-            {trend >= 0 ? "▲" : "▼"} {Math.abs(trend).toFixed(1)} h sobre estimado
-          </p>
-        )}
+        <p className="card-eyebrow mb-2">{title}</p>
+        <p className="stat-num">{value}</p>
+        {sub && <p className="text-xs text-bloom-mute mt-2 leading-relaxed">{sub}</p>}
       </div>
     </div>
   );

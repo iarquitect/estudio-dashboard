@@ -17,17 +17,17 @@ export class ErrorBoundary extends Component {
   render() {
     if (this.state.error) {
       return (
-        <div className="min-h-screen flex items-center justify-center p-8">
-          <div className="bg-rose-950 border border-rose-700 rounded-xl p-6 max-w-2xl w-full">
-            <p className="text-rose-400 font-bold text-lg mb-2">Error de render</p>
-            <pre className="text-rose-300 text-xs overflow-auto whitespace-pre-wrap">
+        <div className="min-h-screen flex items-center justify-center p-8 bg-bloom-paper">
+          <div className="bg-white border border-bloom-rose/40 rounded-2xl p-6 max-w-2xl w-full">
+            <p className="text-bloom-rosedk font-serif text-xl font-medium mb-2">Error de render</p>
+            <pre className="text-bloom-mute text-xs overflow-auto whitespace-pre-wrap font-sans">
               {this.state.error.message}
               {"\n\n"}
               {this.state.error.stack}
             </pre>
             <button
               onClick={() => this.setState({ error: null })}
-              className="mt-4 px-4 py-2 bg-rose-800 hover:bg-rose-700 rounded-lg text-sm text-white"
+              className="mt-4 px-4 py-2 bg-bloom-rose/20 hover:bg-bloom-rose/30 border border-bloom-rose/40 rounded-full text-sm text-bloom-rosedk"
             >
               Reintentar
             </button>

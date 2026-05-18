@@ -2,15 +2,28 @@ import {
   ComposedChart, Scatter, Line, XAxis, YAxis,
   CartesianGrid, Tooltip, ResponsiveContainer, Cell,
 } from "recharts";
+import { TrendingUp, Target, AlertCircle, Gauge } from "lucide-react";
 
-function MetricBadge({ label, value, unit = "" }) {
+function MetricCard({ icon: Icon, label, value, unit = "", helper, accent = "green" }) {
+  const colors = {
+    green:  { bg: "bg-bloom-green/15",  ico: "text-bloom-greendk",  num: "text-bloom-greendk"  },
+    blue:   { bg: "bg-bloom-blue/15",   ico: "text-bloom-bluedk",   num: "text-bloom-bluedk"   },
+    amber:  { bg: "bg-bloom-amber/15",  ico: "text-bloom-amberdk",  num: "text-bloom-amberdk"  },
+    rose:   { bg: "bg-bloom-rose/15",   ico: "text-bloom-rosedk",   num: "text-bloom-rosedk"   },
+  };
+  const c = colors[accent];
   return (
-    <div className="bg-gray-800 rounded-lg p-3 text-center">
-      <p className="text-xs text-gray-500 mb-0.5">{label}</p>
-      <p className="text-xl font-bold text-white">
-        {value}
-        <span className="text-sm text-gray-400 ml-0.5">{unit}</span>
+    <div className="border border-bloom-line rounded-xl p-4 bg-white">
+      <div className="flex items-center gap-2 mb-2">
+        <div className={`w-7 h-7 rounded-full flex items-center justify-center ${c.bg}`}>
+          <Icon size={14} strokeWidth={1.5} className={c.ico} />
+        </div>
+        <p className="text-xs text-bloom-mute leading-tight">{label}</p>
+      </div>
+      <p className={`font-serif text-3xl font-medium leading-none ${c.num} tabular-nums`}>
+        {value}<span className="text-base text-bloom-mute ml-1">{unit}</span>
       </p>
+      {helper && <p className="text-xs text-bloom-mute mt-2 leading-snug">{helper}</p>}
     </div>
   );
 }
@@ -19,14 +32,15 @@ const CustomTooltip = ({ active, payload }) => {
   if (!active || !payload?.[0]) return null;
   const d = payload[0].payload;
   if (!d?.responsable) return null;
+  const delta = (d.horas_real ?? 0) - (d.horas_pred ?? 0);
   return (
-    <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 text-xs shadow-xl">
-      <p className="font-semibold text-white truncate max-w-[160px]">{d.tarea ?? "—"}</p>
-      <p className="text-gray-400">{d.responsable} · {d.sprint}</p>
-      <p className="mt-1">Real: <span className="text-orange-400 font-bold">{d.horas_real} h</span></p>
-      <p>Pred: <span className="text-sky-400 font-bold">{d.horas_pred} h</span></p>
-      <p className={`font-medium mt-0.5 ${Math.abs((d.horas_real ?? 0) - (d.horas_pred ?? 0)) > 1 ? "text-rose-400" : "text-green-400"}`}>
-        Δ {((d.horas_real ?? 0) - (d.horas_pred ?? 0)).toFixed(2)} h
+    <div className="bg-white border border-bloom-line rounded-lg p-3 text-xs shadow-md font-sans max-w-[220px]">
+      <p className="font-medium text-bloom-ink truncate">{d.tarea ?? "—"}</p>
+      <p className="text-bloom-mute">{d.responsable} · {d.sprint}</p>
+      <p className="mt-1">Real: <span className="text-bloom-orangedk font-semibold">{d.horas_real} h</span></p>
+      <p>Predicho: <span className="text-bloom-bluedk font-semibold">{d.horas_pred} h</span></p>
+      <p className={`mt-1 font-medium ${Math.abs(delta) > 1 ? "text-bloom-rosedk" : "text-bloom-greendk"}`}>
+        Diferencia: {delta.toFixed(2)} h
       </p>
     </div>
   );
@@ -38,79 +52,103 @@ export function MLPanel({ registros, model }) {
   );
 
   const rawMax = scatter.length
-    ? Math.max(...scatter.map((r) => Math.max(r.horas_real ?? 0, r.horas_pred ?? 0)))
+    ? Math.max(...scatter.map((r) => Math.max(Number(r.horas_real) || 0, Number(r.horas_pred) || 0)))
     : 8;
   const max = Math.ceil(Math.max(rawMax, 8));
-
   const diagLine = [{ x: 0, y: 0 }, { x: max, y: max }];
 
-  const mae =
-    scatter.length
-      ? (
-          scatter.reduce((s, r) => s + Math.abs((r.horas_real ?? 0) - (r.horas_pred ?? 0)), 0) /
-          scatter.length
-        ).toFixed(2)
-      : "—";
+  const mae = scatter.length
+    ? (scatter.reduce((s, r) => s + Math.abs((r.horas_real ?? 0) - (r.horas_pred ?? 0)), 0) / scatter.length).toFixed(2)
+    : "—";
 
-  const safeModel = model ?? {};
+  const m = model ?? {};
 
   return (
-    <div className="card space-y-4">
+    <div className="card space-y-6">
       <div>
-        <p className="card-title">Modelo ML — Random Forest</p>
-        <p className="text-xs text-gray-500">
-          Entrenado con {safeModel.n_train ?? 0} registros · {safeModel.n_estimators ?? 300} árboles · 5-Fold CV
+        <p className="card-eyebrow">Aprendizaje del estudio</p>
+        <h3 className="card-title mt-1">Motor predictivo de inteligencia artificial</h3>
+        <p className="card-sub mt-1">
+          Un modelo de Random Forest aprende de las {m.n_train ?? 0} tareas registradas para predecir cuántas horas
+          insumirá cada nueva. Más datos = mejor calibración del estudio.
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-        <MetricBadge label="R² CV"        value={safeModel.r2_cv_mean  ?? 0} unit={` ±${safeModel.r2_cv_std ?? 0}`} />
-        <MetricBadge label="MAE CV"       value={safeModel.mae_cv_mean  ?? 0} unit=" h" />
-        <MetricBadge label="RMSE CV"      value={safeModel.rmse_cv_mean ?? 0} unit=" h" />
-        <MetricBadge label="MAE muestra"  value={mae}                         unit=" h" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <MetricCard
+          icon={Gauge}
+          label="R²"
+          value={(m.r2_cv_mean ?? 0).toFixed(4)}
+          unit={`±${(m.r2_cv_std ?? 0).toFixed(4)}`}
+          helper="El algoritmo logra decodificar matemáticamente este % de nuestros tiempos operativos. El resto depende de factores humanos y creativos."
+          accent="green"
+        />
+        <MetricCard
+          icon={Target}
+          label="Margen de Error Promedio (MAE)"
+          value={(m.mae_cv_mean ?? 0).toFixed(4)}
+          unit="h"
+          helper="En el día a día, nuestras predicciones de tiempo fallan por menos de 1 hora en promedio."
+          accent="green"
+        />
+        <MetricCard
+          icon={AlertCircle}
+          label="Desvío en Fallos Críticos (RMSE)"
+          value={(m.rmse_cv_mean ?? 0).toFixed(4)}
+          unit="h"
+          helper="Cuando la predicción falla por problemas graves o cambios drásticos, el desvío se eleva a este valor en promedio."
+          accent="green"
+        />
+        <MetricCard
+          icon={TrendingUp}
+          label="MAE Muestra"
+          value={mae}
+          unit="h"
+          helper="Error absoluto promedio sobre el conjunto completo de tareas registradas."
+          accent="green"
+        />
       </div>
 
       <div>
-        <p className="text-xs text-gray-500 mb-2">
-          Real vs Predicho — puntos sobre la diagonal = modelo subestimó
+        <p className="text-sm font-medium text-bloom-ink mb-1">Precisión por tarea: lo planeado vs. la realidad</p>
+        <p className="text-xs text-bloom-mute mb-3">
+          Los puntos que se escapan hacia arriba de la línea son tareas que sufrieron imprevistos y tomaron más tiempo del presupuestado.
         </p>
         <ResponsiveContainer width="100%" height={260}>
-          <ComposedChart margin={{ top: 8, right: 8, bottom: 20, left: -10 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
+          <ComposedChart margin={{ top: 8, right: 16, bottom: 24, left: -8 }}>
+            <CartesianGrid strokeDasharray="2 4" stroke="#e8e4dd" />
             <XAxis
-              type="number" dataKey="x" name="Real"
-              domain={[0, max]} tick={{ fill: "#6b7280", fontSize: 11 }}
-              axisLine={false} tickLine={false}
-              label={{ value: "Horas Real", position: "insideBottom", offset: -10, fill: "#4b5563", fontSize: 11 }}
+              type="number" dataKey="x" domain={[0, max]}
+              tick={{ fill: "#7a756f", fontSize: 11 }} axisLine={false} tickLine={false}
+              label={{ value: "Horas reales", position: "insideBottom", offset: -12, fill: "#7a756f", fontSize: 11 }}
             />
             <YAxis
-              type="number" dataKey="y" name="Predicho"
-              domain={[0, max]} tick={{ fill: "#6b7280", fontSize: 11 }}
-              axisLine={false} tickLine={false}
-              label={{ value: "Horas Pred.", angle: -90, position: "insideLeft", fill: "#4b5563", fontSize: 11 }}
+              type="number" dataKey="y" domain={[0, max]}
+              tick={{ fill: "#7a756f", fontSize: 11 }} axisLine={false} tickLine={false}
+              label={{ value: "Horas predichas", angle: -90, position: "insideLeft", fill: "#7a756f", fontSize: 11 }}
             />
             <Tooltip content={<CustomTooltip />} />
             <Line
               data={diagLine} dataKey="y" dot={false} activeDot={false}
-              stroke="#374151" strokeDasharray="5 5" strokeWidth={1.5}
+              stroke="#c8c2b8" strokeDasharray="4 4" strokeWidth={1}
               legendType="none"
             />
             <Scatter
               data={scatter.map((r) => ({ ...r, x: r.horas_real, y: r.horas_pred }))}
-              opacity={0.7}
+              opacity={0.78}
             >
               {scatter.map((r, i) => {
                 const err = Math.abs((r.horas_real ?? 0) - (r.horas_pred ?? 0));
-                const fill = err <= 0.5 ? "#34d399" : err <= 1.5 ? "#fbbf24" : "#f43f5e";
+                const fill = err <= 0.5 ? "#5a9760" : err <= 1.5 ? "#d4a84a" : "#d97757";
                 return <Cell key={i} fill={fill} />;
               })}
             </Scatter>
           </ComposedChart>
         </ResponsiveContainer>
-        <div className="flex gap-4 mt-2">
-          {[["≤ 0.5 h", "#34d399"], ["≤ 1.5 h", "#fbbf24"], ["> 1.5 h", "#f43f5e"]].map(([l, c]) => (
-            <span key={l} className="flex items-center gap-1.5 text-xs text-gray-400">
-              <span className="w-2 h-2 rounded-full" style={{ background: c }} />{l}
+        <div className="flex justify-center gap-5 mt-3">
+          {[["≤ 0.5 h de error", "#5a9760"], ["≤ 1.5 h de error", "#d4a84a"], ["> 1.5 h de error", "#d97757"]].map(([l, c]) => (
+            <span key={l} className="flex items-center gap-2 text-xs text-bloom-mute">
+              <span className="w-2.5 h-2.5 rounded-full" style={{ background: c }} />{l}
             </span>
           ))}
         </div>
