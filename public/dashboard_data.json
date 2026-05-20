@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-20T12:09:00.751391+00:00",
+    "generated_at": "2026-05-20T12:11:45.516204+00:00",
     "n_registros": 479,
     "n_sprints": 17,
     "model": {
@@ -9654,29 +9654,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 464,
-      "sprint": "Sprint 17",
-      "fecha": "2026-05-20",
-      "dia": "miércoles",
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
-      "horas_real": 0.0,
-      "diferencia": 0.0,
-      "horas_pred": 0.0,
-      "tarea": null,
-      "comentarios": null
-    },
-    {
-      "id_registro": 465,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9696,8 +9675,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 466,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9717,8 +9696,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 467,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9738,8 +9717,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 468,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9759,8 +9738,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 469,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9780,8 +9759,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 470,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9801,29 +9780,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 471,
-      "sprint": "Sprint 17",
-      "fecha": "2026-05-21",
-      "dia": "jueves",
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
-      "horas_real": 0.0,
-      "diferencia": 0.0,
-      "horas_pred": 0.0,
-      "tarea": null,
-      "comentarios": null
-    },
-    {
-      "id_registro": 472,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9843,8 +9801,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 473,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9864,8 +9822,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 474,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9885,29 +9843,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 475,
-      "sprint": "Sprint 17",
-      "fecha": "2026-05-22",
-      "dia": "viernes",
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
-      "horas_real": 0.0,
-      "diferencia": 0.0,
-      "horas_pred": 0.0,
-      "tarea": null,
-      "comentarios": null
-    },
-    {
-      "id_registro": 476,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9927,8 +9864,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 477,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9948,8 +9885,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 478,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9969,8 +9906,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 479,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -9990,8 +9927,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 480,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -10011,8 +9948,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 481,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -10032,8 +9969,8 @@
       "comentarios": null
     },
     {
-      "id_registro": 482,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -10053,8 +9990,71 @@
       "comentarios": null
     },
     {
-      "id_registro": 483,
-      "sprint": "Sprint 17",
+      "id_registro": -1,
+      "sprint": null,
+      "fecha": null,
+      "dia": null,
+      "proyecto": "No aplica",
+      "tipo_proyecto": "No aplica",
+      "responsable": "Sin asignar",
+      "categoria": "No aplica",
+      "herramienta": "No aplica",
+      "nivel_incer": 0,
+      "nivel_incer_label": "No aplica",
+      "nivel_comp": 0,
+      "nivel_comp_label": "No aplica",
+      "puntos_est": 0.0,
+      "horas_real": 0.0,
+      "diferencia": 0.0,
+      "horas_pred": 0.0,
+      "tarea": null,
+      "comentarios": null
+    },
+    {
+      "id_registro": -1,
+      "sprint": null,
+      "fecha": null,
+      "dia": null,
+      "proyecto": "No aplica",
+      "tipo_proyecto": "No aplica",
+      "responsable": "Sin asignar",
+      "categoria": "No aplica",
+      "herramienta": "No aplica",
+      "nivel_incer": 0,
+      "nivel_incer_label": "No aplica",
+      "nivel_comp": 0,
+      "nivel_comp_label": "No aplica",
+      "puntos_est": 0.0,
+      "horas_real": 0.0,
+      "diferencia": 0.0,
+      "horas_pred": 0.0,
+      "tarea": null,
+      "comentarios": null
+    },
+    {
+      "id_registro": -1,
+      "sprint": null,
+      "fecha": null,
+      "dia": null,
+      "proyecto": "No aplica",
+      "tipo_proyecto": "No aplica",
+      "responsable": "Sin asignar",
+      "categoria": "No aplica",
+      "herramienta": "No aplica",
+      "nivel_incer": 0,
+      "nivel_incer_label": "No aplica",
+      "nivel_comp": 0,
+      "nivel_comp_label": "No aplica",
+      "puntos_est": 0.0,
+      "horas_real": 0.0,
+      "diferencia": 0.0,
+      "horas_pred": 0.0,
+      "tarea": null,
+      "comentarios": null
+    },
+    {
+      "id_registro": -1,
+      "sprint": null,
       "fecha": null,
       "dia": null,
       "proyecto": "No aplica",
@@ -10224,7 +10224,7 @@
       "puntos_est": 51.0,
       "horas_real": 32.5,
       "horas_pred": 39.27,
-      "n_tareas": 47,
+      "n_tareas": 27,
       "diferencia": -18.5,
       "tasa_calibracion": -0.36
     }
