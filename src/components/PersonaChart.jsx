@@ -19,21 +19,40 @@ export function PersonaChart({ personas }) {
     .sort((a, b) => (Number(b.horas_real) || 0) - (Number(a.horas_real) || 0));
 
   const maxH = data.length ? Math.max(...data.map((p) => Number(p.horas_real) || 0)) : 1;
-  const promedio = data.length ? data.reduce((s, p) => s + (Number(p.horas_real) || 0), 0) / data.length : 0;
 
   return (
     <div className="card">
       <div className="mb-5">
         <p className="card-eyebrow">Equipo de trabajo</p>
         <h3 className="card-title mt-1">Carga de trabajo y desempeño del equipo</h3>
-        <p className="card-sub mt-1">Horas reales registradas por cada miembro del estudio. El % indica desviación sobre el promedio del equipo.</p>
+        <p className="card-sub mt-1">
+          Horas reales registradas por cada miembro. El % indica cuánto se desvió cada uno respecto a sus propias horas estimadas.
+        </p>
       </div>
 
       <div className="space-y-4">
         {data.map((p, i) => {
           const horas = Number(p.horas_real) || 0;
-          const pct = (horas / maxH) * 100;
-          const delta = promedio > 0 ? ((horas - promedio) / promedio) * 100 : 0;
+          const est   = Number(p.puntos_est) || 0;
+          const widthPct = (horas / maxH) * 100;
+
+          // Desviación individual: (Real − Estimado) / Estimado
+          // 0  → "0%"   (planificó exacto)
+          // 0.18 → "+18%" (tardó 18% más de lo planeado)
+          // -0.05 → "−5%" (terminó antes)
+          const deltaFrac = est > 0 ? (horas - est) / est : 0;
+          const deltaInt  = Math.round(deltaFrac * 100);
+
+          const deltaLabel =
+            deltaInt === 0 ? "0%"
+            : deltaInt > 0  ? `+${deltaInt}%`
+            :                 `−${Math.abs(deltaInt)}%`;
+
+          const deltaColor =
+            Math.abs(deltaInt) < 1 ? "text-bloom-mute"
+            : deltaInt > 0          ? "text-bloom-orangedk"
+            :                          "text-bloom-greendk";
+
           const color = COLORS[i % COLORS.length];
 
           return (
@@ -43,18 +62,19 @@ export function PersonaChart({ personas }) {
                 <div className="flex items-baseline justify-between mb-1.5">
                   <p className="text-sm font-medium text-bloom-ink">{p.responsable}</p>
                   <div className="flex items-baseline gap-3">
-                    {Math.abs(delta) > 5 && (
-                      <span className={`text-xs font-medium ${delta > 0 ? "text-bloom-orangedk" : "text-bloom-greendk"}`}>
-                        {delta > 0 ? "+" : ""}{delta.toFixed(0)}% {delta > 0 ? "extra" : "menos"}
-                      </span>
-                    )}
+                    <span
+                      className={`text-xs font-medium ${deltaColor}`}
+                      title={est > 0 ? `Estimado: ${est.toFixed(0)} h · Real: ${horas.toFixed(0)} h` : "Sin estimación previa"}
+                    >
+                      {est > 0 ? deltaLabel : "—"}
+                    </span>
                     <span className="font-serif text-base text-bloom-ink tabular-nums">{horas.toFixed(0)} h</span>
                   </div>
                 </div>
                 <div className="h-2 bg-bloom-line/60 rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full transition-all"
-                    style={{ width: `${pct}%`, background: color, opacity: 0.7 }}
+                    style={{ width: `${widthPct}%`, background: color, opacity: 0.7 }}
                   />
                 </div>
               </div>

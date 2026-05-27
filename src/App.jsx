@@ -22,21 +22,34 @@ function computeKPIs(data) {
   const meta      = data.meta      ?? {};
 
   const totalHoras = registros.reduce((s, r) => s + num(r.horas_real), 0);
-  const totalEst   = registros.reduce((s, r) => s + num(r.puntos_est), 0);
   const bufferH    = registros
     .filter((r) => r.categoria === "Buffer de Interrupción")
     .reduce((s, r) => s + num(r.horas_real), 0);
 
-  const calibracion = totalEst > 0 ? ((totalHoras - totalEst) / totalEst) * 100 : 0;
-  const bufferPct   = totalHoras > 0 ? (bufferH / totalHoras) * 100 : 0;
+  // MAPE — Mean Absolute Percentage Error. Promedio del error absoluto por tarea.
+  // Evita la cancelación entre tareas sobreestimadas y subestimadas que
+  // producía un falso "casi 0%" en el cálculo agregado anterior.
+  const tareasParaMape = registros.filter(
+    (r) => num(r.puntos_est) > 0 && r.horas_real != null,
+  );
+  const mape = tareasParaMape.length
+    ? (tareasParaMape.reduce((s, r) => {
+        const est  = num(r.puntos_est);
+        const real = num(r.horas_real);
+        return s + Math.abs((real - est) / est);
+      }, 0) / tareasParaMape.length) * 100
+    : 0;
+
+  const bufferPct = totalHoras > 0 ? (bufferH / totalHoras) * 100 : 0;
 
   const lastSprint = sprints.at(-1);
   const velocity   = num(lastSprint?.horas_real);
 
   return {
-    totalHoras, calibracion, bufferPct, velocity,
+    totalHoras, mape, bufferPct, velocity,
     nSprints: meta.n_sprints ?? 0,
     lastSprintName: lastSprint?.sprint ?? "—",
+    nTareasMape: tareasParaMape.length,
   };
 }
 
@@ -131,9 +144,9 @@ export default function App() {
           <KPICard
             icon={Crosshair}
             title="Precisión de Planificación"
-            value={`${kpi.calibracion >= 0 ? "+" : ""}${kpi.calibracion.toFixed(1)}%`}
-            sub="(Real − Est) / Est · negativo = más rápido"
-            accent={kpi.calibracion > 10 ? "rose" : kpi.calibracion < -5 ? "green" : "amber"}
+            value={`${kpi.mape.toFixed(1)}%`}
+            sub={`Error absoluto promedio por tarea (MAPE) sobre ${kpi.nTareasMape} tareas · más bajo = mejor calibración`}
+            accent={kpi.mape > 30 ? "rose" : kpi.mape > 15 ? "amber" : "green"}
           />
           <KPICard
             icon={AlertTriangle}
