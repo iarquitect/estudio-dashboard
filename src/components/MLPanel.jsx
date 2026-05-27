@@ -57,9 +57,16 @@ export function MLPanel({ registros, model }) {
   const max = Math.ceil(Math.max(rawMax, 8));
   const diagLine = [{ x: 0, y: 0 }, { x: max, y: max }];
 
-  const mae = scatter.length
-    ? (scatter.reduce((s, r) => s + Math.abs((r.horas_real ?? 0) - (r.horas_pred ?? 0)), 0) / scatter.length).toFixed(2)
-    : "—";
+  // MAPE — Mean Absolute Percentage Error sobre las predicciones del Random Forest.
+  // Filtra tareas con horas_real = 0 para evitar división por cero (Infinity).
+  const tareasParaMape = scatter.filter((r) => (Number(r.horas_real) || 0) > 0);
+  const mape = tareasParaMape.length
+    ? (tareasParaMape.reduce((s, r) => {
+        const real = Number(r.horas_real) || 0;
+        const pred = Number(r.horas_pred) || 0;
+        return s + Math.abs((real - pred) / real);
+      }, 0) / tareasParaMape.length) * 100
+    : 0;
 
   const m = model ?? {};
 
@@ -101,11 +108,11 @@ export function MLPanel({ registros, model }) {
         />
         <MetricCard
           icon={TrendingUp}
-          label="MAE Muestra"
-          value={mae}
-          unit="h"
-          helper="Error absoluto promedio sobre el conjunto completo de tareas registradas."
-          accent="green"
+          label="MAPE Modelo"
+          value={mape.toFixed(1)}
+          unit="%"
+          helper={`Error porcentual absoluto promedio sobre ${tareasParaMape.length} tareas. Una métrica relativa: indica cuánto se desvía la predicción respecto al valor real, en %.`}
+          accent={mape > 60 ? "rose" : mape > 35 ? "amber" : "green"}
         />
       </div>
 

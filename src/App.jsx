@@ -186,7 +186,11 @@ export default function App() {
 
 // ── Auditoría de Proyectos ─────────────────────────────────────────────────────
 function AuditoriaProyectos({ proyectos }) {
-  const rows = (proyectos ?? []).slice(0, 8);
+  // Filtro de UI: excluir el placeholder "No aplica" (los datos completos
+  // siguen disponibles en `proyectos` para cualquier cálculo agregado upstream).
+  const rows = (proyectos ?? [])
+    .filter((p) => p.proyecto && p.proyecto.trim().toLowerCase() !== "no aplica")
+    .slice(0, 8);
 
   return (
     <div className="card">
