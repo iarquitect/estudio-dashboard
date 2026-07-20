@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-20T11:06:54.897618+00:00",
+    "generated_at": "2026-07-20T12:32:55.456059+00:00",
     "n_registros": 853,
     "n_sprints": 26,
     "model": {
@@ -37,7 +37,7 @@
         "n_sprints": 25
       },
       "agregacion": {
-        "error_sprint": 19.9,
+        "error_sprint": 20.1,
         "error_tarea": 35.6,
         "n_sprints": 25
       },
@@ -64,7 +64,7 @@
         ]
       }
     },
-    "n_sin_horas": 55
+    "n_sin_horas": 58
   },
   "registros": [
     {
@@ -16151,18 +16151,18 @@
       "id_registro": 808,
       "sprint": "Sprint 25",
       "fecha": null,
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
+      "proyecto": "Museo_Showroom_LTN",
+      "tipo_proyecto": "Cultural",
+      "responsable": "Joaco",
+      "categoria": "Modelado",
+      "herramienta": "Rhino",
+      "nivel_incer": 1,
+      "nivel_incer_label": "Ya lo hicimos mil veces",
+      "nivel_comp": 1,
+      "nivel_comp_label": "Poca Complejidad",
+      "puntos_est": 2.0,
       "horas_real": 0.0,
-      "diferencia": 0.0,
+      "diferencia": -2.0,
       "horas_pred": null,
       "tarea": "Llenado de planilla fiscal",
       "comentarios": null
@@ -16171,18 +16171,18 @@
       "id_registro": 809,
       "sprint": "Sprint 25",
       "fecha": null,
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
+      "proyecto": "Hub_Logistico",
+      "tipo_proyecto": "Industrial",
+      "responsable": "Fede",
+      "categoria": "Modelado",
+      "herramienta": "AutoCAD",
+      "nivel_incer": 1,
+      "nivel_incer_label": "Ya lo hicimos mil veces",
+      "nivel_comp": 1,
+      "nivel_comp_label": "Poca Complejidad",
+      "puntos_est": 3.0,
       "horas_real": 0.0,
-      "diferencia": 0.0,
+      "diferencia": -3.0,
       "horas_pred": null,
       "tarea": "Detalles técnicos en 3d",
       "comentarios": null
@@ -16191,20 +16191,20 @@
       "id_registro": 810,
       "sprint": "Sprint 26",
       "fecha": null,
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
+      "proyecto": "Museo_Showroom_LTN",
+      "tipo_proyecto": "Cultural",
+      "responsable": "Mati",
+      "categoria": "Modelado",
+      "herramienta": "Rhino",
+      "nivel_incer": 1,
+      "nivel_incer_label": "Ya lo hicimos mil veces",
+      "nivel_comp": 1,
+      "nivel_comp_label": "Poca Complejidad",
+      "puntos_est": 3.0,
       "horas_real": 0.0,
-      "diferencia": 0.0,
+      "diferencia": -3.0,
       "horas_pred": null,
-      "tarea": null,
+      "tarea": "Detalles técnicos en 3d",
       "comentarios": null
     },
     {
@@ -17347,21 +17347,21 @@
     },
     {
       "sprint": "Sprint 25",
-      "puntos_est": 139.5,
+      "puntos_est": 144.5,
       "horas_real": 118.0,
       "horas_pred": 95.64,
       "n_tareas": 51,
-      "diferencia": -21.5,
-      "tasa_calibracion": -0.15
+      "diferencia": -26.5,
+      "tasa_calibracion": -0.18
     },
     {
       "sprint": "Sprint 26",
-      "puntos_est": 0.0,
+      "puntos_est": 3.0,
       "horas_real": 0.0,
       "horas_pred": 0.0,
       "n_tareas": 1,
-      "diferencia": 0.0,
-      "tasa_calibracion": null
+      "diferencia": -3.0,
+      "tasa_calibracion": -1.0
     }
   ],
   "personas": [
@@ -17375,15 +17375,15 @@
     {
       "responsable": "Mati",
       "horas_real": 441.2,
-      "puntos_est": 342.0,
-      "n_tareas": 179,
+      "puntos_est": 345.0,
+      "n_tareas": 180,
       "eficiencia": 0.78
     },
     {
       "responsable": "Fede",
       "horas_real": 388.3,
-      "puntos_est": 425.95,
-      "n_tareas": 198,
+      "puntos_est": 428.95,
+      "n_tareas": 199,
       "eficiencia": 1.1
     },
     {
@@ -17396,9 +17396,9 @@
     {
       "responsable": "Joaco",
       "horas_real": 122.75,
-      "puntos_est": 136.0,
-      "n_tareas": 67,
-      "eficiencia": 1.11
+      "puntos_est": 138.0,
+      "n_tareas": 68,
+      "eficiencia": 1.12
     },
     {
       "responsable": "Franco",
@@ -17418,7 +17418,7 @@
       "responsable": "Sin asignar",
       "horas_real": 0.0,
       "puntos_est": 0.0,
-      "n_tareas": 49,
+      "n_tareas": 46,
       "eficiencia": null
     }
   ],
@@ -17427,22 +17427,22 @@
       "proyecto": "Hub_Logistico",
       "tipo_proyecto": "Industrial",
       "horas_real": 744.3,
-      "puntos_est": 781.4,
-      "n_tareas": 354
+      "puntos_est": 784.4,
+      "n_tareas": 355
     },
     {
       "proyecto": "Museo_Showroom_LTN",
       "tipo_proyecto": "Cultural",
       "horas_real": 240.0,
-      "puntos_est": 238.0,
-      "n_tareas": 114
+      "puntos_est": 243.0,
+      "n_tareas": 116
     },
     {
       "proyecto": "No aplica",
       "tipo_proyecto": "No aplica",
       "horas_real": 119.0,
       "puntos_est": 122.5,
-      "n_tareas": 96
+      "n_tareas": 93
     },
     {
       "proyecto": "Puente_de_Inca",
@@ -17574,8 +17574,8 @@
     {
       "categoria": "Modelado",
       "horas_real": 592.5,
-      "puntos_est": 648.7,
-      "n_tareas": 238
+      "puntos_est": 656.7,
+      "n_tareas": 241
     },
     {
       "categoria": "Buffer de Interrupción",
@@ -17611,19 +17611,19 @@
       "categoria": "No aplica",
       "horas_real": 0.0,
       "puntos_est": 0.0,
-      "n_tareas": 49
+      "n_tareas": 46
     }
   ],
   "herramientas": [
     {
       "herramienta": "AutoCAD",
       "horas_real": 731.25,
-      "n_tareas": 315
+      "n_tareas": 316
     },
     {
       "herramienta": "Rhino",
       "horas_real": 172.8,
-      "n_tareas": 54
+      "n_tareas": 56
     },
     {
       "herramienta": "SketchUp",
