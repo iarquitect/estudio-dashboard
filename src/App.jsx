@@ -9,6 +9,7 @@ import { CalibrationScatter } from "./components/CalibrationScatter";
 import { CategoriaChart }     from "./components/CategoriaChart";
 import { PersonaChart }       from "./components/PersonaChart";
 import { MLPanel }            from "./components/MLPanel";
+import { CapacityPanel }      from "./components/CapacityPanel";
 import { RetrainButton }      from "./components/RetrainButton";
 
 const num = (v) => {
@@ -172,13 +173,22 @@ export default function App() {
           <CalibrationScatter registros={registros} />
         </div>
 
+        {/* Planificación de capacidad — full width */}
+        <CapacityPanel capacity={meta.capacity} />
+
         {/* Motor predictivo — full width */}
         <MLPanel registros={registros} model={meta.model} baseline={meta.baseline} />
 
         {/* Footer */}
-        <p className="text-center text-xs text-bloom-mute py-4">
-          Modelo de predicción re-entrenado semanalmente sobre los registros de Google Sheets.
-        </p>
+        <div className="text-center text-xs text-bloom-mute py-4 space-y-1">
+          <p>Modelo de predicción re-entrenado semanalmente sobre los registros de Google Sheets.</p>
+          {meta.n_sin_horas > 0 && (
+            <p>
+              {meta.n_sin_horas} tareas tienen estimación cargada pero ninguna hora real registrada
+              (planificadas, en curso o sin completar el parte): quedan fuera de todas las métricas.
+            </p>
+          )}
+        </div>
       </main>
     </div>
   );

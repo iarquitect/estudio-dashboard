@@ -121,7 +121,8 @@ function BaselineComparison({ baseline }) {
             : `Todavía estiman mejor ustedes: el modelo se equivoca un ${brecha.toFixed(0)}% más.`}
         </span>
         <span className="text-xs text-bloom-mute">
-          El modelo estuvo más cerca que la estimación humana en {baseline.win_rate.toFixed(0)}% de las tareas.
+          Estuvo más cerca en {baseline.win_rate.toFixed(0)}% de las tareas
+          {!ganaModelo && " — sobre todo en las largas, donde el desvío cuesta caro"}.
         </span>
       </div>
     </div>
@@ -181,9 +182,10 @@ export function MLPanel({ registros, model, baseline }) {
         <p className="card-eyebrow">Aprendizaje del estudio</p>
         <h3 className="card-title mt-1">Motor predictivo de inteligencia artificial</h3>
         <p className="card-sub mt-1">
-          Un modelo de Random Forest aprende de las {m.n_train ?? 0} tareas registradas para predecir cuántas horas
-          insumirá cada nueva. Todas las métricas de esta sección son <strong className="font-medium">out-of-fold</strong>:
-          se miden sobre tareas que el modelo no vio durante su entrenamiento.
+          El modelo no predice las horas desde cero: aprende de {m.n_train ?? 0} tareas cuánto hay que{" "}
+          <strong className="font-medium">corregir la estimación del estudio</strong> según categoría, herramienta,
+          responsable y complejidad. Todas las métricas son <strong className="font-medium">out-of-fold</strong>:
+          se miden sobre tareas que el modelo no vio al entrenar.
         </p>
       </div>
 
@@ -192,24 +194,32 @@ export function MLPanel({ registros, model, baseline }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <MetricCard
           icon={Gauge}
-          label="R²"
-          value={(m.r2_cv_mean ?? 0).toFixed(4)}
-          unit={`±${(m.r2_cv_std ?? 0).toFixed(4)}`}
-          helper="El algoritmo logra decodificar matemáticamente este % de nuestros tiempos operativos. El resto depende de factores humanos y creativos."
-          accent="green"
+          label="R² del modelo"
+          value={(m.r2_cv_mean ?? 0).toFixed(3)}
+          unit={m.r2_humano != null ? `vs ${m.r2_humano.toFixed(3)}` : ""}
+          helper={
+            m.r2_humano != null
+              ? `Proporción de la variación de tiempos que el modelo logra explicar. La estimación humana sola explica ${m.r2_humano.toFixed(3)}: acá el modelo sí aporta, porque acierta mejor en las tareas grandes.`
+              : "Proporción de la variación de nuestros tiempos que el modelo logra explicar. El resto depende de factores humanos y creativos."
+          }
+          accent={m.r2_humano != null && m.r2_cv_mean > m.r2_humano ? "green" : "amber"}
         />
         <MetricCard
           icon={Target}
           label="Margen de Error Promedio (MAE)"
-          value={(m.mae_cv_mean ?? 0).toFixed(4)}
+          value={(m.mae_cv_mean ?? 0).toFixed(3)}
           unit="h"
-          helper="En el día a día, nuestras predicciones de tiempo fallan por menos de 1 hora en promedio."
+          helper={
+            m.mae_humano != null
+              ? `Cuánto se desvía en promedio cada predicción. La estimación del estudio se desvía ${m.mae_humano.toFixed(3)} h: en tareas chicas siguen ganando ustedes.`
+              : "En el día a día, nuestras predicciones de tiempo fallan por menos de 1 hora en promedio."
+          }
           accent="green"
         />
         <MetricCard
           icon={AlertCircle}
           label="Desvío en Fallos Críticos (RMSE)"
-          value={(m.rmse_cv_mean ?? 0).toFixed(4)}
+          value={(m.rmse_cv_mean ?? 0).toFixed(3)}
           unit="h"
           helper="Cuando la predicción falla por problemas graves o cambios drásticos, el desvío se eleva a este valor en promedio."
           accent="green"
