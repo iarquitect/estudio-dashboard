@@ -20,7 +20,7 @@ pd.set_option("future.no_silent_downcasting", True)
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
-from sklearn.model_selection import KFold, cross_val_score
+from sklearn.model_selection import KFold, cross_val_predict, cross_val_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
@@ -243,15 +243,73 @@ def train_and_predict(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     print(f"  CV MAE:  {metrics['mae_cv_mean']:.3f} h")
     print(f"  CV RMSE: {metrics['rmse_cv_mean']:.3f} h")
 
-    # Train on full dataset
-    model.fit(X, y)
-
-    # Predict for every row that has complete features
-    mask = df[all_feats].notna().all(axis=1)
-    raw_preds = model.predict(df.loc[mask, all_feats])
-    df.loc[mask, "horas_pred"] = np.clip(raw_preds, 0, None).round(2)
+    # Predicciones OUT-OF-FOLD: cada fila se predice con un modelo que NO la vio
+    # durante su entrenamiento. Es la única forma honesta de mostrar el
+    # rendimiento del modelo — las predicciones in-sample de un Random Forest
+    # están infladas porque el algoritmo memoriza las filas que entrenó.
+    oof = cross_val_predict(model, X, y, cv=kf, n_jobs=-1)
+    df.loc[valid.index, "horas_pred"] = np.clip(oof, 0, None).round(2)
 
     return df, metrics
+
+
+# ── Baseline: estimación humana vs modelo ─────────────────────────────────────
+
+def compute_baseline(df: pd.DataFrame) -> dict:
+    """
+    Compara la estimación humana contra la predicción del modelo sobre la
+    MISMA población y con la MISMA fórmula. Responde la pregunta de negocio:
+    ¿el modelo estima mejor que los arquitectos del estudio?
+
+    Reglas de la comparación honesta:
+      · Predicción del modelo = out-of-fold (nunca vio esa fila al entrenar),
+        igual que el humano, que estima antes de ejecutar la tarea.
+      · Se excluye Buffer de Interrupción: nadie estima interrupciones.
+      · Se excluyen filas con estimado o real en 0 (MAPE indefinido).
+    """
+    pop = df[
+        (df["Puntos (Est)"] > 0)
+        & (df["Horas (Real) [Y]"] > 0)
+        & (df["categoria"] != "Buffer de Interrupción")
+        & df["horas_pred"].notna()
+    ]
+
+    if pop.empty:
+        return {}
+
+    real  = pop["Horas (Real) [Y]"].to_numpy(dtype=float)
+    est   = pop["Puntos (Est)"].to_numpy(dtype=float)
+    pred  = pop["horas_pred"].to_numpy(dtype=float)
+
+    err_humano = np.abs(real - est)
+    err_modelo = np.abs(real - pred)
+
+    humano_mae  = float(err_humano.mean())
+    modelo_mae  = float(err_modelo.mean())
+    humano_mape = float((err_humano / real).mean() * 100)
+    modelo_mape = float((err_modelo / real).mean() * 100)
+
+    # % de tareas en las que el modelo estuvo más cerca que la estimación humana
+    win_rate = float((err_modelo < err_humano).mean() * 100)
+    mejora_mae = ((humano_mae - modelo_mae) / humano_mae * 100) if humano_mae else 0.0
+
+    baseline = {
+        "n_tareas":     int(len(pop)),
+        "humano_mae":   round(humano_mae, 3),
+        "humano_mape":  round(humano_mape, 1),
+        "modelo_mae":   round(modelo_mae, 3),
+        "modelo_mape":  round(modelo_mape, 1),
+        "mejora_mae":   round(mejora_mae, 1),
+        "win_rate":     round(win_rate, 1),
+        "modelo_gana":  bool(modelo_mae < humano_mae),
+    }
+
+    print(f"  Población comparable: {baseline['n_tareas']} tareas (sin Buffer)")
+    print(f"  Estimación humana  → MAE {humano_mae:.3f} h · MAPE {humano_mape:.1f}%")
+    print(f"  Modelo (out-of-fold) → MAE {modelo_mae:.3f} h · MAPE {modelo_mape:.1f}%")
+    print(f"  Mejora sobre humano: {mejora_mae:+.1f}% · win rate {win_rate:.1f}%")
+
+    return baseline
 
 
 # ── Aggregations ──────────────────────────────────────────────────────────────
@@ -420,6 +478,9 @@ def main():
     print("→ ML (Random Forest, 5-fold CV)...")
     df, model_metrics = train_and_predict(df)
 
+    print("→ Baseline: estimación humana vs modelo...")
+    baseline = compute_baseline(df)
+
     print("→ Building aggregations...")
     payload = {
         "meta": {
@@ -429,8 +490,10 @@ def main():
             "model": {
                 "type":        "RandomForestRegressor",
                 "n_estimators": 300,
+                "pred_mode":   "out_of_fold",
                 **model_metrics,
             },
+            "baseline": baseline,
         },
         "registros":    serialise_registros(df),
         "sprints":      agg_sprints(df),

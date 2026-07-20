@@ -2,7 +2,7 @@ import {
   ComposedChart, Scatter, Line, XAxis, YAxis,
   CartesianGrid, Tooltip, ResponsiveContainer, Cell,
 } from "recharts";
-import { TrendingUp, Target, AlertCircle, Gauge } from "lucide-react";
+import { TrendingUp, Target, AlertCircle, Gauge, Users, Cpu } from "lucide-react";
 
 function MetricCard({ icon: Icon, label, value, unit = "", helper, accent = "green" }) {
   const colors = {
@@ -28,6 +28,106 @@ function MetricCard({ icon: Icon, label, value, unit = "", helper, accent = "gre
   );
 }
 
+// ── Comparación honesta: estimación del estudio vs predicción del modelo ──────
+function BaselineComparison({ baseline }) {
+  if (!baseline || !baseline.n_tareas) return null;
+
+  const ganaModelo = baseline.modelo_gana;
+  const ganador = ganaModelo ? "modelo" : "estudio";
+
+  // El que gana se resalta; el que pierde queda en gris
+  const side = (esGanador) =>
+    esGanador
+      ? { box: "border-bloom-green/50 bg-bloom-green/[0.07]", num: "text-bloom-greendk", ico: "bg-bloom-green/20 text-bloom-greendk" }
+      : { box: "border-bloom-line bg-white",                  num: "text-bloom-mute",    ico: "bg-bloom-line/50 text-bloom-mute"    };
+
+  const humano = side(!ganaModelo);
+  const modelo = side(ganaModelo);
+
+  const brecha = Math.abs(baseline.mejora_mae);
+
+  return (
+    <div className="border border-bloom-line rounded-xl p-5 bg-bloom-paper/60">
+      <div className="mb-4">
+        <p className="text-sm font-medium text-bloom-ink">¿Quién estima mejor: el estudio o el modelo?</p>
+        <p className="text-xs text-bloom-mute mt-1 leading-relaxed">
+          Comparación sobre las mismas {baseline.n_tareas} tareas y con la misma fórmula. Las predicciones del modelo son
+          <strong className="font-medium"> out-of-fold</strong>: cada tarea la predice un modelo que no la vio al entrenar,
+          igual que ustedes, que estiman antes de ejecutarla.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {/* Estudio */}
+        <div className={`rounded-lg border p-4 ${humano.box}`}>
+          <div className="flex items-center gap-2 mb-3">
+            <div className={`w-7 h-7 rounded-full flex items-center justify-center ${humano.ico}`}>
+              <Users size={14} strokeWidth={1.5} />
+            </div>
+            <p className="text-sm font-medium text-bloom-ink">Estimación del estudio</p>
+            {!ganaModelo && (
+              <span className="ml-auto text-[10px] uppercase tracking-wider font-medium text-bloom-greendk">Gana</span>
+            )}
+          </div>
+          <div className="flex items-baseline gap-5">
+            <div>
+              <p className={`font-serif text-3xl font-medium leading-none tabular-nums ${humano.num}`}>
+                {baseline.humano_mae.toFixed(2)}<span className="text-base text-bloom-mute ml-1">h</span>
+              </p>
+              <p className="text-[10px] uppercase tracking-wider text-bloom-mute mt-1.5">Error medio</p>
+            </div>
+            <div>
+              <p className={`font-serif text-3xl font-medium leading-none tabular-nums ${humano.num}`}>
+                {baseline.humano_mape.toFixed(1)}<span className="text-base text-bloom-mute ml-0.5">%</span>
+              </p>
+              <p className="text-[10px] uppercase tracking-wider text-bloom-mute mt-1.5">MAPE</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Modelo */}
+        <div className={`rounded-lg border p-4 ${modelo.box}`}>
+          <div className="flex items-center gap-2 mb-3">
+            <div className={`w-7 h-7 rounded-full flex items-center justify-center ${modelo.ico}`}>
+              <Cpu size={14} strokeWidth={1.5} />
+            </div>
+            <p className="text-sm font-medium text-bloom-ink">Modelo Random Forest</p>
+            {ganaModelo && (
+              <span className="ml-auto text-[10px] uppercase tracking-wider font-medium text-bloom-greendk">Gana</span>
+            )}
+          </div>
+          <div className="flex items-baseline gap-5">
+            <div>
+              <p className={`font-serif text-3xl font-medium leading-none tabular-nums ${modelo.num}`}>
+                {baseline.modelo_mae.toFixed(2)}<span className="text-base text-bloom-mute ml-1">h</span>
+              </p>
+              <p className="text-[10px] uppercase tracking-wider text-bloom-mute mt-1.5">Error medio</p>
+            </div>
+            <div>
+              <p className={`font-serif text-3xl font-medium leading-none tabular-nums ${modelo.num}`}>
+                {baseline.modelo_mape.toFixed(1)}<span className="text-base text-bloom-mute ml-0.5">%</span>
+              </p>
+              <p className="text-[10px] uppercase tracking-wider text-bloom-mute mt-1.5">MAPE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Veredicto */}
+      <div className="mt-4 pt-4 border-t border-bloom-line flex flex-wrap items-baseline gap-x-2 gap-y-1">
+        <span className={`text-sm font-medium ${ganaModelo ? "text-bloom-greendk" : "text-bloom-orangedk"}`}>
+          {ganaModelo
+            ? `El modelo reduce el error de estimación un ${brecha.toFixed(0)}%.`
+            : `Todavía estiman mejor ustedes: el modelo se equivoca un ${brecha.toFixed(0)}% más.`}
+        </span>
+        <span className="text-xs text-bloom-mute">
+          El modelo estuvo más cerca que la estimación humana en {baseline.win_rate.toFixed(0)}% de las tareas.
+        </span>
+      </div>
+    </div>
+  );
+}
+
 const CustomTooltip = ({ active, payload }) => {
   if (!active || !payload?.[0]) return null;
   const d = payload[0].payload;
@@ -46,7 +146,7 @@ const CustomTooltip = ({ active, payload }) => {
   );
 };
 
-export function MLPanel({ registros, model }) {
+export function MLPanel({ registros, model, baseline }) {
   const scatter = (registros ?? []).filter(
     (r) => r.horas_real != null && r.horas_pred != null
   );
@@ -60,13 +160,18 @@ export function MLPanel({ registros, model }) {
   // MAPE — Mean Absolute Percentage Error sobre las predicciones del Random Forest.
   // Filtra tareas con horas_real = 0 para evitar división por cero (Infinity).
   const tareasParaMape = scatter.filter((r) => (Number(r.horas_real) || 0) > 0);
-  const mape = tareasParaMape.length
+  const mapeLocal = tareasParaMape.length
     ? (tareasParaMape.reduce((s, r) => {
         const real = Number(r.horas_real) || 0;
         const pred = Number(r.horas_pred) || 0;
         return s + Math.abs((real - pred) / real);
       }, 0) / tareasParaMape.length) * 100
     : 0;
+
+  // Si el pipeline ya publica el baseline, usamos su MAPE para que todas las
+  // cifras del panel refieran a la misma población (sin Buffer de Interrupción).
+  const mapeModelo = baseline?.modelo_mape ?? mapeLocal;
+  const nMape      = baseline?.n_tareas ?? tareasParaMape.length;
 
   const m = model ?? {};
 
@@ -77,9 +182,12 @@ export function MLPanel({ registros, model }) {
         <h3 className="card-title mt-1">Motor predictivo de inteligencia artificial</h3>
         <p className="card-sub mt-1">
           Un modelo de Random Forest aprende de las {m.n_train ?? 0} tareas registradas para predecir cuántas horas
-          insumirá cada nueva. Más datos = mejor calibración del estudio.
+          insumirá cada nueva. Todas las métricas de esta sección son <strong className="font-medium">out-of-fold</strong>:
+          se miden sobre tareas que el modelo no vio durante su entrenamiento.
         </p>
       </div>
+
+      <BaselineComparison baseline={baseline} />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <MetricCard
@@ -109,17 +217,18 @@ export function MLPanel({ registros, model }) {
         <MetricCard
           icon={TrendingUp}
           label="MAPE Modelo"
-          value={mape.toFixed(1)}
+          value={mapeModelo.toFixed(1)}
           unit="%"
-          helper={`Error porcentual absoluto promedio sobre ${tareasParaMape.length} tareas. Una métrica relativa: indica cuánto se desvía la predicción respecto al valor real, en %.`}
-          accent={mape > 60 ? "rose" : mape > 35 ? "amber" : "green"}
+          helper={`Error porcentual absoluto promedio sobre ${nMape} tareas${baseline?.n_tareas ? " comparables (sin interrupciones)" : ""}. Indica cuánto se desvía la predicción respecto al valor real, en %.`}
+          accent={mapeModelo > 60 ? "rose" : mapeModelo > 35 ? "amber" : "green"}
         />
       </div>
 
       <div>
         <p className="text-sm font-medium text-bloom-ink mb-1">Precisión por tarea: lo planeado vs. la realidad</p>
         <p className="text-xs text-bloom-mute mb-3">
-          Los puntos que se escapan hacia arriba de la línea son tareas que sufrieron imprevistos y tomaron más tiempo del presupuestado.
+          Cada punto es una tarea predicha por un modelo que no la vio al entrenar. Cuanto más cerca de la línea, mejor la predicción;
+          los puntos que se alejan son tareas cuyo tiempo real no se explica por los datos que hoy registramos.
         </p>
         <ResponsiveContainer width="100%" height={260}>
           <ComposedChart margin={{ top: 8, right: 16, bottom: 24, left: -8 }}>

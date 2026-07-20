@@ -173,7 +173,7 @@ export default function App() {
         </div>
 
         {/* Motor predictivo — full width */}
-        <MLPanel registros={registros} model={meta.model} />
+        <MLPanel registros={registros} model={meta.model} baseline={meta.baseline} />
 
         {/* Footer */}
         <p className="text-center text-xs text-bloom-mute py-4">
