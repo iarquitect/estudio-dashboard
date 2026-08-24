@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-21T17:59:05.650477+00:00",
+    "generated_at": "2026-08-24T06:52:33.311223+00:00",
     "n_registros": 953,
     "n_sprints": 30,
     "model": {
@@ -8,11 +8,11 @@
       "n_estimators": 300,
       "pred_mode": "out_of_fold",
       "target": "log_ratio",
-      "r2_cv_mean": 0.4836,
+      "r2_cv_mean": 0.483,
       "r2_cv_std": 0.0792,
       "r2_humano": 0.4603,
-      "mae_cv_mean": 0.8107,
-      "rmse_cv_mean": 1.3114,
+      "mae_cv_mean": 0.8115,
+      "rmse_cv_mean": 1.3122,
       "mae_humano": 0.6939,
       "n_train": 652
     },
@@ -20,10 +20,10 @@
       "n_tareas": 652,
       "humano_mae": 0.694,
       "humano_mape": 30.1,
-      "modelo_mae": 0.811,
+      "modelo_mae": 0.812,
       "modelo_mape": 37.5,
-      "mejora_mae": -16.8,
-      "win_rate": 33.6,
+      "mejora_mae": -17.0,
+      "win_rate": 33.4,
       "modelo_gana": false
     },
     "capacity": {
@@ -143,7 +143,7 @@
       "puntos_est": 3.0,
       "horas_real": 5.0,
       "diferencia": 2.0,
-      "horas_pred": 3.34,
+      "horas_pred": 3.35,
       "tarea": "Preparacion con mas detalles de Planos municipales (Playa de Camiones)",
       "comentarios": null
     },
@@ -163,7 +163,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.55,
+      "horas_pred": 2.52,
       "tarea": "Terminar de definir Zona de Verificación de Mercaderías Peligrosas ",
       "comentarios": null
     },
@@ -203,7 +203,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.71,
+      "horas_pred": 2.67,
       "tarea": "Armar el terreno real en Rhino para captar la geometría de la mejor manera posible",
       "comentarios": null
     },
@@ -223,7 +223,7 @@
       "puntos_est": 3.0,
       "horas_real": 9.0,
       "diferencia": 6.0,
-      "horas_pred": 3.52,
+      "horas_pred": 3.5,
       "tarea": "Preparación de planos municipales (Nave de control aduanero)",
       "comentarios": "Esta tarea requirio mas tiempo del estimado ya que en la planta se realizaron cambios en todos los muros debido a lineas superpuestas. Ademas tuve que realizar cambios en planta de techos y planimetria, algo que no habia contemplado en el tiempo estimado"
     },
@@ -243,7 +243,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.5,
       "diferencia": 0.5,
-      "horas_pred": 2.22,
+      "horas_pred": 2.18,
       "tarea": "Rearmar Geometría del terreno para pasarselo al equipo de manera más simple y con menos triangulaciones para skp",
       "comentarios": null
     },
@@ -263,7 +263,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.51,
+      "horas_pred": 2.52,
       "tarea": "Pasar en limpio sobre terreno diseño de recorrido",
       "comentarios": null
     },
@@ -303,7 +303,7 @@
       "puntos_est": 1.0,
       "horas_real": 2.5,
       "diferencia": 1.5,
-      "horas_pred": 1.16,
+      "horas_pred": 1.17,
       "tarea": "Pasada a Planos municipales Mercaderías Peligrosa",
       "comentarios": null
     },
@@ -383,7 +383,7 @@
       "puntos_est": 1.0,
       "horas_real": 4.0,
       "diferencia": 3.0,
-      "horas_pred": 4.21,
+      "horas_pred": 4.2,
       "tarea": "Correcciones Terreno general",
       "comentarios": "Tarde mucho armando los paneles de las pasarelas"
     },
@@ -403,7 +403,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.22,
+      "horas_pred": 2.21,
       "tarea": "Armado del Cómputo general del proyecto por ahora",
       "comentarios": null
     },
@@ -423,7 +423,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.57,
+      "horas_pred": 2.56,
       "tarea": "Buscar datos para planilla",
       "comentarios": null
     },
@@ -463,7 +463,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.96,
+      "horas_pred": 2.94,
       "tarea": "Armado de EDT",
       "comentarios": null
     },
@@ -503,7 +503,7 @@
       "puntos_est": 1.0,
       "horas_real": 0.5,
       "diferencia": -0.5,
-      "horas_pred": 1.81,
+      "horas_pred": 1.8,
       "tarea": "Hacer los items de Demolición",
       "comentarios": "Al final era copiar un item muy corto"
     },
@@ -583,7 +583,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.0,
       "diferencia": -1.0,
-      "horas_pred": 2.3,
+      "horas_pred": 2.25,
       "tarea": "Verificar Edificio Administrativo en base a la Checklist",
       "comentarios": null
     },
@@ -603,7 +603,7 @@
       "puntos_est": 1.0,
       "horas_real": 2.0,
       "diferencia": 1.0,
-      "horas_pred": 1.02,
+      "horas_pred": 1.01,
       "tarea": "Plantear aventanamiento Dep. Fiscal",
       "comentarios": null
     },
@@ -703,7 +703,7 @@
       "puntos_est": 4.0,
       "horas_real": 6.0,
       "diferencia": 2.0,
-      "horas_pred": 5.16,
+      "horas_pred": 5.2,
       "tarea": "Completar a nivel municipal Nave Ctrol Aduanero (Plantas)",
       "comentarios": null
     },
@@ -883,7 +883,7 @@
       "puntos_est": 4.0,
       "horas_real": 21.0,
       "diferencia": 17.0,
-      "horas_pred": 4.88,
+      "horas_pred": 4.91,
       "tarea": "Armar 4 perfiles de movimiento de suelo",
       "comentarios": "Nunca había armado un plano de movimiento de suelos y me indicaron mal como debía hacerlo así que fueron muchas vueltas, hasta armarlo bien"
     },
@@ -963,7 +963,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.0,
+      "horas_pred": 2.97,
       "tarea": "Completar Cortes a nivel municipal de Almacenamiento Oeste",
       "comentarios": null
     },
@@ -1003,7 +1003,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.3,
       "diferencia": 0.3,
-      "horas_pred": 4.11,
+      "horas_pred": 4.09,
       "tarea": "Pasar en limpio Orden de Planos de Plaza 3",
       "comentarios": null
     },
@@ -1103,7 +1103,7 @@
       "puntos_est": 4.0,
       "horas_real": 5.0,
       "diferencia": 1.0,
-      "horas_pred": 4.5,
+      "horas_pred": 4.49,
       "tarea": "Catálogo de materialidad y equipamiento para Playa de Camiones",
       "comentarios": null
     },
@@ -1203,7 +1203,7 @@
       "puntos_est": 1.0,
       "horas_real": 3.0,
       "diferencia": 2.0,
-      "horas_pred": 1.75,
+      "horas_pred": 1.78,
       "tarea": "Pasado en limpio correcciones para Plaza 3",
       "comentarios": null
     },
@@ -1223,7 +1223,7 @@
       "puntos_est": 5.0,
       "horas_real": 1.0,
       "diferencia": -4.0,
-      "horas_pred": 5.28,
+      "horas_pred": 5.23,
       "tarea": "Diseño de carpinterias para Comedor y Oficinas Playa de camiones",
       "comentarios": "1 hora de hoy"
     },
@@ -1243,7 +1243,7 @@
       "puntos_est": 1.0,
       "horas_real": 8.0,
       "diferencia": 7.0,
-      "horas_pred": 2.6,
+      "horas_pred": 2.63,
       "tarea": "Actualización de 3d en rhino",
       "comentarios": null
     },
@@ -1283,7 +1283,7 @@
       "puntos_est": 2.0,
       "horas_real": 6.0,
       "diferencia": 4.0,
-      "horas_pred": 1.64,
+      "horas_pred": 1.63,
       "tarea": "Vivienda Pozzoli: autocad mas detallado",
       "comentarios": "Hice autocad + sketchup en la tarde"
     },
@@ -1303,7 +1303,7 @@
       "puntos_est": 8.0,
       "horas_real": 16.0,
       "diferencia": 8.0,
-      "horas_pred": 12.31,
+      "horas_pred": 11.91,
       "tarea": "Mejorar el nivel de detalles del 3d para poder renderizar",
       "comentarios": null
     },
@@ -1343,7 +1343,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.77,
+      "horas_pred": 2.79,
       "tarea": "Completar a nivel municipal Nave Ctrol Aduanero",
       "comentarios": null
     },
@@ -1363,7 +1363,7 @@
       "puntos_est": 4.0,
       "horas_real": 5.0,
       "diferencia": 1.0,
-      "horas_pred": 4.02,
+      "horas_pred": 4.03,
       "tarea": "Completar documentación deposito fiscal",
       "comentarios": null
     },
@@ -1383,7 +1383,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.5,
       "diferencia": -0.5,
-      "horas_pred": 2.72,
+      "horas_pred": 2.73,
       "tarea": "Hacer otra vez las plantas de techos de playa de camiones, ya que no coinciden con las plantas actualizadas",
       "comentarios": null
     },
@@ -1463,7 +1463,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.65,
+      "horas_pred": 3.67,
       "tarea": "Estudiar aventanamientos en deposito fiscal y completar a nivel municipal",
       "comentarios": null
     },
@@ -1543,7 +1543,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.5,
       "diferencia": 0.5,
-      "horas_pred": 2.03,
+      "horas_pred": 2.04,
       "tarea": "Nuevo Corte y vista de Truck center",
       "comentarios": null
     },
@@ -1603,7 +1603,7 @@
       "puntos_est": 1.5,
       "horas_real": 2.0,
       "diferencia": 0.5,
-      "horas_pred": 2.27,
+      "horas_pred": 2.3,
       "tarea": "Estudio de aventanamiento y fachada (Deposito fiscal)",
       "comentarios": null
     },
@@ -1683,7 +1683,7 @@
       "puntos_est": 5.0,
       "horas_real": 3.5,
       "diferencia": -1.5,
-      "horas_pred": 5.28,
+      "horas_pred": 5.23,
       "tarea": "Plano de carpinterias de Playa de camiones (Puertas)",
       "comentarios": null
     },
@@ -1703,7 +1703,7 @@
       "puntos_est": 6.0,
       "horas_real": 4.0,
       "diferencia": -2.0,
-      "horas_pred": 5.77,
+      "horas_pred": 5.7,
       "tarea": "Pasado a 3d Real Curvas de nivel",
       "comentarios": null
     },
@@ -1743,7 +1743,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.46,
+      "horas_pred": 2.45,
       "tarea": "Análisis de Movimiento de Suelo según terreno real",
       "comentarios": "Tenía que hacerlo con otro +-0.00"
     },
@@ -1843,7 +1843,7 @@
       "puntos_est": 4.0,
       "horas_real": 5.0,
       "diferencia": 1.0,
-      "horas_pred": 4.2,
+      "horas_pred": 4.18,
       "tarea": "Mejorando el modelado de la carrera",
       "comentarios": null
     },
@@ -1903,7 +1903,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.5,
       "diferencia": 0.5,
-      "horas_pred": 4.23,
+      "horas_pred": 4.22,
       "tarea": "Generando los renderizados de la carrera, con D5",
       "comentarios": null
     },
@@ -1923,7 +1923,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.15,
+      "horas_pred": 2.13,
       "tarea": "Pasar en limpio reuniones y mejora de código de ML para poder medir los sprints de est planilla",
       "comentarios": null
     },
@@ -1963,7 +1963,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 3.05,
+      "horas_pred": 3.06,
       "tarea": "Pasar en limpio planta de playa de camiones segun reunion con ingenieros",
       "comentarios": null
     },
@@ -1983,7 +1983,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.19,
+      "horas_pred": 1.2,
       "tarea": "Terminar de pasar en limpio el corte de YPF y ZPA",
       "comentarios": null
     },
@@ -2023,7 +2023,7 @@
       "puntos_est": 1.0,
       "horas_real": 2.0,
       "diferencia": 1.0,
-      "horas_pred": 1.82,
+      "horas_pred": 1.8,
       "tarea": "Pasar en limpio perfil completo",
       "comentarios": null
     },
@@ -2043,7 +2043,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 2.35,
+      "horas_pred": 2.33,
       "tarea": "Completar aventanamiento en planta y en cortes del Deposito fiscal y courier",
       "comentarios": null
     },
@@ -2083,7 +2083,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.72,
+      "horas_pred": 3.68,
       "tarea": "Desarrollar perfil en detalle",
       "comentarios": null
     },
@@ -2103,7 +2103,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.5,
       "diferencia": -0.5,
-      "horas_pred": 3.06,
+      "horas_pred": 3.04,
       "tarea": "Ver como se adapta la playa de estacionamiento al terreno",
       "comentarios": null
     },
@@ -2143,7 +2143,7 @@
       "puntos_est": 5.0,
       "horas_real": 5.0,
       "diferencia": 0.0,
-      "horas_pred": 5.33,
+      "horas_pred": 5.34,
       "tarea": "Remodelado de Nave de control aduanero con nuevos paneles y techos s/ingenieros+ Renders",
       "comentarios": "3hs de hoy"
     },
@@ -2203,7 +2203,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.5,
       "diferencia": 0.5,
-      "horas_pred": 2.62,
+      "horas_pred": 2.63,
       "tarea": "Visita a Obra \"Facultad de Arquitectura UNCuyo\"",
       "comentarios": null
     },
@@ -2223,7 +2223,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.5,
       "diferencia": 0.5,
-      "horas_pred": 2.21,
+      "horas_pred": 2.2,
       "tarea": "Visita a Obra \"Facultad de Arquitectura UNCuyo\"",
       "comentarios": null
     },
@@ -2283,7 +2283,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.5,
       "diferencia": 0.5,
-      "horas_pred": 2.28,
+      "horas_pred": 2.29,
       "tarea": "Visita a Obra \"Facultad de Arquitectura UNCuyo\"",
       "comentarios": null
     },
@@ -2723,7 +2723,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.09,
+      "horas_pred": 3.06,
       "tarea": "Identificar Programa",
       "comentarios": null
     },
@@ -2763,7 +2763,7 @@
       "puntos_est": 2.5,
       "horas_real": 2.5,
       "diferencia": 0.0,
-      "horas_pred": 3.48,
+      "horas_pred": 3.46,
       "tarea": "Pasada en limpio Programa",
       "comentarios": null
     },
@@ -2783,7 +2783,7 @@
       "puntos_est": 2.5,
       "horas_real": 2.5,
       "diferencia": 0.0,
-      "horas_pred": 2.69,
+      "horas_pred": 2.68,
       "tarea": "Pasada en limpio Programa",
       "comentarios": null
     },
@@ -2803,7 +2803,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.42,
+      "horas_pred": 1.43,
       "tarea": "Comprensión del problema",
       "comentarios": null
     },
@@ -2843,7 +2843,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.5,
       "diferencia": 0.5,
-      "horas_pred": 1.61,
+      "horas_pred": 1.6,
       "tarea": "Ultima correcion del programa",
       "comentarios": null
     },
@@ -2863,7 +2863,7 @@
       "puntos_est": 1.0,
       "horas_real": 2.0,
       "diferencia": 1.0,
-      "horas_pred": 1.21,
+      "horas_pred": 1.22,
       "tarea": "Análisis de Anteproyecto",
       "comentarios": null
     },
@@ -2883,7 +2883,7 @@
       "puntos_est": 1.0,
       "horas_real": 3.0,
       "diferencia": 2.0,
-      "horas_pred": 1.29,
+      "horas_pred": 1.28,
       "tarea": "Busqueda de antecedentes",
       "comentarios": null
     },
@@ -2903,7 +2903,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 4.3,
+      "horas_pred": 4.31,
       "tarea": "Búsqueda de antecedentes + diagrama de flujos deseado",
       "comentarios": null
     },
@@ -2923,7 +2923,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.0,
       "diferencia": -1.0,
-      "horas_pred": 3.44,
+      "horas_pred": 3.45,
       "tarea": "Pasada en limpio calles ZPA sobre el terreno Modelado",
       "comentarios": null
     },
@@ -2943,7 +2943,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.97,
+      "horas_pred": 2.99,
       "tarea": "Incorporar estructura a la vista en el Deposito Fiscal y Courier",
       "comentarios": null
     },
@@ -2963,7 +2963,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.5,
       "diferencia": -0.5,
-      "horas_pred": 4.11,
+      "horas_pred": 4.13,
       "tarea": "Terminar de detallar 3D de Nave de Ctrol AD",
       "comentarios": null
     },
@@ -3043,7 +3043,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 1.66,
+      "horas_pred": 1.65,
       "tarea": "Armar calles almacenamiento y playa de camiones terreno viejo",
       "comentarios": null
     },
@@ -3103,7 +3103,7 @@
       "puntos_est": 1.5,
       "horas_real": 2.0,
       "diferencia": 0.5,
-      "horas_pred": 1.58,
+      "horas_pred": 1.57,
       "tarea": "Renders de prueba para playa de camiones",
       "comentarios": null
     },
@@ -3283,7 +3283,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 4.13,
+      "horas_pred": 4.06,
       "tarea": "Finalizar calles",
       "comentarios": null
     },
@@ -3323,7 +3323,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.05,
+      "horas_pred": 2.04,
       "tarea": "Correcion de propuesta y realizacion de renders",
       "comentarios": null
     },
@@ -3343,7 +3343,7 @@
       "puntos_est": 1.0,
       "horas_real": 0.5,
       "diferencia": -0.5,
-      "horas_pred": 0.99,
+      "horas_pred": 0.98,
       "tarea": "Eleccion de las propuestas del comedor y  generar una presentacion en base a la eleccion",
       "comentarios": null
     },
@@ -3403,7 +3403,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 4.47,
+      "horas_pred": 4.48,
       "tarea": "Armado de presentación Casa Pozzoli, con cambios realizados en 3d",
       "comentarios": null
     },
@@ -3583,7 +3583,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.5,
       "diferencia": -0.5,
-      "horas_pred": 2.43,
+      "horas_pred": 2.44,
       "tarea": "Pasado en limpio de planos de Playa de camiones segun la nueva Planimetria",
       "comentarios": null
     },
@@ -3643,7 +3643,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 2.03,
+      "horas_pred": 2.02,
       "tarea": "Armado de Progama hotel de montaña",
       "comentarios": null
     },
@@ -3683,7 +3683,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 2.14,
+      "horas_pred": 2.15,
       "tarea": "Busqueda antecedentes de hoteles en montaña",
       "comentarios": null
     },
@@ -3743,7 +3743,7 @@
       "puntos_est": 8.0,
       "horas_real": 8.0,
       "diferencia": 0.0,
-      "horas_pred": 8.11,
+      "horas_pred": 8.22,
       "tarea": "Fuimos al terreno de tupungato en la carrera",
       "comentarios": null
     },
@@ -3763,7 +3763,7 @@
       "puntos_est": 8.0,
       "horas_real": 8.0,
       "diferencia": 0.0,
-      "horas_pred": 7.22,
+      "horas_pred": 7.36,
       "tarea": "Fuimos al terreno de tupungato en la carrera",
       "comentarios": null
     },
@@ -3783,7 +3783,7 @@
       "puntos_est": 8.0,
       "horas_real": 8.0,
       "diferencia": 0.0,
-      "horas_pred": 8.81,
+      "horas_pred": 8.88,
       "tarea": "Fuimos al terreno de tupungato en la carrera",
       "comentarios": null
     },
@@ -3803,7 +3803,7 @@
       "puntos_est": 8.0,
       "horas_real": 8.0,
       "diferencia": 0.0,
-      "horas_pred": 9.34,
+      "horas_pred": 9.39,
       "tarea": "Fuimos al terreno de tupungato en la carrera",
       "comentarios": null
     },
@@ -3863,7 +3863,7 @@
       "puntos_est": 1.5,
       "horas_real": 1.5,
       "diferencia": 0.0,
-      "horas_pred": 1.1,
+      "horas_pred": 1.11,
       "tarea": "Rehacer plano de etapabilidad del HUB",
       "comentarios": null
     },
@@ -3883,7 +3883,7 @@
       "puntos_est": 1.5,
       "horas_real": 1.5,
       "diferencia": 0.0,
-      "horas_pred": 1.65,
+      "horas_pred": 1.63,
       "tarea": "Pasar en limpio Almacenamiento",
       "comentarios": null
     },
@@ -4063,7 +4063,7 @@
       "puntos_est": 3.5,
       "horas_real": 4.5,
       "diferencia": 1.0,
-      "horas_pred": 4.14,
+      "horas_pred": 4.11,
       "tarea": "Puntos Playa de camiones a 3d",
       "comentarios": "Tuvimos problemas porque los puntos estaban en formato Proxy, No tenian los datos en el cad"
     },
@@ -4103,7 +4103,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.26,
+      "horas_pred": 1.27,
       "tarea": "Generar renders de la playa de camiones a partir de 2 propuestas nuevas",
       "comentarios": null
     },
@@ -4123,7 +4123,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 4.04,
+      "horas_pred": 4.02,
       "tarea": "generamos propuesta de implantacion en el terreno del hotel en la carrera con sus loft, con valen",
       "comentarios": null
     },
@@ -4223,7 +4223,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.5,
       "diferencia": -0.5,
-      "horas_pred": 2.76,
+      "horas_pred": 2.77,
       "tarea": "Armado de plantas para Estacion de Servivio  (Proyecto)",
       "comentarios": "2 horas de hoy martes"
     },
@@ -4323,7 +4323,7 @@
       "puntos_est": 3.0,
       "horas_real": 4.5,
       "diferencia": 1.5,
-      "horas_pred": 3.17,
+      "horas_pred": 3.14,
       "tarea": "Armando la propuesta de los accesos",
       "comentarios": null
     },
@@ -4363,7 +4363,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.08,
+      "horas_pred": 1.07,
       "tarea": "Renders para Tupungato",
       "comentarios": null
     },
@@ -4383,7 +4383,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.5,
       "diferencia": 0.5,
-      "horas_pred": 3.0,
+      "horas_pred": 3.04,
       "tarea": "Renders para Tupungato",
       "comentarios": null
     },
@@ -4403,7 +4403,7 @@
       "puntos_est": 0.5,
       "horas_real": 0.5,
       "diferencia": 0.0,
-      "horas_pred": 0.45,
+      "horas_pred": 0.44,
       "tarea": "arreglos de canva",
       "comentarios": null
     },
@@ -4423,7 +4423,7 @@
       "puntos_est": 1.0,
       "horas_real": 4.0,
       "diferencia": 3.0,
-      "horas_pred": 1.18,
+      "horas_pred": 1.17,
       "tarea": "Generar renders a partir de las correciones de mario. donde habia terminado de generar el finde de semana largo",
       "comentarios": null
     },
@@ -4443,7 +4443,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 0.91,
+      "horas_pred": 0.9,
       "tarea": "Armado de presentación CADI ANDES",
       "comentarios": null
     },
@@ -4463,7 +4463,7 @@
       "puntos_est": 3.5,
       "horas_real": 3.5,
       "diferencia": 0.0,
-      "horas_pred": 3.55,
+      "horas_pred": 3.52,
       "tarea": "Armar nivel de terreno en Playa de camiones",
       "comentarios": null
     },
@@ -4543,7 +4543,7 @@
       "puntos_est": 3.5,
       "horas_real": 3.5,
       "diferencia": 0.0,
-      "horas_pred": 3.49,
+      "horas_pred": 3.48,
       "tarea": "Obtener volumenes de movimiento polvorín, comparar niveles planteados con niveles reales y revisar pendientes",
       "comentarios": null
     },
@@ -4563,7 +4563,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.5,
       "diferencia": 0.5,
-      "horas_pred": 3.3,
+      "horas_pred": 3.28,
       "tarea": "Generar los planos municipales de la vivienda de Pozzoli, haciendo los cortes",
       "comentarios": "4hrs de hoy y llegue a hacer 1 corte, mañana tengo que seguir con el segundo"
     },
@@ -4603,7 +4603,7 @@
       "puntos_est": 6.0,
       "horas_real": 5.0,
       "diferencia": -1.0,
-      "horas_pred": 4.99,
+      "horas_pred": 5.1,
       "tarea": "Planta vivienda pozzoli",
       "comentarios": null
     },
@@ -4623,7 +4623,7 @@
       "puntos_est": 3.0,
       "horas_real": 1.5,
       "diferencia": -1.5,
-      "horas_pred": 2.8,
+      "horas_pred": 2.79,
       "tarea": "Plano de Replanteo Playa de Camiones",
       "comentarios": null
     },
@@ -4663,7 +4663,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.09,
+      "horas_pred": 2.97,
       "tarea": "Cambios en planta de Estacion de servicio",
       "comentarios": null
     },
@@ -4703,7 +4703,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.0,
       "diferencia": -1.0,
-      "horas_pred": 3.65,
+      "horas_pred": 3.64,
       "tarea": "Terminar los cortes de ayer",
       "comentarios": null
     },
@@ -4763,7 +4763,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.57,
+      "horas_pred": 2.56,
       "tarea": "Visita a Obra \"Hub logistico\"",
       "comentarios": null
     },
@@ -4783,7 +4783,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.47,
+      "horas_pred": 2.48,
       "tarea": "Visita a Obra \"Hub logistico\"",
       "comentarios": null
     },
@@ -4803,7 +4803,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.37,
+      "horas_pred": 2.36,
       "tarea": "Visita a Obra \"Hub logistico\"",
       "comentarios": null
     },
@@ -4823,7 +4823,7 @@
       "puntos_est": 2.5,
       "horas_real": 2.5,
       "diferencia": 0.0,
-      "horas_pred": 3.76,
+      "horas_pred": 3.69,
       "tarea": "Terminar las fachadas de pozzoli",
       "comentarios": null
     },
@@ -4843,7 +4843,7 @@
       "puntos_est": 0.5,
       "horas_real": 2.5,
       "diferencia": 2.0,
-      "horas_pred": 0.56,
+      "horas_pred": 0.55,
       "tarea": "Colocar toda la documentacion de la casa de pozzoli en los rotulos municipales",
       "comentarios": "Tuve q limpiar y ordenar toda la documentacion, y tardo mas tiempo de lo esperado"
     },
@@ -4863,7 +4863,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.5,
       "diferencia": -0.5,
-      "horas_pred": 1.91,
+      "horas_pred": 1.92,
       "tarea": "Pasar nuevo polígono de CAD a Rhino de la Ypf , simplificar la malla",
       "comentarios": null
     },
@@ -5143,7 +5143,7 @@
       "puntos_est": 1.5,
       "horas_real": 3.0,
       "diferencia": 1.5,
-      "horas_pred": 2.07,
+      "horas_pred": 2.08,
       "tarea": "Modificar la zona de almacenamiento",
       "comentarios": null
     },
@@ -5183,7 +5183,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 1.93,
+      "horas_pred": 1.92,
       "tarea": "Modificación de planimetria Sector Iván ",
       "comentarios": null
     },
@@ -5323,7 +5323,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.5,
       "diferencia": -0.5,
-      "horas_pred": 2.09,
+      "horas_pred": 2.08,
       "tarea": "Armar plano de Replanteo de YPF",
       "comentarios": null
     },
@@ -5383,7 +5383,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.0,
       "diferencia": -1.0,
-      "horas_pred": 3.43,
+      "horas_pred": 3.44,
       "tarea": "Propuesta volumétrica de cabañas en el 3D",
       "comentarios": null
     },
@@ -5403,7 +5403,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.5,
       "diferencia": -0.5,
-      "horas_pred": 2.6,
+      "horas_pred": 2.61,
       "tarea": "Arreglo de propuesta en la zona de hotel y comercial. Realizacion de nueva propuesta para el sector",
       "comentarios": null
     },
@@ -5423,7 +5423,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.0,
       "diferencia": -1.0,
-      "horas_pred": 2.26,
+      "horas_pred": 2.27,
       "tarea": "Modificaciones del plano de la zona de almacenamiento, generando 2 propuestas",
       "comentarios": null
     },
@@ -5523,7 +5523,7 @@
       "puntos_est": 2.5,
       "horas_real": 2.5,
       "diferencia": 0.0,
-      "horas_pred": 2.43,
+      "horas_pred": 2.39,
       "tarea": "Comprender los puntos más importantes para diseñar un Data Center",
       "comentarios": null
     },
@@ -5563,7 +5563,7 @@
       "puntos_est": 1.5,
       "horas_real": 2.5,
       "diferencia": 1.0,
-      "horas_pred": 1.67,
+      "horas_pred": 1.68,
       "tarea": "Correciones en planimetria general",
       "comentarios": null
     },
@@ -5663,7 +5663,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 1.72,
+      "horas_pred": 1.73,
       "tarea": "Correciones de la parte vial, de la parte de almacenamiento y la planta general para la presentacion de esta tarde",
       "comentarios": null
     },
@@ -5763,7 +5763,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.12,
+      "horas_pred": 3.14,
       "tarea": "Armar posible programa para Data Centers y Presentaciones",
       "comentarios": null
     },
@@ -5803,7 +5803,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.29,
+      "horas_pred": 3.3,
       "tarea": "Propuesta tipologías cabaña.",
       "comentarios": null
     },
@@ -5823,7 +5823,7 @@
       "puntos_est": 3.0,
       "horas_real": 1.0,
       "diferencia": -2.0,
-      "horas_pred": 2.53,
+      "horas_pred": 2.55,
       "tarea": "Ubicar Depósto fiscal en nueva planimetría",
       "comentarios": null
     },
@@ -5903,7 +5903,7 @@
       "puntos_est": 4.0,
       "horas_real": 5.0,
       "diferencia": 1.0,
-      "horas_pred": 3.62,
+      "horas_pred": 3.63,
       "tarea": "Plano de carpinterias Nave de ctrol AD",
       "comentarios": "3.5 de hoy viernes"
     },
@@ -5943,7 +5943,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 1.2,
+      "horas_pred": 1.19,
       "tarea": "Generar propuestas de la parte multimodal",
       "comentarios": null
     },
@@ -6163,7 +6163,7 @@
       "puntos_est": 3.0,
       "horas_real": 4.0,
       "diferencia": 1.0,
-      "horas_pred": 3.55,
+      "horas_pred": 3.53,
       "tarea": "Propuesta volumétrica cabañas y terminar de definir el masterplan general",
       "comentarios": null
     },
@@ -6203,7 +6203,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 4.01,
+      "horas_pred": 3.89,
       "tarea": "Pasar en limpio y hacer las modificaciones necesarias en los cortes de la Nave de Ctrol",
       "comentarios": null
     },
@@ -6243,7 +6243,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.2,
       "diferencia": 0.2,
-      "horas_pred": 1.02,
+      "horas_pred": 1.01,
       "tarea": "Pasado en limpio vistas para plano municipal Dep. fiscal y courier",
       "comentarios": null
     },
@@ -6263,7 +6263,7 @@
       "puntos_est": 3.0,
       "horas_real": 1.0,
       "diferencia": -2.0,
-      "horas_pred": 2.49,
+      "horas_pred": 2.48,
       "tarea": "Estudiar las curvas de nivel de la parte de almacenamiento este",
       "comentarios": null
     },
@@ -6303,7 +6303,7 @@
       "puntos_est": 2.5,
       "horas_real": 3.6,
       "diferencia": 1.1,
-      "horas_pred": 2.79,
+      "horas_pred": 2.77,
       "tarea": "Armar plano carpinterias para municipal Dep. fiscal y courier",
       "comentarios": null
     },
@@ -6363,7 +6363,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.5,
       "diferencia": 0.5,
-      "horas_pred": 0.99,
+      "horas_pred": 0.98,
       "tarea": "Armar planimetría artística de YPF",
       "comentarios": null
     },
@@ -6383,7 +6383,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.17,
+      "horas_pred": 1.16,
       "tarea": "Corregir planimetria general",
       "comentarios": null
     },
@@ -6443,7 +6443,7 @@
       "puntos_est": 1.5,
       "horas_real": 1.0,
       "diferencia": -0.5,
-      "horas_pred": 2.07,
+      "horas_pred": 2.05,
       "tarea": "Dibujar los fraccionamientos en CAD",
       "comentarios": null
     },
@@ -6463,7 +6463,7 @@
       "puntos_est": 1.0,
       "horas_real": 2.5,
       "diferencia": 1.5,
-      "horas_pred": 1.61,
+      "horas_pred": 1.6,
       "tarea": "colocar todas las plantas en la zona primaria aduanera, y generandoles cambio a  la circulacion",
       "comentarios": null
     },
@@ -6483,7 +6483,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 1.96,
+      "horas_pred": 1.95,
       "tarea": "Busqueda de antecedentes de museos para friolatina",
       "comentarios": null
     },
@@ -6623,7 +6623,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.71,
+      "horas_pred": 2.73,
       "tarea": "Tuve q pasar un plano que mando mario del aeroclub a autocad",
       "comentarios": null
     },
@@ -6643,7 +6643,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.38,
+      "horas_pred": 2.36,
       "tarea": "Colocar vivienda Gullo en el plano de fraccionamiento y ver opciones ",
       "comentarios": "0.5"
     },
@@ -6683,7 +6683,7 @@
       "puntos_est": 1.5,
       "horas_real": 2.0,
       "diferencia": 0.5,
-      "horas_pred": 1.8,
+      "horas_pred": 1.82,
       "tarea": "Modificar Croquis de Etapas con planimetria nueva",
       "comentarios": null
     },
@@ -6703,7 +6703,7 @@
       "puntos_est": 1.5,
       "horas_real": 1.0,
       "diferencia": -0.5,
-      "horas_pred": 1.96,
+      "horas_pred": 1.95,
       "tarea": "Armar planimetría artística de Hub completo",
       "comentarios": null
     },
@@ -6723,7 +6723,7 @@
       "puntos_est": 1.5,
       "horas_real": 1.5,
       "diferencia": 0.0,
-      "horas_pred": 2.04,
+      "horas_pred": 2.03,
       "tarea": "Pasar en limpio Mercaderías Peligrosas",
       "comentarios": null
     },
@@ -6763,7 +6763,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.13,
+      "horas_pred": 1.14,
       "tarea": "Tuve q pasar un plano que mando mario del aeroclub a autocad",
       "comentarios": null
     },
@@ -6863,7 +6863,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 2.51,
+      "horas_pred": 2.5,
       "tarea": "Cargar avances del la Estación de servicio al Canva",
       "comentarios": null
     },
@@ -6883,7 +6883,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 2.28,
+      "horas_pred": 2.24,
       "tarea": "Cargar avances del Depósito Fiscal y Courier al Canva",
       "comentarios": null
     },
@@ -6943,7 +6943,7 @@
       "puntos_est": 1.5,
       "horas_real": 1.5,
       "diferencia": 0.0,
-      "horas_pred": 2.2,
+      "horas_pred": 2.19,
       "tarea": "Cargar avances de Mercaderias peligrosas al Canva",
       "comentarios": null
     },
@@ -7043,7 +7043,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.68,
+      "horas_pred": 2.7,
       "tarea": "Revisar posible proyecto con Friolatina",
       "comentarios": null
     },
@@ -7063,7 +7063,7 @@
       "puntos_est": 1.0,
       "horas_real": 2.0,
       "diferencia": 1.0,
-      "horas_pred": 1.63,
+      "horas_pred": 1.62,
       "tarea": "Visita Grupo LTN",
       "comentarios": null
     },
@@ -7083,7 +7083,7 @@
       "puntos_est": 1.0,
       "horas_real": 2.0,
       "diferencia": 1.0,
-      "horas_pred": 1.45,
+      "horas_pred": 1.44,
       "tarea": "Visita Grupo LTN",
       "comentarios": null
     },
@@ -7103,7 +7103,7 @@
       "puntos_est": 1.0,
       "horas_real": 2.0,
       "diferencia": 1.0,
-      "horas_pred": 1.51,
+      "horas_pred": 1.52,
       "tarea": "Visita Grupo LTN",
       "comentarios": null
     },
@@ -7123,7 +7123,7 @@
       "puntos_est": 1.0,
       "horas_real": 2.0,
       "diferencia": 1.0,
-      "horas_pred": 1.59,
+      "horas_pred": 1.6,
       "tarea": "Visita Grupo LTN",
       "comentarios": null
     },
@@ -7163,7 +7163,7 @@
       "puntos_est": 1.0,
       "horas_real": 2.0,
       "diferencia": 1.0,
-      "horas_pred": 1.36,
+      "horas_pred": 1.37,
       "tarea": "Generar propuestas para mejorar la planta de friolatina, y colocarlas en una presentacion",
       "comentarios": null
     },
@@ -7183,7 +7183,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 2.04,
+      "horas_pred": 2.02,
       "tarea": "Modelado de armarios casa Pozzoli",
       "comentarios": null
     },
@@ -7203,7 +7203,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 2.1,
+      "horas_pred": 2.07,
       "tarea": "Corregir tema lofts en base a la devolución de la reunión",
       "comentarios": null
     },
@@ -7223,7 +7223,7 @@
       "puntos_est": 2.5,
       "horas_real": 2.0,
       "diferencia": -0.5,
-      "horas_pred": 2.53,
+      "horas_pred": 2.52,
       "tarea": "Armar colectora de ypf y ver movimiento de suelos y niveles",
       "comentarios": null
     },
@@ -7243,7 +7243,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 1.99,
+      "horas_pred": 1.98,
       "tarea": "Armar presentacion de las propuestas de las canchas de padel del indoor con marti, y terminar las propuestas de friolatina",
       "comentarios": null
     },
@@ -7343,7 +7343,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.5,
       "diferencia": -0.5,
-      "horas_pred": 3.04,
+      "horas_pred": 3.07,
       "tarea": "Probar distintas propuestas para Padel Indoor",
       "comentarios": null
     },
@@ -7523,7 +7523,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.0,
       "diferencia": -1.0,
-      "horas_pred": 1.91,
+      "horas_pred": 1.92,
       "tarea": "Armado de Propuestas para Indoor Padel",
       "comentarios": null
     },
@@ -7663,7 +7663,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.61,
+      "horas_pred": 2.62,
       "tarea": "Inicio de propuesta",
       "comentarios": null
     },
@@ -7783,7 +7783,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.0,
       "diferencia": -1.0,
-      "horas_pred": 2.72,
+      "horas_pred": 2.7,
       "tarea": "Armado de 3 propuestas para Indoor segun lo visto en la reunion de ayer",
       "comentarios": null
     },
@@ -7823,7 +7823,7 @@
       "puntos_est": 3.5,
       "horas_real": 3.0,
       "diferencia": -0.5,
-      "horas_pred": 2.46,
+      "horas_pred": 2.43,
       "tarea": "Armado de 3 propuestas para Indoor segun lo visto en la reunion de ayer",
       "comentarios": null
     },
@@ -7883,7 +7883,7 @@
       "puntos_est": 1.5,
       "horas_real": 1.5,
       "diferencia": 0.0,
-      "horas_pred": 1.1,
+      "horas_pred": 1.11,
       "tarea": "Probar cambios en la nave de control ad",
       "comentarios": null
     },
@@ -7923,7 +7923,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.07,
+      "horas_pred": 3.04,
       "tarea": "Probar cambios en la parte de Deposito Fiscal",
       "comentarios": null
     },
@@ -8063,7 +8063,7 @@
       "puntos_est": 0.5,
       "horas_real": 0.5,
       "diferencia": 0.0,
-      "horas_pred": 0.59,
+      "horas_pred": 0.58,
       "tarea": "Armado de presentacion de propuestas en Canva para Nave de Ctrol Ad",
       "comentarios": null
     },
@@ -8103,7 +8103,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.5,
       "diferencia": -0.5,
-      "horas_pred": 3.58,
+      "horas_pred": 3.59,
       "tarea": "Propuestas de Fachada ingreso",
       "comentarios": null
     },
@@ -8123,7 +8123,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.55,
+      "horas_pred": 2.56,
       "tarea": "Correcciones Planos para el barrio",
       "comentarios": null
     },
@@ -8203,7 +8203,7 @@
       "puntos_est": 3.0,
       "horas_real": 4.0,
       "diferencia": 1.0,
-      "horas_pred": 2.65,
+      "horas_pred": 2.66,
       "tarea": "Propuestas de Aventanamientos",
       "comentarios": "3horas hoy"
     },
@@ -8283,7 +8283,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.0,
       "diferencia": -1.0,
-      "horas_pred": 2.91,
+      "horas_pred": 2.9,
       "tarea": "Diseñar y dibujar armario de dormitorio, definiendo sus dimensiones y su distribución interior.",
       "comentarios": null
     },
@@ -8323,7 +8323,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.29,
+      "horas_pred": 3.25,
       "tarea": "Propuesta espacial de oficinas planta alta",
       "comentarios": null
     },
@@ -8443,7 +8443,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.0,
       "diferencia": -1.0,
-      "horas_pred": 3.42,
+      "horas_pred": 3.41,
       "tarea": "Sacar corte Este - Oeste YPF",
       "comentarios": null
     },
@@ -8543,7 +8543,7 @@
       "puntos_est": 3.0,
       "horas_real": 4.0,
       "diferencia": 1.0,
-      "horas_pred": 3.6,
+      "horas_pred": 3.57,
       "tarea": "Propuesta de los LOFT ampliada en el sector oeste del terreno. Probar con 3 unidades comunes en el total edificado.",
       "comentarios": null
     },
@@ -8563,7 +8563,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.0,
       "diferencia": -1.0,
-      "horas_pred": 3.61,
+      "horas_pred": 3.6,
       "tarea": "Armado de renders para entregar al barrio",
       "comentarios": null
     },
@@ -8623,7 +8623,7 @@
       "puntos_est": 5.0,
       "horas_real": 5.0,
       "diferencia": 0.0,
-      "horas_pred": 4.44,
+      "horas_pred": 4.46,
       "tarea": "Analisis de terreno Sobremonte",
       "comentarios": null
     },
@@ -8723,7 +8723,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.47,
+      "horas_pred": 1.48,
       "tarea": "Mantenimiento Excel, Dashboards ",
       "comentarios": null
     },
@@ -8763,7 +8763,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.5,
       "diferencia": -0.5,
-      "horas_pred": 1.64,
+      "horas_pred": 1.63,
       "tarea": "Agregar esquemas en 3d a la presentacion de Sobremonte",
       "comentarios": null
     },
@@ -8783,7 +8783,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.0,
       "diferencia": -1.0,
-      "horas_pred": 4.47,
+      "horas_pred": 4.44,
       "tarea": "Replantear MUSEO friolatina en base a la devolución de la reunión",
       "comentarios": null
     },
@@ -8923,7 +8923,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 2.01,
+      "horas_pred": 2.02,
       "tarea": "Adaptar cambios ",
       "comentarios": null
     },
@@ -8963,7 +8963,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.0,
       "diferencia": -1.0,
-      "horas_pred": 4.29,
+      "horas_pred": 4.28,
       "tarea": "Completar planos municipales de planta de estacion de servicio",
       "comentarios": "1 de hoy"
     },
@@ -9003,7 +9003,7 @@
       "puntos_est": 2.5,
       "horas_real": 3.0,
       "diferencia": 0.5,
-      "horas_pred": 2.85,
+      "horas_pred": 2.86,
       "tarea": "Mejorar Dashboards ",
       "comentarios": null
     },
@@ -9023,7 +9023,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 4.08,
+      "horas_pred": 4.1,
       "tarea": "Investigación y estudio de marca",
       "comentarios": null
     },
@@ -9043,7 +9043,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.5,
       "diferencia": 0.5,
-      "horas_pred": 1.13,
+      "horas_pred": 1.12,
       "tarea": "Visita a Indoor Padel  ",
       "comentarios": null
     },
@@ -9063,7 +9063,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.5,
       "diferencia": 0.5,
-      "horas_pred": 1.13,
+      "horas_pred": 1.14,
       "tarea": "Visita a Indoor Padel  ",
       "comentarios": null
     },
@@ -9083,7 +9083,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.97,
+      "horas_pred": 2.99,
       "tarea": "Probar opcion de subsuelo para ver la cantidad de cocheras que entran en el terreno",
       "comentarios": null
     },
@@ -9123,7 +9123,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.0,
       "diferencia": -1.0,
-      "horas_pred": 2.04,
+      "horas_pred": 2.02,
       "tarea": "Generar los cambios de padel indoor",
       "comentarios": null
     },
@@ -9303,7 +9303,7 @@
       "puntos_est": 3.0,
       "horas_real": 1.5,
       "diferencia": -1.5,
-      "horas_pred": 2.27,
+      "horas_pred": 2.28,
       "tarea": "Prueba de renders con propuesta estructural",
       "comentarios": null
     },
@@ -9463,7 +9463,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.49,
+      "horas_pred": 2.48,
       "tarea": "Termine la presentacion de la parte multimodal con sus planos municipales",
       "comentarios": null
     },
@@ -9583,7 +9583,7 @@
       "puntos_est": 4.0,
       "horas_real": 5.0,
       "diferencia": 1.0,
-      "horas_pred": 2.44,
+      "horas_pred": 2.45,
       "tarea": "Generar el 3d de playa de camiones",
       "comentarios": null
     },
@@ -9623,7 +9623,7 @@
       "puntos_est": 1.5,
       "horas_real": 1.5,
       "diferencia": 0.0,
-      "horas_pred": 1.75,
+      "horas_pred": 1.76,
       "tarea": "Correcciones",
       "comentarios": null
     },
@@ -9643,7 +9643,7 @@
       "puntos_est": 3.0,
       "horas_real": 4.0,
       "diferencia": 1.0,
-      "horas_pred": 3.3,
+      "horas_pred": 3.29,
       "tarea": "Modelado de propuesta de padel indoor y despues generar presentacion",
       "comentarios": null
     },
@@ -9663,7 +9663,7 @@
       "puntos_est": 0.5,
       "horas_real": 0.5,
       "diferencia": 0.0,
-      "horas_pred": 0.6,
+      "horas_pred": 0.61,
       "tarea": "Organización de todas las carpetas",
       "comentarios": null
     },
@@ -9683,7 +9683,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.48,
+      "horas_pred": 2.49,
       "tarea": "Preparar presentación para ingeniero",
       "comentarios": null
     },
@@ -9703,7 +9703,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 1.95,
+      "horas_pred": 1.97,
       "tarea": "Pasada en limpio Planos",
       "comentarios": null
     },
@@ -9743,7 +9743,7 @@
       "puntos_est": 5.0,
       "horas_real": 7.0,
       "diferencia": 2.0,
-      "horas_pred": 4.36,
+      "horas_pred": 4.3,
       "tarea": "Modelado desde 0 de Deposito Fiscal",
       "comentarios": null
     },
@@ -9863,7 +9863,7 @@
       "puntos_est": 1.5,
       "horas_real": 1.5,
       "diferencia": 0.0,
-      "horas_pred": 1.62,
+      "horas_pred": 1.63,
       "tarea": "con los cambios propuestos anteriormente, modificar el modelado para despues se vea la volumetria",
       "comentarios": null
     },
@@ -9983,7 +9983,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.12,
+      "horas_pred": 1.11,
       "tarea": "Pasar los cambios al canva",
       "comentarios": null
     },
@@ -10163,7 +10163,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 3.44,
+      "horas_pred": 3.45,
       "tarea": "Algunas zonificaciones de prueba mas propuesta de partido, de zonificaciones concensuadas",
       "comentarios": null
     },
@@ -10183,7 +10183,7 @@
       "puntos_est": 1.0,
       "horas_real": 0.5,
       "diferencia": -0.5,
-      "horas_pred": 1.21,
+      "horas_pred": 1.22,
       "tarea": "Pasar los planos municipales del deposito fiscal y de multimodal",
       "comentarios": "son las 11"
     },
@@ -10203,7 +10203,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 1.2,
+      "horas_pred": 1.19,
       "tarea": "Hacer el plano de Carpinteria de la nave multimodal y de las oficinas",
       "comentarios": "Ademas alcance a hacer 2 cortes y vistas de la garita, no hice mas porque vi que la naza habia hecho esa cantidad, y capaz por ser solo las garitas no es necesario"
     },
@@ -10243,7 +10243,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.5,
       "diferencia": -0.5,
-      "horas_pred": 2.47,
+      "horas_pred": 2.49,
       "tarea": "Revisión con Joaco de proyecto + propuesta de distribución interior",
       "comentarios": null
     },
@@ -10283,7 +10283,7 @@
       "puntos_est": 6.0,
       "horas_real": 6.0,
       "diferencia": 0.0,
-      "horas_pred": 5.74,
+      "horas_pred": 5.73,
       "tarea": "Generar los cortes y vistas de la parte de aridos q esta incompleta",
       "comentarios": "Me falta pasarlo en pdf los planos"
     },
@@ -10303,7 +10303,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.5,
       "diferencia": 0.5,
-      "horas_pred": 2.87,
+      "horas_pred": 2.86,
       "tarea": "Hcaer renders para depósito fiscal",
       "comentarios": null
     },
@@ -10323,7 +10323,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.5,
       "diferencia": 0.5,
-      "horas_pred": 3.27,
+      "horas_pred": 3.29,
       "tarea": "Hacer renders de propuestas para Showrroom",
       "comentarios": null
     },
@@ -10463,7 +10463,7 @@
       "puntos_est": 4.5,
       "horas_real": 2.0,
       "diferencia": -2.5,
-      "horas_pred": 4.35,
+      "horas_pred": 4.34,
       "tarea": "Empezar a hacer un modelo de nave industrial para tomar de referencia",
       "comentarios": "Tuvimos una reunion asiq sigo mañana"
     },
@@ -10683,7 +10683,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.0,
       "diferencia": -1.0,
-      "horas_pred": 3.08,
+      "horas_pred": 3.09,
       "tarea": "Empezar a hacer un modelo de nave industrial para tomar de referencia",
       "comentarios": null
     },
@@ -10703,7 +10703,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.0,
       "diferencia": -1.0,
-      "horas_pred": 2.46,
+      "horas_pred": 2.45,
       "tarea": "Propuesta de ubicación escalera para la presentacion",
       "comentarios": null
     },
@@ -10723,7 +10723,7 @@
       "puntos_est": 1.5,
       "horas_real": 1.5,
       "diferencia": 0.0,
-      "horas_pred": 1.77,
+      "horas_pred": 1.79,
       "tarea": "Propuesta de ubicación escalera para la presentacion",
       "comentarios": null
     },
@@ -11023,7 +11023,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.5,
       "diferencia": -0.5,
-      "horas_pred": 3.54,
+      "horas_pred": 3.52,
       "tarea": "Modificacion de Nave Control AD para reducción",
       "comentarios": null
     },
@@ -11063,7 +11063,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 1.68,
+      "horas_pred": 1.69,
       "tarea": "Busqueda de catalogo de paneles",
       "comentarios": null
     },
@@ -11083,7 +11083,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 2.16,
+      "horas_pred": 2.17,
       "tarea": "Anánilis de ubicación de tenders",
       "comentarios": null
     },
@@ -11203,7 +11203,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.44,
+      "horas_pred": 2.43,
       "tarea": "Visita a la fabrica de Bervill",
       "comentarios": null
     },
@@ -11223,7 +11223,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.6,
+      "horas_pred": 2.61,
       "tarea": "Visita a la fabrica de Bervill",
       "comentarios": null
     },
@@ -11243,7 +11243,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.36,
+      "horas_pred": 2.34,
       "tarea": "Visita a la fabrica de Bervill",
       "comentarios": null
     },
@@ -11263,7 +11263,7 @@
       "puntos_est": 0.5,
       "horas_real": 0.5,
       "diferencia": 0.0,
-      "horas_pred": 0.57,
+      "horas_pred": 0.58,
       "tarea": "Armado de presentación resumen de visita a Bervill",
       "comentarios": null
     },
@@ -11283,7 +11283,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.04,
+      "horas_pred": 1.05,
       "tarea": "Analisis de factores y posibilidades del terreno de hogar Santa Marta",
       "comentarios": null
     },
@@ -11323,7 +11323,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 2.58,
+      "horas_pred": 2.59,
       "tarea": "Analisis de factores y posibilidades del terreno de hogar Santa Marta",
       "comentarios": null
     },
@@ -11363,7 +11363,7 @@
       "puntos_est": 3.0,
       "horas_real": 0.5,
       "diferencia": -2.5,
-      "horas_pred": 3.21,
+      "horas_pred": 3.22,
       "tarea": "Paso de la información y armado de presentación para terreno Santa Marta",
       "comentarios": "Solo complete la información, no hice los esquemas"
     },
@@ -11383,7 +11383,7 @@
       "puntos_est": 3.0,
       "horas_real": 4.0,
       "diferencia": 1.0,
-      "horas_pred": 4.21,
+      "horas_pred": 4.22,
       "tarea": "Propuesta en sketchup de Nave Ctrol AD reducida",
       "comentarios": null
     },
@@ -11403,7 +11403,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.79,
+      "horas_pred": 1.78,
       "tarea": "Volumetria de propuesta de terreno santa marta",
       "comentarios": null
     },
@@ -11423,7 +11423,7 @@
       "puntos_est": 4.0,
       "horas_real": 6.0,
       "diferencia": 2.0,
-      "horas_pred": 4.02,
+      "horas_pred": 3.99,
       "tarea": "Cambios propuestos ayer en reunióny visita ",
       "comentarios": null
     },
@@ -11463,7 +11463,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.42,
+      "horas_pred": 1.43,
       "tarea": "Visita a obra",
       "comentarios": null
     },
@@ -11503,7 +11503,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.34,
+      "horas_pred": 1.33,
       "tarea": "Armar presentación de Nave de Ctrol Aduanero",
       "comentarios": null
     },
@@ -11523,7 +11523,7 @@
       "puntos_est": 2.5,
       "horas_real": 2.5,
       "diferencia": 0.0,
-      "horas_pred": 2.67,
+      "horas_pred": 2.64,
       "tarea": "Taller con Leo",
       "comentarios": null
     },
@@ -11583,7 +11583,7 @@
       "puntos_est": 3.5,
       "horas_real": 3.0,
       "diferencia": -0.5,
-      "horas_pred": 3.81,
+      "horas_pred": 3.82,
       "tarea": "Distribuciones Internas / optimización del espacio",
       "comentarios": null
     },
@@ -11603,7 +11603,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 3.69,
+      "horas_pred": 3.72,
       "tarea": "Diseño de estacionamientos del Showroom y fabrica",
       "comentarios": null
     },
@@ -11623,7 +11623,7 @@
       "puntos_est": 5.0,
       "horas_real": 4.5,
       "diferencia": -0.5,
-      "horas_pred": 4.91,
+      "horas_pred": 4.89,
       "tarea": "Correcion de Planos municipales de Deposito Fiscal segun lo visto con el Mauri",
       "comentarios": "Revisamos conla planta de estructura y no coincide, ahora con el sketchup para ver las ventanas"
     },
@@ -11683,7 +11683,7 @@
       "puntos_est": 0.5,
       "horas_real": 0.5,
       "diferencia": 0.0,
-      "horas_pred": 0.58,
+      "horas_pred": 0.57,
       "tarea": "Desarrollo de archivo compartido con Tiago",
       "comentarios": null
     },
@@ -11763,7 +11763,7 @@
       "puntos_est": 5.0,
       "horas_real": 9.5,
       "diferencia": 4.5,
-      "horas_pred": 4.33,
+      "horas_pred": 4.34,
       "tarea": "Armado de nave sin techo. Presentacion para aduana",
       "comentarios": "No tuve en cuenta el hacer nuevas vistas de la nave"
     },
@@ -11783,7 +11783,7 @@
       "puntos_est": 5.0,
       "horas_real": 3.5,
       "diferencia": -1.5,
-      "horas_pred": 4.72,
+      "horas_pred": 4.71,
       "tarea": "Mejora de plano municipal de plantas multimodal",
       "comentarios": "Tuve q bajar la nave de multimodal porque estaba a 1,20mts de alto, la tengo q bajar porq no se va a construir asi"
     },
@@ -11803,7 +11803,7 @@
       "puntos_est": 2.5,
       "horas_real": 2.0,
       "diferencia": -0.5,
-      "horas_pred": 1.84,
+      "horas_pred": 1.85,
       "tarea": "Propuesta de ampliación baños y de contención aluvional.",
       "comentarios": null
     },
@@ -11943,7 +11943,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.5,
       "diferencia": -0.5,
-      "horas_pred": 3.97,
+      "horas_pred": 4.0,
       "tarea": "Propuesta de estacionamientos",
       "comentarios": null
     },
@@ -12143,7 +12143,7 @@
       "puntos_est": 5.0,
       "horas_real": 4.5,
       "diferencia": -0.5,
-      "horas_pred": 5.3,
+      "horas_pred": 5.31,
       "tarea": "Armado de planillas que me pidio el Mario",
       "comentarios": "4.5 de hoy vieernes, falta actualizar precio de dolares a pesos"
     },
@@ -12203,7 +12203,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.5,
       "diferencia": -0.5,
-      "horas_pred": 3.66,
+      "horas_pred": 3.67,
       "tarea": "Modificacion de planta y corte de la Nave de Ctrol AD",
       "comentarios": null
     },
@@ -12243,7 +12243,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.15,
+      "horas_pred": 3.14,
       "tarea": "Propuesta de mejora de interiorismo de acuerdo a la reunión con clientes",
       "comentarios": null
     },
@@ -12263,7 +12263,7 @@
       "puntos_est": 0.5,
       "horas_real": 0.5,
       "diferencia": 0.0,
-      "horas_pred": 0.61,
+      "horas_pred": 0.6,
       "tarea": "Instalación microsoft office para project management",
       "comentarios": null
     },
@@ -12283,7 +12283,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 4.76,
+      "horas_pred": 4.74,
       "tarea": "Investigación Indicadores / unificación de presentaciones de ambos estudios",
       "comentarios": null
     },
@@ -12343,7 +12343,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.0,
       "diferencia": -1.0,
-      "horas_pred": 2.02,
+      "horas_pred": 2.03,
       "tarea": "Modificacion de planta y corte de la Nave de Ctrol AD segun la devolucion de la Martita",
       "comentarios": null
     },
@@ -12403,7 +12403,7 @@
       "puntos_est": 3.0,
       "horas_real": 5.0,
       "diferencia": 2.0,
-      "horas_pred": 2.9,
+      "horas_pred": 2.91,
       "tarea": "Distribución de deppartamentos en edificio",
       "comentarios": null
     },
@@ -12523,7 +12523,7 @@
       "puntos_est": 1.5,
       "horas_real": 1.5,
       "diferencia": 0.0,
-      "horas_pred": 1.47,
+      "horas_pred": 1.48,
       "tarea": "Presupuesto de mobiliario de oficina",
       "comentarios": null
     },
@@ -12603,7 +12603,7 @@
       "puntos_est": 5.0,
       "horas_real": 4.0,
       "diferencia": -1.0,
-      "horas_pred": 4.92,
+      "horas_pred": 4.91,
       "tarea": "Cambios en edificio",
       "comentarios": null
     },
@@ -12683,7 +12683,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.0,
       "diferencia": -1.0,
-      "horas_pred": 2.75,
+      "horas_pred": 2.76,
       "tarea": "Correcciones en propuesta",
       "comentarios": null
     },
@@ -12703,7 +12703,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 1.2,
+      "horas_pred": 1.19,
       "tarea": "Corregir layers de textos del deposito fiscal",
       "comentarios": null
     },
@@ -12783,7 +12783,7 @@
       "puntos_est": 3.5,
       "horas_real": 1.0,
       "diferencia": -2.5,
-      "horas_pred": 3.12,
+      "horas_pred": 3.1,
       "tarea": "Definir las propuestas e ideas nuevas de la nave industrial",
       "comentarios": "1hr de hoy"
     },
@@ -12843,7 +12843,7 @@
       "puntos_est": 2.5,
       "horas_real": 3.0,
       "diferencia": 0.5,
-      "horas_pred": 2.39,
+      "horas_pred": 2.37,
       "tarea": "Paso en limpio corte longitudinal",
       "comentarios": null
     },
@@ -12963,7 +12963,7 @@
       "puntos_est": 1.5,
       "horas_real": 7.5,
       "diferencia": 6.0,
-      "horas_pred": 1.67,
+      "horas_pred": 1.66,
       "tarea": "Planos Planta Baja",
       "comentarios": "hice 1.5"
     },
@@ -13103,7 +13103,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 4.02,
+      "horas_pred": 4.0,
       "tarea": "Chequeo planos instalaciones (sanitarias y eléctricas)",
       "comentarios": null
     },
@@ -13243,7 +13243,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 4.74,
+      "horas_pred": 4.76,
       "tarea": "Dejar Plano listo para imprimir",
       "comentarios": "hice una hora"
     },
@@ -13503,7 +13503,7 @@
       "puntos_est": 4.0,
       "horas_real": 6.0,
       "diferencia": 2.0,
-      "horas_pred": 4.47,
+      "horas_pred": 4.48,
       "tarea": "Nuevas opciones vistas con Mario",
       "comentarios": null
     },
@@ -13543,7 +13543,7 @@
       "puntos_est": 2.5,
       "horas_real": 1.3,
       "diferencia": -1.2,
-      "horas_pred": 3.31,
+      "horas_pred": 3.3,
       "tarea": "Plano de carpinterias de Aridos",
       "comentarios": null
     },
@@ -13563,7 +13563,7 @@
       "puntos_est": 0.7,
       "horas_real": 0.7,
       "diferencia": 0.0,
-      "horas_pred": 0.57,
+      "horas_pred": 0.58,
       "tarea": "Completar documentación de playa de camiones",
       "comentarios": null
     },
@@ -13643,7 +13643,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 5.21,
+      "horas_pred": 5.22,
       "tarea": "Terminar de compatibilizar plantas y visualización 3d",
       "comentarios": null
     },
@@ -13903,7 +13903,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.99,
+      "horas_pred": 2.97,
       "tarea": "Generar el pplano municipal de las canchas de padel",
       "comentarios": null
     },
@@ -13923,7 +13923,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.75,
+      "horas_pred": 2.76,
       "tarea": "Compatibilizar propuestas",
       "comentarios": null
     },
@@ -13943,7 +13943,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 4.74,
+      "horas_pred": 4.76,
       "tarea": "Mejorar detalles de Planta Planta",
       "comentarios": null
     },
@@ -13963,7 +13963,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.29,
+      "horas_pred": 1.28,
       "tarea": "Definir detalle carpintería planta alta",
       "comentarios": null
     },
@@ -14003,7 +14003,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.5,
       "diferencia": 0.5,
-      "horas_pred": 1.12,
+      "horas_pred": 1.11,
       "tarea": "Hacer un plano de zonificacion de las canchas de padel",
       "comentarios": null
     },
@@ -14023,7 +14023,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.0,
       "diferencia": -1.0,
-      "horas_pred": 3.58,
+      "horas_pred": 3.59,
       "tarea": "Corregir todos los planos de nave de ctrol ad, sacandole el alero",
       "comentarios": null
     },
@@ -14183,7 +14183,7 @@
       "puntos_est": 1.0,
       "horas_real": 5.0,
       "diferencia": 4.0,
-      "horas_pred": 0.83,
+      "horas_pred": 0.82,
       "tarea": "Mantenimiento al excel y dashboard",
       "comentarios": null
     },
@@ -14263,7 +14263,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 2.13,
+      "horas_pred": 2.16,
       "tarea": "Modificacion de plantas de Almacenamiento Este ",
       "comentarios": null
     },
@@ -14283,7 +14283,7 @@
       "puntos_est": 0.7,
       "horas_real": 0.7,
       "diferencia": 0.0,
-      "horas_pred": 0.75,
+      "horas_pred": 0.74,
       "tarea": "Generar unos cambios en la planta de suelo con su superficies segun enviado anterior mente'",
       "comentarios": null
     },
@@ -14343,7 +14343,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.81,
+      "horas_pred": 1.8,
       "tarea": "Avance de Proyecto ",
       "comentarios": null
     },
@@ -14583,7 +14583,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 3.75,
+      "horas_pred": 3.76,
       "tarea": "Armado de planos de Almacenamiento Este",
       "comentarios": null
     },
@@ -14603,7 +14603,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.06,
+      "horas_pred": 3.04,
       "tarea": "Avance de Proyecto ",
       "comentarios": null
     },
@@ -14623,7 +14623,7 @@
       "puntos_est": 5.0,
       "horas_real": 8.0,
       "diferencia": 3.0,
-      "horas_pred": 6.59,
+      "horas_pred": 6.58,
       "tarea": "Paso de Cortes para `lanos municipales",
       "comentarios": "Tuve que modificar medidas en los cortes existentes y no lo tuve en cuenta"
     },
@@ -14823,7 +14823,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.5,
       "diferencia": -0.5,
-      "horas_pred": 3.17,
+      "horas_pred": 3.19,
       "tarea": "Generar un detalle de la baranda que vimos con vale, y hacer otra propuesta con una varilla mas",
       "comentarios": null
     },
@@ -14863,7 +14863,7 @@
       "puntos_est": 6.0,
       "horas_real": 1.5,
       "diferencia": -4.5,
-      "horas_pred": 5.74,
+      "horas_pred": 5.73,
       "tarea": "A partir del estudio de niveles empezar a hacer los cortes de la nave almacenamiento",
       "comentarios": "hora  y media de hoy, mañana sigo con los cortes y los niveles"
     },
@@ -14903,7 +14903,7 @@
       "puntos_est": 0.7,
       "horas_real": 0.7,
       "diferencia": 0.0,
-      "horas_pred": 0.51,
+      "horas_pred": 0.52,
       "tarea": "Arreglo de acceso de Almacenamiento Oeste",
       "comentarios": null
     },
@@ -14943,7 +14943,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 4.21,
+      "horas_pred": 4.2,
       "tarea": "Planteo de Entrepisos, cubierta LTN",
       "comentarios": null
     },
@@ -15003,7 +15003,7 @@
       "puntos_est": 6.0,
       "horas_real": 4.0,
       "diferencia": -2.0,
-      "horas_pred": 4.37,
+      "horas_pred": 4.41,
       "tarea": "Generar los cortes del almacenamiento este",
       "comentarios": null
     },
@@ -15083,7 +15083,7 @@
       "puntos_est": 0.5,
       "horas_real": 1.0,
       "diferencia": 0.5,
-      "horas_pred": 0.33,
+      "horas_pred": 0.32,
       "tarea": "Planteo estructural para mandar a Estructura",
       "comentarios": null
     },
@@ -15203,7 +15203,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 3.14,
+      "horas_pred": 3.13,
       "tarea": "Segunda propuesta de fachada",
       "comentarios": null
     },
@@ -15223,7 +15223,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.0,
       "diferencia": -1.0,
-      "horas_pred": 2.13,
+      "horas_pred": 2.14,
       "tarea": "Generar documentacion municipal de los cortes",
       "comentarios": null
     },
@@ -15303,7 +15303,7 @@
       "puntos_est": 3.0,
       "horas_real": 1.5,
       "diferencia": -1.5,
-      "horas_pred": 3.18,
+      "horas_pred": 3.19,
       "tarea": "Buscar informacion entre la logistica con lujan y huspallata",
       "comentarios": null
     },
@@ -15343,7 +15343,7 @@
       "puntos_est": 5.0,
       "horas_real": 1.5,
       "diferencia": -3.5,
-      "horas_pred": 3.23,
+      "horas_pred": 3.22,
       "tarea": "Arreglar Cortes para Plano municipal de Indoor",
       "comentarios": "1 de hoy lunes"
     },
@@ -15363,7 +15363,7 @@
       "puntos_est": 5.0,
       "horas_real": 4.0,
       "diferencia": -1.0,
-      "horas_pred": 5.58,
+      "horas_pred": 5.56,
       "tarea": "Buscar informacion entre la logistica con lujan y uspallata",
       "comentarios": null
     },
@@ -15423,7 +15423,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.32,
+      "horas_pred": 3.31,
       "tarea": "Modulación paneleria en 3D ",
       "comentarios": null
     },
@@ -15623,7 +15623,7 @@
       "puntos_est": 1.0,
       "horas_real": 3.0,
       "diferencia": 2.0,
-      "horas_pred": 1.32,
+      "horas_pred": 1.3,
       "tarea": "Pasada en limpio plano baranda",
       "comentarios": null
     },
@@ -15643,7 +15643,7 @@
       "puntos_est": 5.0,
       "horas_real": 6.0,
       "diferencia": 1.0,
-      "horas_pred": 3.84,
+      "horas_pred": 3.9,
       "tarea": "Seguir con el estudio de lo hablado con el taller",
       "comentarios": null
     },
@@ -15663,7 +15663,7 @@
       "puntos_est": 3.0,
       "horas_real": 2.0,
       "diferencia": -1.0,
-      "horas_pred": 1.9,
+      "horas_pred": 1.89,
       "tarea": "Renders de opciones de fachada",
       "comentarios": null
     },
@@ -15703,7 +15703,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.0,
       "diferencia": -1.0,
-      "horas_pred": 2.76,
+      "horas_pred": 2.75,
       "tarea": "Hacer cortes de parte de Pilates",
       "comentarios": null
     },
@@ -15803,7 +15803,7 @@
       "puntos_est": 6.0,
       "horas_real": 5.0,
       "diferencia": -1.0,
-      "horas_pred": 5.75,
+      "horas_pred": 5.72,
       "tarea": "Analisis Macro de Lujan",
       "comentarios": null
     },
@@ -15823,7 +15823,7 @@
       "puntos_est": 6.0,
       "horas_real": 5.0,
       "diferencia": -1.0,
-      "horas_pred": 3.61,
+      "horas_pred": 3.62,
       "tarea": "Analisis Macro de Lujan",
       "comentarios": null
     },
@@ -15863,7 +15863,7 @@
       "puntos_est": 5.0,
       "horas_real": 6.0,
       "diferencia": 1.0,
-      "horas_pred": 4.56,
+      "horas_pred": 4.53,
       "tarea": "Analisis Macro de Lujan",
       "comentarios": null
     },
@@ -15983,7 +15983,7 @@
       "puntos_est": 6.0,
       "horas_real": 3.0,
       "diferencia": -3.0,
-      "horas_pred": 5.75,
+      "horas_pred": 5.72,
       "tarea": "Analisis Macro de Lujan",
       "comentarios": null
     },
@@ -16003,7 +16003,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.74,
+      "horas_pred": 2.71,
       "tarea": "Analisis Macro de Lujan",
       "comentarios": null
     },
@@ -16123,7 +16123,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 0.96,
+      "horas_pred": 0.97,
       "tarea": "Llenado de planilla fiscal",
       "comentarios": null
     },
@@ -16163,7 +16163,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 1.91,
+      "horas_pred": 1.9,
       "tarea": "Llenado de planilla fiscal",
       "comentarios": null
     },
@@ -16243,7 +16243,7 @@
       "puntos_est": 3.0,
       "horas_real": 1.5,
       "diferencia": -1.5,
-      "horas_pred": 2.64,
+      "horas_pred": 2.63,
       "tarea": "Estudio para Generar propuesta de Almacenamiento",
       "comentarios": null
     },
@@ -16383,7 +16383,7 @@
       "puntos_est": 5.0,
       "horas_real": 5.0,
       "diferencia": 0.0,
-      "horas_pred": 4.38,
+      "horas_pred": 4.34,
       "tarea": "Propuestas para viviendas en el Marquesado",
       "comentarios": null
     },
@@ -16423,7 +16423,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.8,
+      "horas_pred": 2.79,
       "tarea": "Render de propuestas fachada",
       "comentarios": null
     },
@@ -16443,7 +16443,7 @@
       "puntos_est": 5.0,
       "horas_real": 5.0,
       "diferencia": 0.0,
-      "horas_pred": 4.67,
+      "horas_pred": 4.66,
       "tarea": "Propuestas para viviendas en el Marquesado",
       "comentarios": null
     },
@@ -16483,7 +16483,7 @@
       "puntos_est": 6.0,
       "horas_real": 4.0,
       "diferencia": -2.0,
-      "horas_pred": 6.1,
+      "horas_pred": 6.09,
       "tarea": "Propuestas para viviendas en el Marquesado",
       "comentarios": null
     },
@@ -16603,7 +16603,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 3.12,
+      "horas_pred": 3.13,
       "tarea": "Visita técnica a la obra de la facultad",
       "comentarios": null
     },
@@ -16623,7 +16623,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.67,
+      "horas_pred": 2.68,
       "tarea": "Probar otras opciones de distribucion para vivienda en el Marquesado",
       "comentarios": null
     },
@@ -16663,7 +16663,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.0,
       "diferencia": 0.0,
-      "horas_pred": 1.33,
+      "horas_pred": 1.31,
       "tarea": "Ver volumetria de las opciones hasta el momento",
       "comentarios": null
     },
@@ -16703,7 +16703,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.05,
+      "horas_pred": 1.04,
       "tarea": "Investigar Indices Urbanos de Ordenamiento Territorial ",
       "comentarios": null
     },
@@ -16763,7 +16763,7 @@
       "puntos_est": 5.0,
       "horas_real": 4.0,
       "diferencia": -1.0,
-      "horas_pred": 4.89,
+      "horas_pred": 4.82,
       "tarea": "Cambios en la mensura y en todos los archivos referenciados",
       "comentarios": "No tenemos la mensura completa por lo que no puedo seguir"
     },
@@ -16803,7 +16803,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 2.29,
+      "horas_pred": 2.28,
       "tarea": "Creación base de datos en QGIS para análisis urbanistico",
       "comentarios": null
     },
@@ -16823,7 +16823,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.14,
+      "horas_pred": 3.12,
       "tarea": "Investigar Indices Urbanos de Ordenamiento Territorial ",
       "comentarios": null
     },
@@ -16843,7 +16843,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.14,
+      "horas_pred": 3.12,
       "tarea": "Pruebas en Qgis",
       "comentarios": null
     },
@@ -16923,7 +16923,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.14,
+      "horas_pred": 3.12,
       "tarea": "Pruebas en Qgis",
       "comentarios": null
     },
@@ -16943,7 +16943,7 @@
       "puntos_est": 6.0,
       "horas_real": 5.0,
       "diferencia": -1.0,
-      "horas_pred": 5.5,
+      "horas_pred": 5.52,
       "tarea": "Armado de presentación",
       "comentarios": null
     },
@@ -16963,7 +16963,7 @@
       "puntos_est": 6.0,
       "horas_real": 5.0,
       "diferencia": -1.0,
-      "horas_pred": 6.6,
+      "horas_pred": 6.65,
       "tarea": "Armado de presentación",
       "comentarios": null
     },
@@ -16983,7 +16983,7 @@
       "puntos_est": 6.0,
       "horas_real": 5.0,
       "diferencia": -1.0,
-      "horas_pred": 5.28,
+      "horas_pred": 5.25,
       "tarea": "Armado de presentación",
       "comentarios": null
     },
@@ -17063,7 +17063,7 @@
       "puntos_est": 4.0,
       "horas_real": 5.0,
       "diferencia": 1.0,
-      "horas_pred": 3.33,
+      "horas_pred": 3.31,
       "tarea": "Combinar la presentacion logistica de lujan con la presentacion que hicimos de el analisis macro",
       "comentarios": null
     },
@@ -17163,7 +17163,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 4.11,
+      "horas_pred": 4.12,
       "tarea": "Cargar datos en una planilla de excel que me pidio el Mario",
       "comentarios": null
     },
@@ -17203,7 +17203,7 @@
       "puntos_est": 6.0,
       "horas_real": 6.0,
       "diferencia": 0.0,
-      "horas_pred": 6.29,
+      "horas_pred": 6.43,
       "tarea": "Análisis Urbanos en Qgis",
       "comentarios": null
     },
@@ -17343,7 +17343,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.0,
       "diferencia": 1.0,
-      "horas_pred": 1.2,
+      "horas_pred": 1.19,
       "tarea": "Modicicaciones en la planta de las naves de Almacenamiento Este",
       "comentarios": null
     },
@@ -17383,7 +17383,7 @@
       "puntos_est": 1.0,
       "horas_real": 2.0,
       "diferencia": 1.0,
-      "horas_pred": 1.35,
+      "horas_pred": 1.36,
       "tarea": "Planteo de Fichas y datos de Ordenamiento Territorial y Visitas terreno",
       "comentarios": null
     },
@@ -17403,7 +17403,7 @@
       "puntos_est": 4.0,
       "horas_real": 2.0,
       "diferencia": -2.0,
-      "horas_pred": 3.81,
+      "horas_pred": 3.8,
       "tarea": "Empezar los cortes municipales del marquesado D",
       "comentarios": null
     },
@@ -17463,7 +17463,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.82,
+      "horas_pred": 2.86,
       "tarea": "Paso de planta Marquesado a plano municipal",
       "comentarios": null
     },
@@ -17483,7 +17483,7 @@
       "puntos_est": 5.0,
       "horas_real": 5.0,
       "diferencia": 0.0,
-      "horas_pred": 5.31,
+      "horas_pred": 5.32,
       "tarea": "Modelo 3d opción marquesado",
       "comentarios": null
     },
@@ -17603,7 +17603,7 @@
       "puntos_est": 2.0,
       "horas_real": 4.0,
       "diferencia": 2.0,
-      "horas_pred": 2.52,
+      "horas_pred": 2.51,
       "tarea": "Visita a Obra Pozzoli - Corralito y Puesta de Líneas Guia",
       "comentarios": null
     },
@@ -17623,7 +17623,7 @@
       "puntos_est": 2.0,
       "horas_real": 4.0,
       "diferencia": 2.0,
-      "horas_pred": 2.34,
+      "horas_pred": 2.31,
       "tarea": "Visita a Obra Pozzoli - Corralito y Puesta de Líneas Guia",
       "comentarios": null
     },
@@ -17703,7 +17703,7 @@
       "puntos_est": 3.0,
       "horas_real": 1.0,
       "diferencia": -2.0,
-      "horas_pred": 3.08,
+      "horas_pred": 3.09,
       "tarea": "Hacer los cortes de YPF transversal",
       "comentarios": null
     },
@@ -17723,7 +17723,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.88,
+      "horas_pred": 2.86,
       "tarea": "Hacer cambios en planta segun lo visto en el taller",
       "comentarios": null
     },
@@ -17863,7 +17863,7 @@
       "puntos_est": 3.5,
       "horas_real": 2.5,
       "diferencia": -1.0,
-      "horas_pred": 3.41,
+      "horas_pred": 3.42,
       "tarea": "Terminar los cortes y vistas del marquesado D",
       "comentarios": null
     },
@@ -17903,7 +17903,7 @@
       "puntos_est": 5.0,
       "horas_real": 5.0,
       "diferencia": 0.0,
-      "horas_pred": 5.43,
+      "horas_pred": 5.42,
       "tarea": "Correcciones municipales y conforme a obra",
       "comentarios": null
     },
@@ -17923,7 +17923,7 @@
       "puntos_est": 2.0,
       "horas_real": 1.5,
       "diferencia": -0.5,
-      "horas_pred": 1.66,
+      "horas_pred": 1.65,
       "tarea": "Ver cambios en planta y seguir completando plano municipal",
       "comentarios": null
     },
@@ -17963,7 +17963,7 @@
       "puntos_est": 5.0,
       "horas_real": 5.0,
       "diferencia": 0.0,
-      "horas_pred": 4.39,
+      "horas_pred": 4.38,
       "tarea": "Busqueda de antecedentes y generar una propuesta para las naves comercial industrial del Almacenamiento Este",
       "comentarios": null
     },
@@ -17983,7 +17983,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.35,
+      "horas_pred": 3.33,
       "tarea": "Completar informe de PANEs \ny sumar PAN complejo",
       "comentarios": null
     },
@@ -18003,7 +18003,7 @@
       "puntos_est": 6.0,
       "horas_real": 6.0,
       "diferencia": 0.0,
-      "horas_pred": 7.66,
+      "horas_pred": 7.65,
       "tarea": "Arreglos Presentación",
       "comentarios": null
     },
@@ -18043,7 +18043,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.04,
+      "horas_pred": 1.03,
       "tarea": "Opciones de etapas en planta alta",
       "comentarios": null
     },
@@ -18063,7 +18063,7 @@
       "puntos_est": 5.0,
       "horas_real": 5.0,
       "diferencia": 0.0,
-      "horas_pred": 4.31,
+      "horas_pred": 4.3,
       "tarea": "Busqueda de antecedentes y generar una propuesta para las naves comercial industrial del Almacenamiento Este",
       "comentarios": null
     },
@@ -18143,7 +18143,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.5,
       "diferencia": 0.5,
-      "horas_pred": 2.61,
+      "horas_pred": 2.63,
       "tarea": "Correcciones en CAD y Armar el Código del Barrio",
       "comentarios": null
     },
@@ -18223,7 +18223,7 @@
       "puntos_est": 5.0,
       "horas_real": 5.0,
       "diferencia": 0.0,
-      "horas_pred": 4.71,
+      "horas_pred": 4.67,
       "tarea": "Ver volumetria de tanques y desagues pluviales y seguir completando doc municipal",
       "comentarios": null
     },
@@ -18243,7 +18243,7 @@
       "puntos_est": 2.0,
       "horas_real": 3.5,
       "diferencia": 1.5,
-      "horas_pred": 2.57,
+      "horas_pred": 2.56,
       "tarea": "Modificar Cortes y Vistas de marquesado",
       "comentarios": null
     },
@@ -18263,7 +18263,7 @@
       "puntos_est": 4.0,
       "horas_real": 3.0,
       "diferencia": -1.0,
-      "horas_pred": 3.64,
+      "horas_pred": 3.65,
       "tarea": "Completar doc municipal de planta de techos y planta",
       "comentarios": null
     },
@@ -18283,7 +18283,7 @@
       "puntos_est": 6.0,
       "horas_real": 6.0,
       "diferencia": 0.0,
-      "horas_pred": 5.33,
+      "horas_pred": 5.25,
       "tarea": "Armar marco normativo",
       "comentarios": null
     },
@@ -18363,7 +18363,7 @@
       "puntos_est": 2.5,
       "horas_real": 2.5,
       "diferencia": 0.0,
-      "horas_pred": 2.71,
+      "horas_pred": 2.73,
       "tarea": "Busqueda de antecedentes y generar una propuesta para las naves comercial industrial del Almacenamiento Este",
       "comentarios": null
     },
@@ -18443,7 +18443,7 @@
       "puntos_est": 1.0,
       "horas_real": 0.5,
       "diferencia": -0.5,
-      "horas_pred": 1.14,
+      "horas_pred": 1.15,
       "tarea": "Correccion en CAD",
       "comentarios": null
     },
@@ -18463,7 +18463,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.07,
+      "horas_pred": 3.04,
       "tarea": "Busqueda de Antecedentes para Edificio Sobremonte",
       "comentarios": null
     },
@@ -18483,7 +18483,7 @@
       "puntos_est": 2.0,
       "horas_real": 2.5,
       "diferencia": 0.5,
-      "horas_pred": 2.34,
+      "horas_pred": 2.33,
       "tarea": "Renders de las naves comerciales",
       "comentarios": null
     },
@@ -18503,7 +18503,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 5.21,
+      "horas_pred": 5.22,
       "tarea": "Armado de presentación",
       "comentarios": null
     },
@@ -18543,7 +18543,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.38,
+      "horas_pred": 3.37,
       "tarea": "Modificar los cortes y vistas",
       "comentarios": null
     },
@@ -18583,7 +18583,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.1,
+      "horas_pred": 1.09,
       "tarea": "Buscar FIS para construcciones  en ciudad",
       "comentarios": null
     },
@@ -18603,7 +18603,7 @@
       "puntos_est": 3.0,
       "horas_real": 4.0,
       "diferencia": 1.0,
-      "horas_pred": 3.36,
+      "horas_pred": 3.34,
       "tarea": "Propuesta paisajistica y exteriorismo Cabañas",
       "comentarios": null
     },
@@ -18643,7 +18643,7 @@
       "puntos_est": 4.0,
       "horas_real": 4.0,
       "diferencia": 0.0,
-      "horas_pred": 3.64,
+      "horas_pred": 3.65,
       "tarea": "Municipal ",
       "comentarios": null
     },
@@ -18663,7 +18663,7 @@
       "puntos_est": 5.0,
       "horas_real": 5.0,
       "diferencia": 0.0,
-      "horas_pred": 5.12,
+      "horas_pred": 5.11,
       "tarea": "Comparativa con valor real de FIS",
       "comentarios": null
     },
@@ -18703,7 +18703,7 @@
       "puntos_est": 1.0,
       "horas_real": 1.0,
       "diferencia": 0.0,
-      "horas_pred": 1.0,
+      "horas_pred": 0.99,
       "tarea": "Visita a la Municipalidad para ver de resolver FIS ",
       "comentarios": null
     },
@@ -18763,7 +18763,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 2.94,
+      "horas_pred": 2.95,
       "tarea": "Revisar 3 propuestas en planta",
       "comentarios": null
     },
@@ -18923,7 +18923,7 @@
       "puntos_est": 4.0,
       "horas_real": 6.0,
       "diferencia": 2.0,
-      "horas_pred": 4.45,
+      "horas_pred": 4.44,
       "tarea": "Plano replanteo de columnas",
       "comentarios": null
     },
@@ -18943,7 +18943,7 @@
       "puntos_est": 6.0,
       "horas_real": 6.0,
       "diferencia": 0.0,
-      "horas_pred": 5.99,
+      "horas_pred": 5.98,
       "tarea": "Análisis de Subsuelos y qué conviene según el FIS ",
       "comentarios": null
     },
@@ -18983,7 +18983,7 @@
       "puntos_est": 3.0,
       "horas_real": 4.0,
       "diferencia": 1.0,
-      "horas_pred": 2.32,
+      "horas_pred": 2.33,
       "tarea": "Ver distribución de cocheras para Sobremonte",
       "comentarios": null
     },
@@ -19003,7 +19003,7 @@
       "puntos_est": 6.0,
       "horas_real": 6.0,
       "diferencia": 0.0,
-      "horas_pred": 5.94,
+      "horas_pred": 5.95,
       "tarea": "Propuestas distribución",
       "comentarios": null
     },
@@ -19043,7 +19043,7 @@
       "puntos_est": 3.0,
       "horas_real": 3.0,
       "diferencia": 0.0,
-      "horas_pred": 3.17,
+      "horas_pred": 3.2,
       "tarea": "Generar renders y volumetria del HUB",
       "comentarios": null
     },
@@ -19133,7 +19133,7 @@
       "sprint": "Sprint 1",
       "puntos_est": 23.0,
       "horas_real": 37.5,
-      "horas_pred": 24.52,
+      "horas_pred": 24.42,
       "n_tareas": 15,
       "diferencia": 14.5,
       "tasa_calibracion": 0.63
@@ -19142,7 +19142,7 @@
       "sprint": "Sprint 2",
       "puntos_est": 12.5,
       "horas_real": 18.0,
-      "horas_pred": 16.34,
+      "horas_pred": 16.28,
       "n_tareas": 8,
       "diferencia": 5.5,
       "tasa_calibracion": 0.44
@@ -19151,7 +19151,7 @@
       "sprint": "Sprint 3",
       "puntos_est": 48.5,
       "horas_real": 87.2,
-      "horas_pred": 45.09,
+      "horas_pred": 45.04,
       "n_tareas": 31,
       "diferencia": 38.7,
       "tasa_calibracion": 0.8
@@ -19160,7 +19160,7 @@
       "sprint": "Sprint 4",
       "puntos_est": 23.0,
       "horas_real": 44.4,
-      "horas_pred": 28.46,
+      "horas_pred": 28.06,
       "n_tareas": 9,
       "diferencia": 21.4,
       "tasa_calibracion": 0.93
@@ -19169,7 +19169,7 @@
       "sprint": "Sprint 5",
       "puntos_est": 28.0,
       "horas_real": 28.5,
-      "horas_pred": 23.12,
+      "horas_pred": 23.19,
       "n_tareas": 11,
       "diferencia": 0.5,
       "tasa_calibracion": 0.02
@@ -19178,7 +19178,7 @@
       "sprint": "Sprint 6",
       "puntos_est": 48.5,
       "horas_real": 51.9,
-      "horas_pred": 39.58,
+      "horas_pred": 39.44,
       "n_tareas": 21,
       "diferencia": 3.4,
       "tasa_calibracion": 0.07
@@ -19187,7 +19187,7 @@
       "sprint": "Sprint 7",
       "puntos_est": 64.0,
       "horas_real": 80.5,
-      "horas_pred": 60.93,
+      "horas_pred": 60.8,
       "n_tareas": 41,
       "diferencia": 16.5,
       "tasa_calibracion": 0.26
@@ -19196,7 +19196,7 @@
       "sprint": "Sprint 8",
       "puntos_est": 61.5,
       "horas_real": 67.5,
-      "horas_pred": 56.7,
+      "horas_pred": 56.66,
       "n_tareas": 31,
       "diferencia": 6.0,
       "tasa_calibracion": 0.1
@@ -19205,7 +19205,7 @@
       "sprint": "Sprint 9",
       "puntos_est": 57.25,
       "horas_real": 56.2,
-      "horas_pred": 48.38,
+      "horas_pred": 48.76,
       "n_tareas": 20,
       "diferencia": -1.05,
       "tasa_calibracion": -0.02
@@ -19214,7 +19214,7 @@
       "sprint": "Sprint 10",
       "puntos_est": 56.5,
       "horas_real": 52.7,
-      "horas_pred": 44.69,
+      "horas_pred": 44.65,
       "n_tareas": 29,
       "diferencia": -3.8,
       "tasa_calibracion": -0.07
@@ -19223,7 +19223,7 @@
       "sprint": "Sprint 11",
       "puntos_est": 75.5,
       "horas_real": 71.0,
-      "horas_pred": 62.27,
+      "horas_pred": 62.07,
       "n_tareas": 32,
       "diferencia": -4.5,
       "tasa_calibracion": -0.06
@@ -19232,7 +19232,7 @@
       "sprint": "Sprint 12",
       "puntos_est": 84.0,
       "horas_real": 86.0,
-      "horas_pred": 74.22,
+      "horas_pred": 74.27,
       "n_tareas": 49,
       "diferencia": 2.0,
       "tasa_calibracion": 0.02
@@ -19241,7 +19241,7 @@
       "sprint": "Sprint 13",
       "puntos_est": 74.0,
       "horas_real": 67.5,
-      "horas_pred": 63.7,
+      "horas_pred": 63.47,
       "n_tareas": 42,
       "diferencia": -6.5,
       "tasa_calibracion": -0.09
@@ -19250,7 +19250,7 @@
       "sprint": "Sprint 14",
       "puntos_est": 44.0,
       "horas_real": 42.0,
-      "horas_pred": 33.81,
+      "horas_pred": 33.71,
       "n_tareas": 24,
       "diferencia": -2.0,
       "tasa_calibracion": -0.05
@@ -19259,7 +19259,7 @@
       "sprint": "Sprint 15",
       "puntos_est": 67.0,
       "horas_real": 58.25,
-      "horas_pred": 47.72,
+      "horas_pred": 47.69,
       "n_tareas": 38,
       "diferencia": -8.75,
       "tasa_calibracion": -0.13
@@ -19268,7 +19268,7 @@
       "sprint": "Sprint 16",
       "puntos_est": 85.5,
       "horas_real": 74.7,
-      "horas_pred": 72.9,
+      "horas_pred": 72.85,
       "n_tareas": 31,
       "diferencia": -10.8,
       "tasa_calibracion": -0.13
@@ -19277,7 +19277,7 @@
       "sprint": "Sprint 17",
       "puntos_est": 120.0,
       "horas_real": 110.2,
-      "horas_pred": 98.61,
+      "horas_pred": 98.6,
       "n_tareas": 56,
       "diferencia": -9.8,
       "tasa_calibracion": -0.08
@@ -19286,7 +19286,7 @@
       "sprint": "Sprint 18",
       "puntos_est": 71.0,
       "horas_real": 57.0,
-      "horas_pred": 33.6,
+      "horas_pred": 33.63,
       "n_tareas": 29,
       "diferencia": -14.0,
       "tasa_calibracion": -0.2
@@ -19295,7 +19295,7 @@
       "sprint": "Sprint 19",
       "puntos_est": 104.5,
       "horas_real": 97.6,
-      "horas_pred": 76.24,
+      "horas_pred": 76.21,
       "n_tareas": 57,
       "diferencia": -6.9,
       "tasa_calibracion": -0.07
@@ -19304,7 +19304,7 @@
       "sprint": "Sprint 20",
       "puntos_est": 71.0,
       "horas_real": 60.5,
-      "horas_pred": 47.43,
+      "horas_pred": 47.49,
       "n_tareas": 32,
       "diferencia": -10.5,
       "tasa_calibracion": -0.15
@@ -19313,7 +19313,7 @@
       "sprint": "Sprint 21",
       "puntos_est": 93.5,
       "horas_real": 70.0,
-      "horas_pred": 73.47,
+      "horas_pred": 73.44,
       "n_tareas": 32,
       "diferencia": -23.5,
       "tasa_calibracion": -0.25
@@ -19322,7 +19322,7 @@
       "sprint": "Sprint 22",
       "puntos_est": 104.7,
       "horas_real": 104.0,
-      "horas_pred": 78.5,
+      "horas_pred": 78.49,
       "n_tareas": 44,
       "diferencia": -0.7,
       "tasa_calibracion": -0.01
@@ -19331,7 +19331,7 @@
       "sprint": "Sprint 23",
       "puntos_est": 103.2,
       "horas_real": 104.4,
-      "horas_pred": 75.98,
+      "horas_pred": 75.96,
       "n_tareas": 50,
       "diferencia": 1.2,
       "tasa_calibracion": 0.01
@@ -19340,7 +19340,7 @@
       "sprint": "Sprint 24",
       "puntos_est": 57.7,
       "horas_real": 59.0,
-      "horas_pred": 46.09,
+      "horas_pred": 46.13,
       "n_tareas": 23,
       "diferencia": 1.3,
       "tasa_calibracion": 0.02
@@ -19349,7 +19349,7 @@
       "sprint": "Sprint 25",
       "puntos_est": 144.5,
       "horas_real": 131.0,
-      "horas_pred": 108.42,
+      "horas_pred": 108.3,
       "n_tareas": 51,
       "diferencia": -13.5,
       "tasa_calibracion": -0.09
@@ -19358,7 +19358,7 @@
       "sprint": "Sprint 26",
       "puntos_est": 57.5,
       "horas_real": 58.5,
-      "horas_pred": 45.61,
+      "horas_pred": 45.53,
       "n_tareas": 25,
       "diferencia": 1.0,
       "tasa_calibracion": 0.02
@@ -19367,7 +19367,7 @@
       "sprint": "Sprint 27",
       "puntos_est": 84.0,
       "horas_real": 73.5,
-      "horas_pred": 63.89,
+      "horas_pred": 63.91,
       "n_tareas": 26,
       "diferencia": -10.5,
       "tasa_calibracion": -0.12
@@ -19376,7 +19376,7 @@
       "sprint": "Sprint 28",
       "puntos_est": 79.0,
       "horas_real": 78.0,
-      "horas_pred": 62.36,
+      "horas_pred": 62.35,
       "n_tareas": 35,
       "diferencia": -1.0,
       "tasa_calibracion": -0.01
@@ -19385,7 +19385,7 @@
       "sprint": "Sprint 29",
       "puntos_est": 96.5,
       "horas_real": 84.5,
-      "horas_pred": 78.09,
+      "horas_pred": 77.92,
       "n_tareas": 30,
       "diferencia": -12.0,
       "tasa_calibracion": -0.12
@@ -19394,7 +19394,7 @@
       "sprint": "Sprint 30",
       "puntos_est": 77.0,
       "horas_real": 58.0,
-      "horas_pred": 54.22,
+      "horas_pred": 54.21,
       "n_tareas": 31,
       "diferencia": -19.0,
       "tasa_calibracion": -0.25
