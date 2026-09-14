@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generated_at": "2026-09-11T16:52:04.123224+00:00",
-    "n_registros": 1025,
+    "generated_at": "2026-09-14T11:45:55.961912+00:00",
+    "n_registros": 1020,
     "n_sprints": 33,
     "model": {
       "type": "RandomForestRegressor",
@@ -20466,106 +20466,6 @@
       "horas_pred": 5.18,
       "tarea": "Estacionamientos",
       "comentarios": null
-    },
-    {
-      "id_registro": -1,
-      "sprint": null,
-      "fecha": null,
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
-      "horas_real": 0.0,
-      "diferencia": 0.0,
-      "horas_pred": null,
-      "tarea": null,
-      "comentarios": null
-    },
-    {
-      "id_registro": -1,
-      "sprint": null,
-      "fecha": null,
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
-      "horas_real": 0.0,
-      "diferencia": 0.0,
-      "horas_pred": null,
-      "tarea": null,
-      "comentarios": null
-    },
-    {
-      "id_registro": -1,
-      "sprint": null,
-      "fecha": null,
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
-      "horas_real": 0.0,
-      "diferencia": 0.0,
-      "horas_pred": null,
-      "tarea": null,
-      "comentarios": null
-    },
-    {
-      "id_registro": -1,
-      "sprint": null,
-      "fecha": null,
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
-      "horas_real": 0.0,
-      "diferencia": 0.0,
-      "horas_pred": null,
-      "tarea": null,
-      "comentarios": null
-    },
-    {
-      "id_registro": -1,
-      "sprint": null,
-      "fecha": null,
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
-      "horas_real": 0.0,
-      "diferencia": 0.0,
-      "horas_pred": null,
-      "tarea": null,
-      "comentarios": null
     }
   ],
   "sprints": [
@@ -20916,13 +20816,6 @@
       "puntos_est": 33.0,
       "n_tareas": 16,
       "eficiencia": 1.14
-    },
-    {
-      "responsable": "Sin asignar",
-      "horas_real": 0.0,
-      "puntos_est": 0.0,
-      "n_tareas": 5,
-      "eficiencia": null
     }
   ],
   "proyectos": [
@@ -21057,7 +20950,7 @@
       "tipo_proyecto": "No aplica",
       "horas_real": 8.0,
       "puntos_est": 11.5,
-      "n_tareas": 12
+      "n_tareas": 7
     },
     {
       "proyecto": "MaterPlan_Arga",
@@ -21123,12 +21016,6 @@
       "horas_real": 13.0,
       "puntos_est": 13.0,
       "n_tareas": 7
-    },
-    {
-      "categoria": "No aplica",
-      "horas_real": 0.0,
-      "puntos_est": 0.0,
-      "n_tareas": 5
     }
   ],
   "herramientas": [
