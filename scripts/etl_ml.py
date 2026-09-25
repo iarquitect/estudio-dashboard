@@ -43,6 +43,7 @@ SH_CAT    = "Ref_Categoría"
 SH_HERR   = "Ref_Herramientas"
 SH_INCER  = "Ref_Incertidumbre"
 SH_COMP   = "Ref_Complejidad"
+SH_FASE   = "Ref_Fase"
 
 # ── Auth ──────────────────────────────────────────────────────────────────────
 
@@ -77,6 +78,7 @@ def load_sheets(sh):
         "herr":  ws_to_df(sh, SH_HERR),
         "incer": ws_to_df(sh, SH_INCER),
         "comp":  ws_to_df(sh, SH_COMP),
+        "fase":  ws_to_df(sh, SH_FASE),
     }
 
 
@@ -157,13 +159,27 @@ def run_etl(sheets: dict) -> pd.DataFrame:
     lk_herr  = build_lookup(sheets["herr"],  "ID_Tipo_Herr",      "Tipo_Herramientas")
     lk_incer = build_lookup(sheets["incer"], "ID_Tipo_Incer",     "Tipo_Incertidumbre")
     lk_comp  = build_lookup(sheets["comp"],  "ID_Tipo_Comp",      "Tipo_Complejidad")
+    lk_fase  = build_lookup(sheets["fase"],  "ID_Tipo_Fase",      "Tipo_Fase", "Sin etapa")
+
+    # Estado / cliente / notas viven en Ref_Proyectos (texto libre, no FK).
+    proy_info = {}
+    for _, row in sheets["proy"].iterrows():
+        try:
+            pid = int(float(row["ID_Proyecto (PK)"]))
+        except (ValueError, TypeError):
+            continue
+        proy_info[pid] = {
+            "estado":  str(row.get("Estado")).strip()        if pd.notna(row.get("Estado"))        else "Sin estado",
+            "cliente": str(row.get("Cliente")).strip()       if pd.notna(row.get("Cliente"))       else None,
+            "notas":   str(row.get("Notas_Estado")).strip()  if pd.notna(row.get("Notas_Estado"))  else None,
+        }
 
     sprint_meta = extract_sprint_metadata(sheets["raw"])
 
     df = sheets["log"].copy()
 
     # Coerce all numeric columns
-    int_fk = ["ID_Proy (PK)", "ID_Tipo_Proy (PK)", "ID_Tipo_Cat", "ID_Tipo_Herr"]
+    int_fk = ["ID_Proy (PK)", "ID_Tipo_Proy (PK)", "ID_Tipo_Cat", "ID_Tipo_Herr", "ID_Tipo_Fase"]
     flt_fk = ["ID_Registro (PK)", "ID_Persona (PK)", "ID_Tipo_Incer",
                "ID_Tipo_Comp", "Puntos (Est)", "Horas (Real) [Y]"]
 
@@ -192,6 +208,16 @@ def run_etl(sheets: dict) -> pd.DataFrame:
     df["nivel_comp"]        = df["ID_Tipo_Comp"]
     df["nivel_comp_label"]  = df["ID_Tipo_Comp"].map(lk_comp)
     df["diferencia"]        = (df["Horas (Real) [Y]"] - df["Puntos (Est)"]).round(4)
+
+    # Etapa del proyecto (fase). 0 = sin asignar. Se guarda por registro para
+    # conservar el histórico aunque el proyecto avance de etapa.
+    if "ID_Tipo_Fase" not in df.columns:
+        df["ID_Tipo_Fase"] = 0
+    df["etapa_id"]          = df["ID_Tipo_Fase"]
+    df["etapa"]             = df["ID_Tipo_Fase"].map(lk_fase).fillna("Sin etapa")
+    df["estado_proyecto"]   = df["ID_Proy (PK)"].map(lambda p: proy_info.get(p, {}).get("estado", "Sin estado"))
+    df["cliente_proyecto"]  = df["ID_Proy (PK)"].map(lambda p: proy_info.get(p, {}).get("cliente"))
+    df["notas_proyecto"]    = df["ID_Proy (PK)"].map(lambda p: proy_info.get(p, {}).get("notas"))
 
     # Join sprint metadata
     df = df.merge(sprint_meta, left_on="ID_Registro (PK)", right_on="id_registro", how="left")
@@ -496,10 +522,51 @@ def agg_proyectos(df: pd.DataFrame) -> list[dict]:
             horas_real=("Horas (Real) [Y]", "sum"),
             puntos_est=("Puntos (Est)",      "sum"),
             n_tareas  =("ID_Registro (PK)", "count"),
+            estado    =("estado_proyecto",  "first"),
+            cliente   =("cliente_proyecto", "first"),
+            notas     =("notas_proyecto",   "first"),
         )
         .reset_index()
     )
-    return _round_records(g.sort_values("horas_real", ascending=False))
+    records = _round_records(g.sort_values("horas_real", ascending=False))
+
+    # Desglose por etapa: horas reales / estimadas / tareas de cada proyecto en
+    # cada fase. Clave = etapa_id (1..6, 0 = sin asignar) para que el frontend
+    # controle el orden y los nombres legibles.
+    fases = (
+        df.groupby(["proyecto", "tipo_proyecto", "etapa_id"], dropna=True)
+        .agg(
+            horas_real=("Horas (Real) [Y]", "sum"),
+            puntos_est=("Puntos (Est)",      "sum"),
+            n_tareas  =("ID_Registro (PK)", "count"),
+        )
+        .reset_index()
+    )
+    por_proy: dict = {}
+    for row in fases.to_dict(orient="records"):
+        key = (row["proyecto"], row["tipo_proyecto"])
+        por_proy.setdefault(key, {})[str(int(row["etapa_id"]))] = {
+            "horas_real": _clean_val(float(row["horas_real"])),
+            "puntos_est": _clean_val(float(row["puntos_est"])),
+            "n_tareas":   int(row["n_tareas"]),
+        }
+    for rec in records:
+        rec["fases"] = por_proy.get((rec["proyecto"], rec["tipo_proyecto"]), {})
+    return records
+
+
+def agg_etapas(df: pd.DataFrame) -> list[dict]:
+    g = (
+        df.groupby(["etapa_id", "etapa"], dropna=True)
+        .agg(
+            horas_real=("Horas (Real) [Y]", "sum"),
+            puntos_est=("Puntos (Est)",      "sum"),
+            n_tareas  =("ID_Registro (PK)", "count"),
+        )
+        .reset_index()
+        .sort_values("etapa_id")
+    )
+    return _round_records(g)
 
 
 def agg_categorias(df: pd.DataFrame) -> list[dict]:
@@ -532,7 +599,7 @@ def agg_herramientas(df: pd.DataFrame) -> list[dict]:
 
 RECORD_COLS = [
     "ID_Registro (PK)", "sprint", "fecha", "dia", "proyecto", "tipo_proyecto",
-    "responsable", "categoria", "herramienta",
+    "responsable", "categoria", "herramienta", "etapa", "etapa_id", "estado_proyecto",
     "nivel_incer", "nivel_incer_label", "nivel_comp", "nivel_comp_label",
     "Puntos (Est)", "Horas (Real) [Y]", "diferencia", "horas_pred",
     "tarea", "comentarios",
@@ -547,7 +614,7 @@ FIELD_RENAME = {
 
 # Columnas que SIEMPRE deben quedar como número en el JSON
 NUMERIC_KEYS = {
-    "id_registro", "nivel_incer", "nivel_comp",
+    "id_registro", "etapa_id", "nivel_incer", "nivel_comp",
     "puntos_est", "horas_real", "diferencia", "horas_pred",
 }
 
@@ -631,11 +698,18 @@ def main():
             "baseline": baseline,
             "capacity": capacity,
             "n_sin_horas": sin_horas,
+            "etapas_cobertura": {
+                "pct_horas_con_etapa": round(float(
+                    df.loc[df["etapa_id"] > 0, "Horas (Real) [Y]"].sum()
+                    / max(df["Horas (Real) [Y]"].sum(), 1e-9) * 100), 1),
+                "n_sin_etapa": int((df["etapa_id"] == 0).sum()),
+            },
         },
         "registros":    serialise_registros(df),
         "sprints":      agg_sprints(df),
         "personas":     agg_personas(df),
         "proyectos":    agg_proyectos(df),
+        "etapas":       agg_etapas(df),
         "categorias":   agg_categorias(df),
         "herramientas": agg_herramientas(df),
     }
