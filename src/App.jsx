@@ -11,6 +11,7 @@ import { PersonaChart }       from "./components/PersonaChart";
 import { MLPanel }            from "./components/MLPanel";
 import { CapacityPanel }      from "./components/CapacityPanel";
 import { RetrainButton }      from "./components/RetrainButton";
+import { ProyectosFasesPanel } from "./components/ProyectosFasesPanel";
 
 const num = (v) => {
   const n = Number(v);
@@ -68,7 +69,6 @@ const TIPO_ICON = {
   "Cultural":        Trophy,
   "Deportivo":       Trophy,
   "Logística":       Briefcase,
-  "Logística":  Briefcase,
 };
 
 function Spinner() {
@@ -102,6 +102,7 @@ export default function App() {
     personas   = [],
     proyectos  = [],
     categorias = [],
+    etapas     = [],
     meta       = {},
   } = data;
 
@@ -166,6 +167,9 @@ export default function App() {
           <AuditoriaProyectos proyectos={proyectos} />
           <CategoriaChart categorias={categorias} />
         </div>
+
+        {/* Proyectos desglosados por etapa — full width */}
+        <ProyectosFasesPanel proyectos={proyectos} etapas={etapas} cobertura={meta.etapas_cobertura} />
 
         {/* Carga del equipo + Mapa de imprevistos */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
