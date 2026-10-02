@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-02T13:27:23.561149+00:00",
+    "generated_at": "2026-10-02T16:58:26.823326+00:00",
     "n_registros": 1106,
     "n_sprints": 36,
     "model": {
@@ -64,7 +64,7 @@
         ]
       }
     },
-    "n_sin_horas": 88,
+    "n_sin_horas": 89,
     "etapas_cobertura": {
       "pct_horas_con_etapa": 96.4,
       "n_sin_etapa": 49
@@ -4077,7 +4077,7 @@
       "id_registro": 177,
       "sprint": "Sprint 9",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Fede",
       "categoria": "Documentación",
@@ -7389,7 +7389,7 @@
       "id_registro": 322,
       "sprint": "Sprint 13",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -7458,7 +7458,7 @@
       "id_registro": 325,
       "sprint": "Sprint 13",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -7481,7 +7481,7 @@
       "id_registro": 326,
       "sprint": "Sprint 13",
       "fecha": "2026-04-23",
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -7619,7 +7619,7 @@
       "id_registro": 332,
       "sprint": "Sprint 13",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -8815,7 +8815,7 @@
       "id_registro": 385,
       "sprint": "Sprint 15",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -8884,7 +8884,7 @@
       "id_registro": 388,
       "sprint": "Sprint 15",
       "fecha": "2026-05-06",
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -9114,7 +9114,7 @@
       "id_registro": 398,
       "sprint": "Sprint 15",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Modelado",
@@ -9275,7 +9275,7 @@
       "id_registro": 405,
       "sprint": "Sprint 15",
       "fecha": "2026-05-08",
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -9942,7 +9942,7 @@
       "id_registro": 434,
       "sprint": "Sprint 16",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -11161,7 +11161,7 @@
       "id_registro": 487,
       "sprint": "Sprint 17",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -18636,7 +18636,7 @@
       "id_registro": 815,
       "sprint": "Sprint 26",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -18820,7 +18820,7 @@
       "id_registro": 823,
       "sprint": "Sprint 26",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -18889,7 +18889,7 @@
       "id_registro": 826,
       "sprint": "Sprint 26",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -18935,7 +18935,7 @@
       "id_registro": 828,
       "sprint": "Sprint 26",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Modelado",
@@ -19027,7 +19027,7 @@
       "id_registro": 832,
       "sprint": "Sprint 26",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Buffer de Interrupción",
@@ -19050,7 +19050,7 @@
       "id_registro": 833,
       "sprint": "Sprint 26",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Buffer de Interrupción",
@@ -19096,7 +19096,7 @@
       "id_registro": 835,
       "sprint": "Sprint 26",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -19142,7 +19142,7 @@
       "id_registro": 837,
       "sprint": "Sprint 26",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -19165,7 +19165,7 @@
       "id_registro": 838,
       "sprint": "Sprint 26",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Modelado",
@@ -19280,7 +19280,7 @@
       "id_registro": 843,
       "sprint": "Sprint 27",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Modelado",
@@ -19372,7 +19372,7 @@
       "id_registro": 847,
       "sprint": "Sprint 27",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -19395,7 +19395,7 @@
       "id_registro": 848,
       "sprint": "Sprint 27",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Modelado",
@@ -19533,7 +19533,7 @@
       "id_registro": 854,
       "sprint": "Sprint 27",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -19556,7 +19556,7 @@
       "id_registro": 855,
       "sprint": "Sprint 27",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Modelado",
@@ -19579,7 +19579,7 @@
       "id_registro": 856,
       "sprint": "Sprint 27",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -19740,7 +19740,7 @@
       "id_registro": 863,
       "sprint": "Sprint 27",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -19855,7 +19855,7 @@
       "id_registro": 868,
       "sprint": "Sprint 28",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -20062,7 +20062,7 @@
       "id_registro": 877,
       "sprint": "Sprint 28",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Documentación",
@@ -20085,7 +20085,7 @@
       "id_registro": 878,
       "sprint": "Sprint 28",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Modelado",
@@ -20108,7 +20108,7 @@
       "id_registro": 879,
       "sprint": "Sprint 28",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Buffer de Interrupción",
@@ -20177,7 +20177,7 @@
       "id_registro": 882,
       "sprint": "Sprint 28",
       "fecha": "2026-05-08",
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Buffer de Interrupción",
@@ -20361,7 +20361,7 @@
       "id_registro": 890,
       "sprint": "Sprint 28",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -20384,7 +20384,7 @@
       "id_registro": 891,
       "sprint": "Sprint 28",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Modelado",
@@ -20476,7 +20476,7 @@
       "id_registro": 895,
       "sprint": "Sprint 28",
       "fecha": "2026-07-08",
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -20614,7 +20614,7 @@
       "id_registro": 901,
       "sprint": "Sprint 29",
       "fecha": "2026-10-08",
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Documentación",
@@ -20637,7 +20637,7 @@
       "id_registro": 902,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -20752,7 +20752,7 @@
       "id_registro": 907,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Modelado",
@@ -20821,7 +20821,7 @@
       "id_registro": 910,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Documentación",
@@ -20913,7 +20913,7 @@
       "id_registro": 914,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -20959,7 +20959,7 @@
       "id_registro": 916,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Documentación",
@@ -20982,7 +20982,7 @@
       "id_registro": 917,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Fede",
       "categoria": "Modelado",
@@ -21005,7 +21005,7 @@
       "id_registro": 918,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Documentación",
@@ -21051,7 +21051,7 @@
       "id_registro": 920,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -21097,7 +21097,7 @@
       "id_registro": 922,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -21120,7 +21120,7 @@
       "id_registro": 923,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Modelado",
@@ -21166,7 +21166,7 @@
       "id_registro": 925,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -21189,7 +21189,7 @@
       "id_registro": 926,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Modelado",
@@ -21304,7 +21304,7 @@
       "id_registro": 931,
       "sprint": "Sprint 29",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -21350,7 +21350,7 @@
       "id_registro": 934,
       "sprint": "Sprint 30",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Fede",
       "categoria": "Modelado",
@@ -21442,7 +21442,7 @@
       "id_registro": 938,
       "sprint": "Sprint 30",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -21465,7 +21465,7 @@
       "id_registro": 939,
       "sprint": "Sprint 30",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Documentación",
@@ -21511,7 +21511,7 @@
       "id_registro": 941,
       "sprint": "Sprint 30",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -21557,7 +21557,7 @@
       "id_registro": 943,
       "sprint": "Sprint 30",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -21626,7 +21626,7 @@
       "id_registro": 946,
       "sprint": "Sprint 30",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Fede",
       "categoria": "Modelado",
@@ -21787,7 +21787,7 @@
       "id_registro": 953,
       "sprint": "Sprint 30",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Marti",
       "categoria": "Modelado",
@@ -22316,7 +22316,7 @@
       "id_registro": 976,
       "sprint": "Sprint 31",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -23581,7 +23581,7 @@
       "id_registro": 1031,
       "sprint": "Sprint 34",
       "fecha": null,
-      "proyecto": "OTI",
+      "proyecto": "D _B_Marquesado",
       "tipo_proyecto": "Residencial",
       "responsable": "Valen",
       "categoria": "Documentación",
@@ -25184,7 +25184,7 @@
       "horas_real": 2.0,
       "diferencia": -1.0,
       "horas_pred": 3.01,
-      "tarea": null,
+      "tarea": "Busqueda de antecedentes y prueba de nueva distribución exterior",
       "comentarios": null
     },
     {
@@ -25283,21 +25283,21 @@
       "id_registro": -1,
       "sprint": null,
       "fecha": null,
-      "proyecto": "No aplica",
-      "tipo_proyecto": "No aplica",
-      "responsable": "Sin asignar",
-      "categoria": "No aplica",
-      "herramienta": "No aplica",
+      "proyecto": "LTN Remodelación",
+      "tipo_proyecto": "Comercial",
+      "responsable": "Marti",
+      "categoria": "Investigación",
+      "herramienta": "AutoCAD",
       "etapa": "Sin etapa",
       "etapa_id": 0,
-      "estado_proyecto": "Sin estado",
-      "nivel_incer": 0,
-      "nivel_incer_label": "No aplica",
-      "nivel_comp": 0,
-      "nivel_comp_label": "No aplica",
-      "puntos_est": 0.0,
+      "estado_proyecto": "Espera contrato",
+      "nivel_incer": 1,
+      "nivel_incer_label": "Ya lo hicimos mil veces",
+      "nivel_comp": 1,
+      "nivel_comp_label": "Poca Complejidad",
+      "puntos_est": 5.0,
       "horas_real": 0.0,
-      "diferencia": 0.0,
+      "diferencia": -5.0,
       "horas_pred": null,
       "tarea": null,
       "comentarios": null
@@ -25847,9 +25847,9 @@
     {
       "responsable": "Marti",
       "horas_real": 637.3,
-      "puntos_est": 690.4,
-      "n_tareas": 287,
-      "eficiencia": 1.08
+      "puntos_est": 695.4,
+      "n_tareas": 288,
+      "eficiencia": 1.09
     },
     {
       "responsable": "Fede",
@@ -25890,7 +25890,7 @@
       "responsable": "Sin asignar",
       "horas_real": 0.0,
       "puntos_est": 0.0,
-      "n_tareas": 10,
+      "n_tareas": 9,
       "eficiencia": null
     }
   ],
@@ -26017,6 +26017,48 @@
       }
     },
     {
+      "proyecto": "D _B_Marquesado",
+      "tipo_proyecto": "Residencial",
+      "horas_real": 195.75,
+      "puntos_est": 246.75,
+      "n_tareas": 92,
+      "estado": "En pie",
+      "cliente": null,
+      "notas": null,
+      "fases": {
+        "0": {
+          "horas_real": 6.0,
+          "puntos_est": 6.0,
+          "n_tareas": 2
+        },
+        "1": {
+          "horas_real": 29.5,
+          "puntos_est": 42.5,
+          "n_tareas": 14
+        },
+        "2": {
+          "horas_real": 79.75,
+          "puntos_est": 103.25,
+          "n_tareas": 38
+        },
+        "3": {
+          "horas_real": 49.0,
+          "puntos_est": 58.5,
+          "n_tareas": 22
+        },
+        "4": {
+          "horas_real": 23.0,
+          "puntos_est": 28.0,
+          "n_tareas": 11
+        },
+        "5": {
+          "horas_real": 8.5,
+          "puntos_est": 8.5,
+          "n_tareas": 5
+        }
+      }
+    },
+    {
       "proyecto": "Pozzoli",
       "tipo_proyecto": "Residencial",
       "horas_real": 152.35,
@@ -26050,48 +26092,6 @@
           "horas_real": 6.0,
           "puntos_est": 24.5,
           "n_tareas": 9
-        }
-      }
-    },
-    {
-      "proyecto": "OTI",
-      "tipo_proyecto": "Residencial",
-      "horas_real": 121.0,
-      "puntos_est": 163.75,
-      "n_tareas": 58,
-      "estado": "En pie",
-      "cliente": null,
-      "notas": null,
-      "fases": {
-        "0": {
-          "horas_real": 4.0,
-          "puntos_est": 4.0,
-          "n_tareas": 1
-        },
-        "1": {
-          "horas_real": 26.0,
-          "puntos_est": 38.0,
-          "n_tareas": 12
-        },
-        "2": {
-          "horas_real": 50.0,
-          "puntos_est": 73.25,
-          "n_tareas": 26
-        },
-        "3": {
-          "horas_real": 26.5,
-          "puntos_est": 33.0,
-          "n_tareas": 11
-        },
-        "4": {
-          "horas_real": 8.0,
-          "puntos_est": 9.0,
-          "n_tareas": 5
-        },
-        "5": {
-          "horas_real": 6.5,
-          "puntos_est": 6.5,
-          "n_tareas": 3
         }
       }
     },
@@ -26245,48 +26245,6 @@
           "horas_real": 7.0,
           "puntos_est": 5.0,
           "n_tareas": 3
-        }
-      }
-    },
-    {
-      "proyecto": "D _B_Marquesado",
-      "tipo_proyecto": "Residencial",
-      "horas_real": 74.75,
-      "puntos_est": 83.0,
-      "n_tareas": 34,
-      "estado": "En pie",
-      "cliente": null,
-      "notas": null,
-      "fases": {
-        "0": {
-          "horas_real": 2.0,
-          "puntos_est": 2.0,
-          "n_tareas": 1
-        },
-        "1": {
-          "horas_real": 3.5,
-          "puntos_est": 4.5,
-          "n_tareas": 2
-        },
-        "2": {
-          "horas_real": 29.75,
-          "puntos_est": 30.0,
-          "n_tareas": 12
-        },
-        "3": {
-          "horas_real": 22.5,
-          "puntos_est": 25.5,
-          "n_tareas": 11
-        },
-        "4": {
-          "horas_real": 15.0,
-          "puntos_est": 19.0,
-          "n_tareas": 6
-        },
-        "5": {
-          "horas_real": 2.0,
-          "puntos_est": 2.0,
-          "n_tareas": 2
         }
       }
     },
@@ -26541,7 +26499,7 @@
       "tipo_proyecto": "No aplica",
       "horas_real": 17.5,
       "puntos_est": 19.5,
-      "n_tareas": 20,
+      "n_tareas": 19,
       "estado": "Sin estado",
       "cliente": null,
       "notas": null,
@@ -26549,7 +26507,7 @@
         "0": {
           "horas_real": 0.0,
           "puntos_est": 0.0,
-          "n_tareas": 10
+          "n_tareas": 9
         },
         "1": {
           "horas_real": 9.5,
@@ -26599,16 +26557,16 @@
       "proyecto": "LTN Remodelación",
       "tipo_proyecto": "Comercial",
       "horas_real": 8.5,
-      "puntos_est": 17.5,
-      "n_tareas": 5,
+      "puntos_est": 22.5,
+      "n_tareas": 6,
       "estado": "Espera contrato",
       "cliente": "Grupo LTN",
       "notas": null,
       "fases": {
         "0": {
           "horas_real": 2.5,
-          "puntos_est": 5.5,
-          "n_tareas": 2
+          "puntos_est": 10.5,
+          "n_tareas": 3
         },
         "1": {
           "horas_real": 6.0,
@@ -26738,7 +26696,7 @@
       "etapa_id": 0,
       "etapa": "Sin etapa",
       "horas_real": 89.0,
-      "puntos_est": 95.5,
+      "puntos_est": 100.5,
       "n_tareas": 49
     },
     {
@@ -26806,8 +26764,8 @@
     {
       "categoria": "Investigación",
       "horas_real": 261.25,
-      "puntos_est": 305.0,
-      "n_tareas": 102
+      "puntos_est": 310.0,
+      "n_tareas": 103
     },
     {
       "categoria": "Obra",
@@ -26831,14 +26789,14 @@
       "categoria": "No aplica",
       "horas_real": 0.0,
       "puntos_est": 0.0,
-      "n_tareas": 10
+      "n_tareas": 9
     }
   ],
   "herramientas": [
     {
       "herramienta": "AutoCAD",
       "horas_real": 916.05,
-      "n_tareas": 387
+      "n_tareas": 388
     },
     {
       "herramienta": "Rhino",
